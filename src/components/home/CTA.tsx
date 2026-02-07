@@ -1,0 +1,55 @@
+import { motion } from 'framer-motion';
+import { ArrowRight, Power } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+export const CTA = () => {
+  return (
+    <section className="py-32 bg-charcoal relative overflow-hidden flex items-center justify-center">
+      {/* Background Pulse */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-[500px] h-[500px] bg-neon-green/5 rounded-full blur-[100px] animate-pulse" />
+      </div>
+
+      <div className="relative z-10 text-center px-4 w-full max-w-4xl">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-6xl font-bold mb-8"
+        >
+          Ready to <span className="text-neon-green">Execute?</span>
+        </motion.h2>
+        
+        <motion.p 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto"
+        >
+          Stop running manual processes. Start building your digital empire.
+          Initialize your project sequence today.
+        </motion.p>
+
+        <Link to="/contact" className="inline-block">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group relative inline-flex items-center gap-4 px-12 py-6 bg-neon-green text-charcoal text-xl font-bold rounded-none hover:bg-white transition-colors uppercase tracking-widest overflow-hidden cursor-pointer"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              <Power size={24} />
+              Initialize Project
+            </span>
+            <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0" />
+          </motion.div>
+        </Link>
+        
+        <div className="mt-8 flex justify-center gap-8 text-sm font-mono text-gray-600">
+          <span>// SECURE CONNECTION</span>
+          <span>// 24/7 MONITORING</span>
+        </div>
+      </div>
+    </section>
+  );
+};
