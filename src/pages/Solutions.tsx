@@ -493,17 +493,6 @@ const Solutions = () => {
           <DemoSandbox />
         </section>
 
-        {/* Footer */}
-        <footer className="border-t border-white/10 pt-12 pb-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
-          <div className="mb-4 md:mb-0">
-            <span className="font-mono text-xs">O2MATION // DIGITAL_SOLUTIONS</span>
-          </div>
-          <div className="flex gap-6">
-            <Link to="/" className="hover:text-neon-green transition-colors">Home</Link>
-            <Link to="/contact" className="hover:text-neon-green transition-colors">Contact</Link>
-          </div>
-        </footer>
-
       </main>
 
       <ChatWidget />

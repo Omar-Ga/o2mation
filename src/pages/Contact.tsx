@@ -57,9 +57,9 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-charcoal text-white font-sans selection:bg-neon-green selection:text-charcoal flex flex-col md:flex-row overflow-hidden">
+    <div className="min-h-screen bg-charcoal text-white font-sans selection:bg-neon-green selection:text-charcoal flex flex-col md:flex-row relative">
       {/* Background Grid */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-20 fixed">
          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
       </div>
 
@@ -68,7 +68,7 @@ const Contact = () => {
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="w-full md:w-1/3 border-r border-white/5 bg-charcoal-light/50 backdrop-blur-sm relative z-10 flex flex-col p-8 pt-24 md:p-12 md:pt-32 justify-between"
+        className="w-full md:w-1/3 border-r border-white/5 bg-charcoal-light/50 backdrop-blur-sm relative z-10 flex flex-col p-8 pt-24 md:p-12 md:pt-32 justify-between md:sticky md:top-0 md:h-screen"
       >
         <div>
           <div className="mb-12">
@@ -113,7 +113,7 @@ const Contact = () => {
       </motion.div>
 
       {/* RIGHT PANEL: Input Console */}
-      <div className="w-full md:w-2/3 relative z-10 overflow-y-auto h-screen scrollbar-thin scrollbar-thumb-neon-green/20 scrollbar-track-transparent">
+      <div className="w-full md:w-2/3 relative z-10">
         <div className="p-8 pt-24 md:p-20 md:pt-32 max-w-3xl mx-auto">
           
           {status === 'success' ? (
