@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 
 const stats = [
@@ -8,7 +8,13 @@ const stats = [
   { label: "ROI Increase", value: 300, suffix: "%" }
 ];
 
-const Counter = ({ value, duration = 2, decimals = 0 }) => {
+interface CounterProps {
+  value: number;
+  duration?: number;
+  decimals?: number;
+}
+
+const Counter = ({ value, duration = 2, decimals = 0 }: CounterProps) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });

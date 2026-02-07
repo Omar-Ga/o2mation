@@ -1,20 +1,15 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Terminal, 
-  Cpu, 
-  Shield, 
   Wifi, 
   Send, 
   CheckCircle, 
-  AlertCircle,
   Server,
   Code,
-  Globe,
   Database,
-  Bot,
-  ArrowLeft
+  Bot
 } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Contact = () => {
@@ -28,7 +23,6 @@ const Contact = () => {
   });
   
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-  const [activeField, setActiveField] = useState<string | null>(null);
 
   const services = [
     { id: 'ai', label: 'AI & Automation', icon: Bot },

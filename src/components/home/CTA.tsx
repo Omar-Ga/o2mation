@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Power } from 'lucide-react';
+import { Power } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const CTA = () => {
