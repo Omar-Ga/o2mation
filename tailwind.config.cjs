@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       colors: {
         'neon-green': '#00ff80',
-        'charcoal': '#0a0a0a',
+        'charcoal': '#020202',
         'charcoal-light': '#1a1a1a',
       },
       fontFamily: {

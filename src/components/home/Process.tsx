@@ -1,112 +1,139 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { FileSearch, Layers, Code, Rocket } from 'lucide-react';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { FileSearch, Layers, Code, Rocket, ArrowRight, GitBranch, Cpu, CheckCircle } from 'lucide-react';
 
 const steps = [
   {
     icon: FileSearch,
     title: "Discovery & Audit",
-    desc: "We scan your current infrastructure for bottlenecks, inefficiencies, and data silos. We don't guess; we diagnose.",
+    desc: "We scan your current infrastructure for bottlenecks. We don't guess; we diagnose.",
+    step: "01",
     color: "text-blue-400",
-    border: "border-blue-400/20",
-    bg: "bg-blue-400/5"
+    glow: "shadow-[0_0_30px_-10px_rgba(96,165,250,0.3)]",
+    border: "group-hover:border-blue-400/50"
   },
   {
     icon: Layers,
-    title: "System Architecture",
-    desc: "We design a bespoke blueprint. API gateways, database schemas, and AI integration points are mapped out before a single line of code is written.",
+    title: "Architecture",
+    desc: "Bespoke blueprints. API gateways and database schemas mapped before coding.",
+    step: "02",
     color: "text-purple-400",
-    border: "border-purple-400/20",
-    bg: "bg-purple-400/5"
+    glow: "shadow-[0_0_30px_-10px_rgba(192,132,252,0.3)]",
+    border: "group-hover:border-purple-400/50"
   },
   {
     icon: Code,
-    title: "Intelligent Development",
-    desc: "Our engineers build the core logic. We fuse traditional full-stack development with advanced AI agent workflows.",
+    title: "Development",
+    desc: "Fusing traditional full-stack engineering with advanced AI agent workflows.",
+    step: "03",
     color: "text-neon-green",
-    border: "border-neon-green/20",
-    bg: "bg-neon-green/5"
+    glow: "shadow-[0_0_30px_-10px_rgba(0,255,128,0.3)]",
+    border: "group-hover:border-neon-green/50"
   },
   {
     icon: Rocket,
-    title: "Deployment & Scale",
-    desc: "We launch your system into production with real-time monitoring, auto-scaling, and continuous optimization.",
+    title: "Deployment",
+    desc: "Launch with real-time monitoring, auto-scaling, and continuous optimization.",
+    step: "04",
     color: "text-orange-400",
-    border: "border-orange-400/20",
-    bg: "bg-orange-400/5"
+    glow: "shadow-[0_0_30px_-10px_rgba(251,146,60,0.3)]",
+    border: "group-hover:border-orange-400/50"
   }
 ];
 
 export const Process = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
   return (
-    <section ref={containerRef} className="py-32 bg-charcoal relative overflow-hidden">
+    <section className="py-32 bg-charcoal relative overflow-hidden">
+      {/* Circuit Board Background */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,128,0.1),transparent_50%)]" />
+        <svg className="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" opacity="0.2"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
-        <div className="mb-20 text-center">
+        <div className="text-center mb-24">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-1 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm text-xs font-mono text-gray-400 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-neon-green font-mono text-xs tracking-widest mb-6"
           >
-            THE ALGORITHM
+            <GitBranch size={14} />
+            <span>EXECUTION_PIPELINE</span>
           </motion.div>
+          
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-bold mb-4"
+            className="text-4xl md:text-6xl font-bold mb-6 text-white"
           >
-            From Chaos to <span className="text-neon-green">Code</span>
+            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-500">Protocol</span>
           </motion.h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Our proprietary methodology for digitizing analog businesses.
+          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+            Our systematic approach to building your automated future.
           </p>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
-          {/* Central Line */}
-          <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-px bg-gray-800 -translate-x-1/2" />
-          <motion.div 
-            style={{ scaleY, originY: 0 }}
-            className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-px bg-neon-green -translate-x-1/2 z-0" 
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {steps.map((step, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.15 }}
+              className="relative group"
+            >
+              {/* Animated Connector Line (Desktop) */}
+              {index < steps.length - 1 && (
+                <div className="hidden lg:block absolute top-16 left-full w-full h-[2px] bg-charcoal-light -translate-x-8 z-0 overflow-hidden">
+                  <motion.div 
+                    className="h-full w-full bg-gradient-to-r from-transparent via-neon-green to-transparent"
+                    animate={{ x: ["-100%", "100%"] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: index * 0.5 }}
+                  />
+                </div>
+              )}
 
-          <div className="space-y-24">
-            {steps.map((step, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative flex flex-col md:flex-row gap-8 md:gap-0 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
-              >
-                {/* Content Side */}
-                <div className="flex-1 md:w-1/2 pl-16 md:pl-0 md:px-12 text-left">
-                  <div className={`p-6 rounded-xl border ${step.border} ${step.bg} backdrop-blur-sm`}>
-                    <h3 className={`text-xl font-bold mb-2 ${step.color}`}>{step.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>
+              <div className={`
+                h-full p-8 rounded-3xl border border-white/5 bg-charcoal/50 backdrop-blur-xl 
+                transition-all duration-500 relative z-10 overflow-hidden group-hover:-translate-y-2
+                ${step.border} ${step.glow}
+              `}>
+                {/* Hover Gradient Overlay */}
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br from-white to-transparent`} />
+                
+                <div className="relative z-10">
+                  <div className="flex justify-between items-start mb-8">
+                    <div className={`
+                      p-4 rounded-2xl bg-white/5 border border-white/10 
+                      group-hover:scale-110 transition-transform duration-500
+                      ${step.color}
+                    `}>
+                      <step.icon size={28} />
+                    </div>
+                    <span className="font-mono text-4xl font-black text-white/40 group-hover:text-white/50 transition-colors">
+                      {step.step}
+                    </span>
                   </div>
+                  
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:translate-x-2 transition-transform duration-300">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-300 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">
+                    {step.desc}
+                  </p>
                 </div>
-
-                {/* Center Node */}
-                <div className="absolute left-[28px] md:left-1/2 -translate-x-1/2 flex items-center justify-center w-14 h-14 rounded-full bg-charcoal border border-gray-700 z-10 shadow-xl">
-                  <step.icon size={24} className={step.color} />
-                </div>
-
-                {/* Empty Side for Balance */}
-                <div className="flex-1 md:w-1/2 hidden md:block" />
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

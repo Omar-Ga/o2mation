@@ -32,7 +32,7 @@ export const Problem = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-gray-400"
+            className="text-xl text-gray-300"
           >
             Spreadsheets that don't sync. Emails that get lost. Data entry that eats your time.
             Legacy systems are holding you back.
@@ -45,7 +45,7 @@ export const Problem = () => {
             style={{ x: x1, rotate: rotate1 }}
             className="absolute top-10 left-0 md:left-20 p-6 bg-charcoal-light border border-gray-800 rounded-lg shadow-2xl"
           >
-            <div className="font-mono text-sm text-red-400">Error: Connection Timeout</div>
+            <div className="font-mono text-sm text-red-300">Error: Connection Timeout</div>
             <div className="w-48 h-2 bg-gray-800 mt-2 rounded-full" />
             <div className="w-32 h-2 bg-gray-800 mt-2 rounded-full" />
           </motion.div>
@@ -66,7 +66,7 @@ export const Problem = () => {
                <div className="w-3 h-3 rounded-full bg-red-500/20" />
                <div className="w-3 h-3 rounded-full bg-yellow-500/20" />
              </div>
-             <div className="font-mono text-sm text-gray-400">Sync Failed</div>
+             <div className="font-mono text-sm text-gray-300">Sync Failed</div>
           </motion.div>
         </div>
       </div>

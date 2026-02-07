@@ -25,7 +25,7 @@ export const CTA = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto"
+          className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto"
         >
           Stop running manual processes. Start building your digital empire.
           Initialize your project sequence today.
