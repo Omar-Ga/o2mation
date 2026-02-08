@@ -7,7 +7,6 @@ import {
   FileSpreadsheet, 
   Globe, 
   Mail, 
-  MessageSquare, 
   Package, 
   Share2, 
   ShoppingCart, 

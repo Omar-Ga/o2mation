@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FileSearch, Layers, Code, Rocket, ArrowRight, GitBranch, Cpu, CheckCircle } from 'lucide-react';
+import { FileSearch, Layers, Code, Rocket, GitBranch } from 'lucide-react';
 
 const steps = [
   {

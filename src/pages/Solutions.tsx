@@ -13,7 +13,6 @@ import {
   Loader2,
   Play
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { ChatWidget } from '../components/common/ChatWidget';
 
 // --- Types & Data ---
