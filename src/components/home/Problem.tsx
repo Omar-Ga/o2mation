@@ -212,7 +212,6 @@ const WorkflowItem = ({ item, progress, index }: { item: any, progress: any, ind
   // Phase 2: Activation (based on scroll position relative to item index)
   // Calculate roughly when the green line hits this item
   const activationStart = 0.2 + (index * 0.12); // Staggered activation
-  const isActive = useTransform(progress, [activationStart, activationStart + 0.05], [0, 1]);
   const borderColor = useTransform(progress, [activationStart, activationStart + 0.05], ["#333", "#00ff80"]);
   const glowOpacity = useTransform(progress, [activationStart, activationStart + 0.05], [0, 1]);
   const iconColor = useTransform(progress, [activationStart, activationStart + 0.05], ["#6b7280", "#00ff80"]); // gray-500 to neon-green
