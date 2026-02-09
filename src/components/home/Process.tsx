@@ -98,6 +98,7 @@ export const Process = () => {
                     className="h-full w-full bg-gradient-to-r from-transparent via-neon-green to-transparent"
                     animate={{ x: ["-100%", "100%"] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: index * 0.5 }}
+                    style={{ willChange: "transform" }}
                   />
                 </div>
               )}

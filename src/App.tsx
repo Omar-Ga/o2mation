@@ -17,12 +17,15 @@ const ScrollToTop = () => {
   return null;
 };
 
+import { MotionConfig } from 'framer-motion';
+
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      
-      <div className="relative min-h-screen bg-charcoal">
+    <MotionConfig reducedMotion="user">
+      <Router>
+        <ScrollToTop />
+        
+        <div className="relative min-h-screen bg-charcoal">
         <Header />
         
         {/* 
@@ -43,7 +46,8 @@ function App() {
         {/* The Fixed Reveal Layer that sits behind everything */}
         <FooterReveal />
       </div>
-    </Router>
+      </Router>
+    </MotionConfig>
   )
 }
 
