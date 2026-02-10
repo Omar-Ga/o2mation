@@ -24,8 +24,6 @@ interface OperatorProfileProps {
 // --- Sub-Components ---
 
 const OperatorProfile = ({ 
-  name, 
-  role, 
   textGroup1,
   textGroup2,
   alignment, 
@@ -44,13 +42,14 @@ const OperatorProfile = ({
   // 85% - 100%: Image Unsticks
   
   // Simplified relative points (0.0 to 1.0 within duration) mapped to absolute scroll
-  const t1_in = start + duration * 0.15;
-  const t1_hold = start + duration * 0.4;
-  const t1_out = start + duration * 0.45;
+  // Adjusted for slower fades (smoother transitions)
+  const t1_in = start + duration * 0.20;
+  const t1_hold = start + duration * 0.35;
+  const t1_out = start + duration * 0.48;
   
-  const t2_in = start + duration * 0.55;
-  const t2_hold = start + duration * 0.85;
-  const t2_out = start + duration * 0.9;
+  const t2_in = start + duration * 0.62;
+  const t2_hold = start + duration * 0.82;
+  const t2_out = start + duration * 0.95;
 
   // Image Opacity: Stays visible almost the entire time
   const imageOpacity = useTransform(
@@ -182,7 +181,7 @@ const HeaderBlock = ({ alignment, label }: { alignment: string, label: string })
 
 // --- Main Page Component ---
 
-const TheOperators = () => {
+const MeetTheTeam = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -190,10 +189,10 @@ const TheOperators = () => {
   });
 
   // --- Transition Effects ---
-  // Glitch Line Scan (40% - 60%)
-  const scanLineY = useTransform(scrollYProgress, [0.4, 0.6], ["0%", "100%"]);
-  const scanOpacity = useTransform(scrollYProgress, [0.4, 0.45, 0.55, 0.6], [0, 1, 1, 0]);
-  const noiseOpacity = useTransform(scrollYProgress, [0.35, 0.5, 0.65], [0.3, 0.6, 0.3]);
+  // Glitch Line Scan (35% - 65%) - Widened range to slow down animation
+  const scanLineY = useTransform(scrollYProgress, [0.35, 0.65], ["0%", "100%"]);
+  const scanOpacity = useTransform(scrollYProgress, [0.35, 0.42, 0.58, 0.65], [0, 1, 1, 0]);
+  const noiseOpacity = useTransform(scrollYProgress, [0.30, 0.5, 0.70], [0.3, 0.6, 0.3]);
 
   return (
     <div ref={containerRef} className="relative h-[600vh] bg-charcoal">
@@ -326,4 +325,4 @@ const TheOperators = () => {
   );
 };
 
-export default TheOperators;
+export default MeetTheTeam;
