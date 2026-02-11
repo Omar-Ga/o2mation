@@ -1,12 +1,6 @@
 import { useInView } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
-
-const stats = [
-  { label: "Hours Automated", value: 10000, suffix: "+" },
-  { label: "APIs Integrated", value: 50, suffix: "+" },
-  { label: "System Uptime", value: 99.9, suffix: "%", decimals: 1 },
-  { label: "ROI Increase", value: 300, suffix: "%" }
-];
+import { useRef, useEffect, useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface CounterProps {
   value: number;
@@ -45,6 +39,15 @@ const Counter = ({ value, duration = 2, decimals = 0 }: CounterProps) => {
 };
 
 export const Metrics = () => {
+  const { t } = useTranslation('home');
+
+  const stats = useMemo(() => [
+    { label: t('metrics.items.hours'), value: 10000, suffix: "+" },
+    { label: t('metrics.items.apis'), value: 50, suffix: "+" },
+    { label: t('metrics.items.uptime'), value: 99.9, suffix: "%", decimals: 1 },
+    { label: t('metrics.items.roi'), value: 300, suffix: "%" }
+  ], [t]);
+
   return (
     <section className="py-24 bg-charcoal border-b border-white/5">
       <div className="container mx-auto px-4">

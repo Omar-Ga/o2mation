@@ -16,84 +16,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { MouseEvent } from 'react';
-
-const services = [
-  {
-    category: "Business Systems",
-    items: [
-      {
-        icon: Package,
-        title: "Warehouse & Inventory",
-        desc: "Automated tracking, stock alerts, and logistics management systems."
-      },
-      {
-        icon: ShoppingCart,
-        title: "Purchasing Systems",
-        desc: "Streamlined procurement workflows and vendor management automation."
-      },
-      {
-        icon: Database,
-        title: "Salary & HR Systems",
-        desc: "Custom payroll processing and employee management solutions."
-      },
-      {
-        icon: Users,
-        title: "Lead Systems",
-        desc: "Automated capture, scoring, and routing pipelines for high-velocity sales."
-      }
-    ]
-  },
-  {
-    category: "Data Operations",
-    items: [
-      {
-        icon: FileSpreadsheet,
-        title: "PDF to Excel",
-        desc: "Intelligent extraction of data from documents into structured formats."
-      },
-      {
-        icon: Zap,
-        title: "Data Entry Automation",
-        desc: "Bots that handle repetitive data input tasks with 100% accuracy."
-      },
-      {
-        icon: Terminal,
-        title: "Report Generation",
-        desc: "Automated compilation of analytics and business intelligence reports."
-      },
-      {
-        icon: Search,
-        title: "Web Scraping & Data Extraction",
-        desc: "Automated systems to harvest market data, competitor pricing, and leads from any digital source."
-      }
-    ]
-  },
-  {
-    category: "Digital Growth",
-    items: [
-      {
-        icon: Share2,
-        title: "Social Media Auto",
-        desc: "Content scheduling, engagement bots, and cross-platform syncing."
-      },
-      {
-        icon: Bot,
-        title: "Custom Chatbots",
-        desc: "AI-powered assistants for customer support and lead generation."
-      },
-      {
-        icon: Globe,
-        title: "High-End Websites",
-        desc: "High-performance custom architectures with integrated CMS, as well as professional WordPress development for versatile platforms."
-      },
-      {
-        icon: Mail,
-        title: "Email Automation",
-        desc: "Smart scheduling, AI auto-replies, and intelligent inbox management systems."
-      }
-    ]
-  }
-];
+import { useTranslation, Trans } from 'react-i18next';
 
 const ServiceCard = ({ item, index }: { item: any, index: number }) => {
   const mouseX = useMotionValue(0);
@@ -150,8 +73,39 @@ const ServiceCard = ({ item, index }: { item: any, index: number }) => {
 };
 
 export const Services = () => {
+  const { t } = useTranslation('home');
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+
+  const services = [
+    {
+      category: t('services.categories.businessSystems'),
+      items: [
+        { icon: Package, title: t('services.items.warehouse.title'), desc: t('services.items.warehouse.desc') },
+        { icon: ShoppingCart, title: t('services.items.purchasing.title'), desc: t('services.items.purchasing.desc') },
+        { icon: Database, title: t('services.items.hr.title'), desc: t('services.items.hr.desc') },
+        { icon: Users, title: t('services.items.leads.title'), desc: t('services.items.leads.desc') }
+      ]
+    },
+    {
+      category: t('services.categories.dataOperations'),
+      items: [
+        { icon: FileSpreadsheet, title: t('services.items.pdf.title'), desc: t('services.items.pdf.desc') },
+        { icon: Zap, title: t('services.items.dataEntry.title'), desc: t('services.items.dataEntry.desc') },
+        { icon: Terminal, title: t('services.items.reporting.title'), desc: t('services.items.reporting.desc') },
+        { icon: Search, title: t('services.items.scraping.title'), desc: t('services.items.scraping.desc') }
+      ]
+    },
+    {
+      category: t('services.categories.digitalGrowth'),
+      items: [
+        { icon: Share2, title: t('services.items.social.title'), desc: t('services.items.social.desc') },
+        { icon: Bot, title: t('services.items.chatbots.title'), desc: t('services.items.chatbots.desc') },
+        { icon: Globe, title: t('services.items.websites.title'), desc: t('services.items.websites.desc') },
+        { icon: Mail, title: t('services.items.email.title'), desc: t('services.items.email.desc') }
+      ]
+    }
+  ];
 
   function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
     const { left, top } = currentTarget.getBoundingClientRect();
@@ -173,7 +127,7 @@ export const Services = () => {
             className="flex items-center gap-2 mb-6"
           >
             <div className="h-px w-8 bg-neon-green" />
-            <span className="text-neon-green font-mono text-sm tracking-wider">SYSTEM_CAPABILITIES</span>
+            <span className="text-neon-green font-mono text-sm tracking-wider">{t('services.systemCapabilities')}</span>
           </motion.div>
           
           <motion.h2 
@@ -183,10 +137,14 @@ export const Services = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-bold mb-6 text-white"
           >
-            We Build <span className="text-gray-500">Everything</span>.<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
-              You Just Watch It Run.
-            </span>
+            <Trans
+              i18nKey="services.mainTitle"
+              components={{
+                gray: <span className="text-gray-500" />,
+                br: <br />,
+                gradient: <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500" />
+              }}
+            />
           </motion.h2>
           
           <motion.p 
@@ -196,7 +154,7 @@ export const Services = () => {
             transition={{ delay: 0.2 }}
             className="text-gray-300 text-lg max-w-2xl leading-relaxed"
           >
-            From simple scripts to complex enterprise ecosystems. If it involves data, logic, or the internet, we can automate it.
+            {t('services.description')}
           </motion.p>
         </div>
 
@@ -255,15 +213,19 @@ export const Services = () => {
                 <div className="p-2 rounded-lg bg-neon-green/10 border border-neon-green/20">
                   <Sparkles size={18} className="text-neon-green animate-pulse" />
                 </div>
-                <span className="text-neon-green font-mono text-xs tracking-widest uppercase">Custom Architecture</span>
+                <span className="text-neon-green font-mono text-xs tracking-widest uppercase">{t('services.cta.customArch')}</span>
               </div>
               
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
-                Need something <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-500">impossible?</span>
+                <Trans
+                  i18nKey="services.cta.title"
+                  components={{
+                    gradient: <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-500" />
+                  }}
+                />
               </h3>
               <p className="text-gray-300 text-lg leading-relaxed">
-                We thrive on complexity. If you can define the logic, we can code the automation. 
-                Let's engineer a bespoke solution for your specific use case.
+                {t('services.cta.desc')}
               </p>
             </div>
 
@@ -275,7 +237,7 @@ export const Services = () => {
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
               <div className="relative flex items-center gap-3">
                 <Terminal size={20} />
-                <span>Initialize Custom Build</span>
+                <span>{t('services.cta.button')}</span>
                 <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />
               </div>
             </motion.button>

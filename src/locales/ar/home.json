@@ -1,0 +1,159 @@
+{
+  "title": "Home Page",
+  "hero": {
+    "brandName": "O2MATION",
+    "system": {
+      "online": "SYSTEM: ONLINE",
+      "latency": "LATENCY: {{val}}ms"
+    },
+    "version": "v2.0.4 BUILD STABLE",
+    "mainTitle": "The Future of Digital Infrastructure",
+    "description": {
+      "part1": "We build integrated ecosystems where",
+      "highlight1": "web applications",
+      "highlight2": "internal systems",
+      "highlight3": "AI agents",
+      "part2": "communicate seamlessly."
+    },
+    "scroll": "Scroll to Initialize",
+    "terminal": "Initialize system sequence... > Loading modules... > AI Agents: ONLINE > API Gateways: CONNECTED"
+  },
+  "techStack": {
+    "systemModules": "[ System Modules Loaded ]"
+  },
+  "services": {
+    "systemCapabilities": "SYSTEM_CAPABILITIES",
+    "mainTitle": "We Build <gray>Everything</gray>.<br/> <gradient>You Just Watch It Run.</gradient>",
+    "description": "From simple scripts to complex enterprise ecosystems. If it involves data, logic, or the internet, we can automate it.",
+    "categories": {
+      "businessSystems": "Business Systems",
+      "dataOperations": "Data Operations",
+      "digitalGrowth": "Digital Growth"
+    },
+    "items": {
+      "warehouse": {
+        "title": "Warehouse & Inventory",
+        "desc": "Automated tracking, stock alerts, and logistics management systems."
+      },
+      "purchasing": {
+        "title": "Purchasing Systems",
+        "desc": "Streamlined procurement workflows and vendor management automation."
+      },
+      "hr": {
+        "title": "Salary & HR Systems",
+        "desc": "Custom payroll processing and employee management solutions."
+      },
+      "leads": {
+        "title": "Lead Systems",
+        "desc": "Automated capture, scoring, and routing pipelines for high-velocity sales."
+      },
+      "pdf": {
+        "title": "PDF to Excel",
+        "desc": "Intelligent extraction of data from documents into structured formats."
+      },
+      "dataEntry": {
+        "title": "Data Entry Automation",
+        "desc": "Bots that handle repetitive data input tasks with 100% accuracy."
+      },
+      "reporting": {
+        "title": "Report Generation",
+        "desc": "Automated compilation of analytics and business intelligence reports."
+      },
+      "scraping": {
+        "title": "Web Scraping & Data Extraction",
+        "desc": "Automated systems to harvest market data, competitor pricing, and leads from any digital source."
+      },
+      "social": {
+        "title": "Social Media Auto",
+        "desc": "Content scheduling, engagement bots, and cross-platform syncing."
+      },
+      "chatbots": {
+        "title": "Custom Chatbots",
+        "desc": "AI-powered assistants for customer support and lead generation."
+      },
+      "websites": {
+        "title": "High-End Websites",
+        "desc": "High-performance custom architectures with integrated CMS, as well as professional WordPress development for versatile platforms."
+      },
+      "email": {
+        "title": "Email Automation",
+        "desc": "Smart scheduling, AI auto-replies, and intelligent inbox management systems."
+      }
+    }
+  },
+  "problem": {
+    "title": {
+      "chaosPart1": "The <line>Chaos</line> of",
+      "chaosPart2": "Manual Workflows",
+      "connectingPart1": "Connecting",
+      "connectingPart2": "Critical Systems",
+      "automationPart1": "Seamless",
+      "automationPart2": "Automation"
+    },
+    "scroll": "Scroll to Connect",
+    "workflow": {
+      "accounting": { "label": "Accounting", "code1": "GET /invoices", "code2": "Status: Pending" },
+      "hr": { "label": "HR Input", "code1": "Employee_ID: 4021", "code2": "Dept: Engineering" },
+      "management": { "label": "Management", "code1": "Approving...", "code2": "Auth_Token: Verified" },
+      "payroll": { "label": "Payroll", "code1": "Calculated: $4,200", "code2": "Tax_Rate: 15%" },
+      "notifications": { "label": "Notifications", "code1": "Email Sent", "code2": "Slack_Alert: True" },
+      "analytics": { "label": "Analytics", "code1": "Efficiency: +400%", "code2": "Errors: 0" }
+    }
+  },
+  "process": {
+    "pipeline": "EXECUTION_PIPELINE",
+    "title": "The <gradient>Protocol</gradient>",
+    "subtitle": "Our systematic approach to building your automated future.",
+    "steps": {
+      "discovery": {
+        "title": "Discovery & Audit",
+        "desc": "We scan your current infrastructure for bottlenecks. We don't guess; we diagnose."
+      },
+      "architecture": {
+        "title": "Architecture",
+        "desc": "Bespoke blueprints. API gateways and database schemas mapped before coding."
+      },
+      "development": {
+        "title": "Development",
+        "desc": "Fusing traditional full-stack engineering with advanced AI agent workflows."
+      },
+      "deployment": {
+        "title": "Deployment",
+        "desc": "Launch with real-time monitoring, auto-scaling, and continuous optimization."
+      }
+    }
+  },
+  "solution": {
+    "title": "Efficiency <br/> <green>Engineered.</green>",
+    "active": "[ACTIVE]",
+    "items": {
+      "automation": {
+        "title": "Automation",
+        "desc": "End-to-end workflows that handle complex business logic without human intervention."
+      },
+      "integration": {
+        "title": "APIs & Integration",
+        "desc": "We connect disparate systems to create a unified, real-time ecosystem."
+      },
+      "ai": {
+        "title": "Custom AI",
+        "desc": "Injecting LLMs and machine learning to supercharge your existing platforms."
+      }
+    }
+  },
+  "metrics": {
+    "items": {
+      "hours": "Hours Automated",
+      "apis": "APIs Integrated",
+      "uptime": "System Uptime",
+      "roi": "ROI Increase"
+    }
+  },
+  "cta": {
+    "title": "Ready to <green>Execute?</green>",
+    "text": "Stop running manual processes. Start building your digital empire.\nInitialize your project sequence today.",
+    "button": "Initialize Project",
+    "secure": "// SECURE CONNECTION",
+    "monitoring": "// 24/7 MONITORING"
+  }
+}

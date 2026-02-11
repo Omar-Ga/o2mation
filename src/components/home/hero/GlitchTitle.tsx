@@ -1,25 +1,29 @@
-import { memo, useRef } from 'react';
+import { memo, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const GlitchTitle = memo(() => {
+  const { t } = useTranslation('home');
+  const brandName = t('hero.brandName');
+
   // Stable random delays for the glitch effect to prevent re-render jumps
-  // We calculate this once on mount (or here in the closure since it's memoized)
-  const glitchDelays = useRef(
-    "O2MATION".split("").map(() => ({
+  const glitchDelays = useMemo(() => 
+    brandName.split("").map(() => ({
       main: `-${Math.random() * 6}s`,
       ghost1: `-${Math.random() * 5}s`,
       ghost2: `-${Math.random() * 7}s`
-    }))
-  ).current;
+    })),
+    [brandName]
+  );
 
   return (
     <div className="relative inline-flex items-center tracking-tighter will-change-transform">
       <h1 className="flex text-7xl md:text-9xl lg:text-[10rem] font-black leading-[0.85] text-white select-none">
-        {"O2MATION".split("").map((char, i) => (
+        {brandName.split("").map((char, i) => (
           <div key={i} className="relative group inline-block">
             {/* The Main Letter - Glitches & Clips */}
             <span 
               className="relative z-20 block animate-cable-mess" 
-              style={{ animationDelay: glitchDelays[i].main }}
+              style={{ animationDelay: glitchDelays[i]?.main || '0s' }}
             >
               {char}
             </span>
@@ -28,7 +32,7 @@ export const GlitchTitle = memo(() => {
             <span 
               className="absolute inset-0 z-10 text-neon-green/70 mix-blend-screen animate-glitch-split-1"
               aria-hidden="true"
-              style={{ animationDelay: glitchDelays[i].ghost1 }}
+              style={{ animationDelay: glitchDelays[i]?.ghost1 || '0s' }}
             >
               {char}
             </span>
@@ -37,7 +41,7 @@ export const GlitchTitle = memo(() => {
             <span 
               className="absolute inset-0 z-10 text-gray-500/70 mix-blend-overlay animate-glitch-split-2"
               aria-hidden="true"
-              style={{ animationDelay: glitchDelays[i].ghost2 }}
+              style={{ animationDelay: glitchDelays[i]?.ghost2 || '0s' }}
             >
               {char}
             </span>

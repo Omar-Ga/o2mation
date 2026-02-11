@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const techs = [
   "REACT", "TYPESCRIPT", "PYTHON", "OPENAI", "AWS", "NODE.JS", "TAILWIND", "POSTGRESQL", "DOCKER", "GRAPHQL", "NEXT.JS", "VERCEL", "STRIPE", "FIREBASE"
 ];
 
 export const TechStack = () => {
+  const { t } = useTranslation('home');
   return (
     <section className="py-20 bg-charcoal border-y border-white/5 overflow-hidden">
       <div className="flex">
@@ -26,7 +28,7 @@ export const TechStack = () => {
       
       {/* Label */}
       <div className="text-center mt-8">
-        <span className="text-xs font-mono text-neon-green/70 tracking-widest uppercase">[ System Modules Loaded ]</span>
+        <span className="text-xs font-mono text-neon-green/70 tracking-widest uppercase">{t('techStack.systemModules')}</span>
       </div>
 
       <style>{`

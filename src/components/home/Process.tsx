@@ -1,46 +1,50 @@
 import { motion } from 'framer-motion';
 import { FileSearch, Layers, Code, Rocket, GitBranch } from 'lucide-react';
-
-const steps = [
-  {
-    icon: FileSearch,
-    title: "Discovery & Audit",
-    desc: "We scan your current infrastructure for bottlenecks. We don't guess; we diagnose.",
-    step: "01",
-    color: "text-blue-400",
-    glow: "shadow-[0_0_30px_-10px_rgba(96,165,250,0.3)]",
-    border: "group-hover:border-blue-400/50"
-  },
-  {
-    icon: Layers,
-    title: "Architecture",
-    desc: "Bespoke blueprints. API gateways and database schemas mapped before coding.",
-    step: "02",
-    color: "text-purple-400",
-    glow: "shadow-[0_0_30px_-10px_rgba(192,132,252,0.3)]",
-    border: "group-hover:border-purple-400/50"
-  },
-  {
-    icon: Code,
-    title: "Development",
-    desc: "Fusing traditional full-stack engineering with advanced AI agent workflows.",
-    step: "03",
-    color: "text-neon-green",
-    glow: "shadow-[0_0_30px_-10px_rgba(0,255,128,0.3)]",
-    border: "group-hover:border-neon-green/50"
-  },
-  {
-    icon: Rocket,
-    title: "Deployment",
-    desc: "Launch with real-time monitoring, auto-scaling, and continuous optimization.",
-    step: "04",
-    color: "text-orange-400",
-    glow: "shadow-[0_0_30px_-10px_rgba(251,146,60,0.3)]",
-    border: "group-hover:border-orange-400/50"
-  }
-];
+import { useTranslation, Trans } from 'react-i18next';
+import { useMemo } from 'react';
 
 export const Process = () => {
+  const { t } = useTranslation('home');
+
+  const steps = useMemo(() => [
+    {
+      icon: FileSearch,
+      title: t('process.steps.discovery.title'),
+      desc: t('process.steps.discovery.desc'),
+      step: "01",
+      color: "text-blue-400",
+      glow: "shadow-[0_0_30px_-10px_rgba(96,165,250,0.3)]",
+      border: "group-hover:border-blue-400/50"
+    },
+    {
+      icon: Layers,
+      title: t('process.steps.architecture.title'),
+      desc: t('process.steps.architecture.desc'),
+      step: "02",
+      color: "text-purple-400",
+      glow: "shadow-[0_0_30px_-10px_rgba(192,132,252,0.3)]",
+      border: "group-hover:border-purple-400/50"
+    },
+    {
+      icon: Code,
+      title: t('process.steps.development.title'),
+      desc: t('process.steps.development.desc'),
+      step: "03",
+      color: "text-neon-green",
+      glow: "shadow-[0_0_30px_-10px_rgba(0,255,128,0.3)]",
+      border: "group-hover:border-neon-green/50"
+    },
+    {
+      icon: Rocket,
+      title: t('process.steps.deployment.title'),
+      desc: t('process.steps.deployment.desc'),
+      step: "04",
+      color: "text-orange-400",
+      glow: "shadow-[0_0_30px_-10px_rgba(251,146,60,0.3)]",
+      border: "group-hover:border-orange-400/50"
+    }
+  ], [t]);
+
   return (
     <section className="py-32 bg-charcoal relative overflow-hidden">
       {/* Circuit Board Background */}
@@ -65,7 +69,7 @@ export const Process = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-neon-green font-mono text-xs tracking-widest mb-6"
           >
             <GitBranch size={14} />
-            <span>EXECUTION_PIPELINE</span>
+            <span>{t('process.pipeline')}</span>
           </motion.div>
           
           <motion.h2 
@@ -74,10 +78,15 @@ export const Process = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-bold mb-6 text-white"
           >
-            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-500">Protocol</span>
+            <Trans
+              i18nKey="process.title"
+              components={{ 
+                gradient: <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-500" />
+              }}
+            />
           </motion.h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            Our systematic approach to building your automated future.
+            {t('process.subtitle')}
           </p>
         </div>
 

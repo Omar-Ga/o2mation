@@ -1,28 +1,32 @@
 import { motion } from 'framer-motion';
 import { Cpu, Globe, Workflow } from 'lucide-react';
-
-const solutions = [
-  {
-    icon: Workflow,
-    title: "Automation",
-    desc: "End-to-end workflows that handle complex business logic without human intervention.",
-    delay: 0
-  },
-  {
-    icon: Globe,
-    title: "APIs & Integration",
-    desc: "We connect disparate systems to create a unified, real-time ecosystem.",
-    delay: 0.2
-  },
-  {
-    icon: Cpu,
-    title: "Custom AI",
-    desc: "Injecting LLMs and machine learning to supercharge your existing platforms.",
-    delay: 0.4
-  }
-];
+import { useTranslation, Trans } from 'react-i18next';
+import { useMemo } from 'react';
 
 export const Solution = () => {
+  const { t } = useTranslation('home');
+
+  const solutions = useMemo(() => [
+    {
+      icon: Workflow,
+      title: t('solution.items.automation.title'),
+      desc: t('solution.items.automation.desc'),
+      delay: 0
+    },
+    {
+      icon: Globe,
+      title: t('solution.items.integration.title'),
+      desc: t('solution.items.integration.desc'),
+      delay: 0.2
+    },
+    {
+      icon: Cpu,
+      title: t('solution.items.ai.title'),
+      desc: t('solution.items.ai.desc'),
+      delay: 0.4
+    }
+  ], [t]);
+
   return (
     <section className="relative py-32 bg-charcoal text-white overflow-hidden">
       {/* Grid Background */}
@@ -42,8 +46,13 @@ export const Solution = () => {
             viewport={{ once: true }}
             className="text-5xl md:text-7xl font-bold tracking-tight mb-4"
           >
-            Efficiency <br />
-            <span className="text-neon-green">Engineered.</span>
+            <Trans
+              i18nKey="solution.title"
+              components={{ 
+                br: <br />,
+                green: <span className="text-neon-green" />
+              }}
+            />
           </motion.h2>
           <div className="w-24 h-1 bg-neon-green mb-8" />
         </div>
@@ -66,7 +75,7 @@ export const Solution = () => {
               <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
                 {item.title}
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity text-neon-green text-sm font-mono">
-                  [ACTIVE]
+                  {t('solution.active')}
                 </span>
               </h3>
               <p className="text-gray-400 leading-relaxed">

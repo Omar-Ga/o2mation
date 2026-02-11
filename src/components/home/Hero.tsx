@@ -1,12 +1,14 @@
 import { motion, useScroll, useTransform, useMotionValue } from 'framer-motion';
 import { ArrowDown, Terminal, Wifi } from 'lucide-react';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { GlitchTitle } from './hero/GlitchTitle';
 import { TerminalText } from './hero/TerminalText';
 import { ReactiveGrid } from './hero/ReactiveGrid';
 import { BackgroundEffects } from './hero/BackgroundEffects';
 
 export const Hero = () => {
+  const { t } = useTranslation('home');
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -52,12 +54,12 @@ export const Hero = () => {
         <div className="flex justify-between items-center w-full max-w-4xl mx-auto mb-12 text-xs font-mono text-gray-500 border-b border-gray-800 pb-2 pointer-events-auto">
            <div className="flex items-center gap-2">
              <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse" />
-             <span>SYSTEM: ONLINE</span>
+             <span>{t('hero.system.online')}</span>
            </div>
            <div className="flex items-center gap-2">
              <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse delay-75" />
              <Wifi size={14} />
-             <span>LATENCY: 12ms</span>
+             <span>{t('hero.system.latency', { val: 12 })}</span>
            </div>
         </div>
 
@@ -69,11 +71,11 @@ export const Hero = () => {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-green/10 border border-neon-green/20 text-neon-green text-xs font-mono mb-6">
             <Terminal size={12} />
-            <span>v2.0.4 BUILD STABLE</span>
+            <span>{t('hero.version')}</span>
           </div>
           
           <h2 className="text-neon-green font-mono text-sm md:text-base tracking-[0.3em] mb-4 uppercase">
-            The Future of Digital Infrastructure
+            {t('hero.mainTitle')}
           </h2>
         </motion.div>
 
@@ -93,7 +95,7 @@ export const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          We build integrated ecosystems where <span className="text-white font-semibold border-b border-neon-green/30">web applications</span>, <span className="text-white font-semibold border-b border-neon-green/30">internal systems</span>, and <span className="text-neon-green font-semibold">AI agents</span> communicate seamlessly.
+          {t('hero.description.part1')} <span className="text-white font-semibold border-b border-neon-green/30">{t('hero.description.highlight1')}</span>, <span className="text-white font-semibold border-b border-neon-green/30">{t('hero.description.highlight2')}</span>, and <span className="text-neon-green font-semibold">{t('hero.description.highlight3')}</span> {t('hero.description.part2')}
         </motion.p>
       </motion.div>
 
@@ -108,7 +110,7 @@ export const Hero = () => {
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-xs font-mono text-neon-green/80 tracking-widest uppercase">Scroll to Initialize</span>
+          <span className="text-xs font-mono text-neon-green/80 tracking-widest uppercase">{t('hero.scroll')}</span>
           <ArrowDown className="text-neon-green w-6 h-6 animate-bounce" />
         </motion.div>
       </motion.div>

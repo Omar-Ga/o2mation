@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { Power } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation, Trans } from 'react-i18next';
 
 export const CTA = () => {
+  const { t } = useTranslation('home');
+
   return (
     <section className="py-32 bg-charcoal relative overflow-hidden flex items-center justify-center">
       {/* Background Pulse */}
@@ -17,7 +20,12 @@ export const CTA = () => {
           viewport={{ once: true }}
           className="text-4xl md:text-6xl font-bold mb-8"
         >
-          Ready to <span className="text-neon-green">Execute?</span>
+          <Trans
+            i18nKey="cta.title"
+            components={{ 
+              green: <span className="text-neon-green" />
+            }}
+          />
         </motion.h2>
         
         <motion.p 
@@ -25,10 +33,9 @@ export const CTA = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto"
+          className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto whitespace-pre-line"
         >
-          Stop running manual processes. Start building your digital empire.
-          Initialize your project sequence today.
+          {t('cta.text')}
         </motion.p>
 
         <Link to="/contact" className="inline-block">
@@ -39,15 +46,15 @@ export const CTA = () => {
           >
             <span className="relative z-10 flex items-center gap-2">
               <Power size={24} />
-              Initialize Project
+              {t('cta.button')}
             </span>
             <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0" />
           </motion.div>
         </Link>
         
         <div className="mt-8 flex justify-center gap-8 text-sm font-mono text-gray-600">
-          <span>// SECURE CONNECTION</span>
-          <span>// 24/7 MONITORING</span>
+          <span>{t('cta.secure')}</span>
+          <span>{t('cta.monitoring')}</span>
         </div>
       </div>
     </section>

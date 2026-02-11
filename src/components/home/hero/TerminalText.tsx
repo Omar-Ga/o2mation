@@ -1,8 +1,10 @@
 import { useState, useEffect, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const TerminalText = memo(() => {
+  const { t } = useTranslation('home');
   const [text, setText] = useState('');
-  const fullText = "Initialize system sequence... > Loading modules... > AI Agents: ONLINE > API Gateways: CONNECTED";
+  const fullText = t('hero.terminal');
   
   useEffect(() => {
     let index = 0;
@@ -12,7 +14,7 @@ export const TerminalText = memo(() => {
       if (index > fullText.length) clearInterval(interval);
     }, 50);
     return () => clearInterval(interval);
-  }, []);
+  }, [fullText]);
 
   return (
     <div className="h-8 font-mono text-sm text-neon-green/80 mb-12 min-h-[20px]">

@@ -1,85 +1,86 @@
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { useRef } from 'react';
-
-// Workflow Item Data - Organized Linearly
-const WORKFLOW_ITEMS = [
-  { 
-    id: 'accounting', 
-    label: 'Accounting', 
-    code: ['GET /invoices', 'Status: Pending'],
-    chaos: { x: -200, y: -120, rotate: -15 }, 
-    order: { x: 0, y: 0, rotate: 0 },
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-      </svg>
-    )
-  },
-  { 
-    id: 'hr', 
-    label: 'HR Input', 
-    code: ['Employee_ID: 4021', 'Dept: Engineering'],
-    chaos: { x: -80, y: 180, rotate: 20 }, 
-    order: { x: 400, y: 0, rotate: 0 },
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-    )
-  },
-  { 
-    id: 'management', 
-    label: 'Management', 
-    code: ['Approving...', 'Auth_Token: Verified'],
-    chaos: { x: 80, y: -180, rotate: -10 }, 
-    order: { x: 800, y: 0, rotate: 0 },
-    isCore: true,
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    )
-  },
-  { 
-    id: 'payroll', 
-    label: 'Payroll', 
-    code: ['Calculated: $4,200', 'Tax_Rate: 15%'],
-    chaos: { x: 250, y: 80, rotate: 15 }, 
-    order: { x: 1200, y: 0, rotate: 0 },
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    )
-  },
-  { 
-    id: 'notifications', 
-    label: 'Notifications', 
-    code: ['Email Sent', 'Slack_Alert: True'],
-    chaos: { x: -150, y: 250, rotate: -20 }, 
-    order: { x: 1600, y: 0, rotate: 0 },
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-      </svg>
-    )
-  },
-  { 
-    id: 'analytics', 
-    label: 'Analytics', 
-    code: ['Efficiency: +400%', 'Errors: 0'],
-    chaos: { x: 200, y: -120, rotate: 10 }, 
-    order: { x: 2000, y: 0, rotate: 0 },
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
-      </svg>
-    )
-  },
-];
+import { useRef, useMemo } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 
 export const Problem = () => {
+  const { t } = useTranslation('home');
   const containerRef = useRef(null);
+  
+  const WORKFLOW_ITEMS = useMemo(() => [
+    { 
+      id: 'accounting', 
+      label: t('problem.workflow.accounting.label'), 
+      code: [t('problem.workflow.accounting.code1'), t('problem.workflow.accounting.code2')],
+      chaos: { x: -200, y: -120, rotate: -15 }, 
+      order: { x: 0, y: 0, rotate: 0 },
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+      )
+    },
+    { 
+      id: 'hr', 
+      label: t('problem.workflow.hr.label'), 
+      code: [t('problem.workflow.hr.code1'), t('problem.workflow.hr.code2')],
+      chaos: { x: -80, y: 180, rotate: 20 }, 
+      order: { x: 400, y: 0, rotate: 0 },
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+      )
+    },
+    { 
+      id: 'management', 
+      label: t('problem.workflow.management.label'), 
+      code: [t('problem.workflow.management.code1'), t('problem.workflow.management.code2')],
+      chaos: { x: 80, y: -180, rotate: -10 }, 
+      order: { x: 800, y: 0, rotate: 0 },
+      isCore: true,
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+      )
+    },
+    { 
+      id: 'payroll', 
+      label: t('problem.workflow.payroll.label'), 
+      code: [t('problem.workflow.payroll.code1'), t('problem.workflow.payroll.code2')],
+      chaos: { x: 250, y: 80, rotate: 15 }, 
+      order: { x: 1200, y: 0, rotate: 0 },
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      )
+    },
+    { 
+      id: 'notifications', 
+      label: t('problem.workflow.notifications.label'), 
+      code: [t('problem.workflow.notifications.code1'), t('problem.workflow.notifications.code2')],
+      chaos: { x: -150, y: 250, rotate: -20 }, 
+      order: { x: 1600, y: 0, rotate: 0 },
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+        </svg>
+      )
+    },
+    { 
+      id: 'analytics', 
+      label: t('problem.workflow.analytics.label'), 
+      code: [t('problem.workflow.analytics.code1'), t('problem.workflow.analytics.code2')],
+      chaos: { x: 200, y: -120, rotate: 10 }, 
+      order: { x: 2000, y: 0, rotate: 0 },
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
+        </svg>
+      )
+    },
+  ], [t]);
   
   // Track scroll progress for the extended 400vh section
   const { scrollYProgress } = useScroll({
@@ -139,8 +140,11 @@ export const Problem = () => {
             style={{ opacity: title1Opacity, y: title1Y }}
             className="absolute inset-0 text-4xl md:text-6xl font-bold mb-6"
           >
-            The <span className="text-gray-500 line-through decoration-neon-green/50 decoration-4">Chaos</span> of <br />
-            <span className="text-white">Manual Workflows</span>
+            <Trans
+              i18nKey="problem.title.chaosPart1"
+              components={{ line: <span className="text-gray-500 line-through decoration-neon-green/50 decoration-4" /> }}
+            /> <br />
+            <span className="text-white">{t('problem.title.chaosPart2')}</span>
           </motion.h2>
 
           {/* TITLE 2: CONNECTING */}
@@ -148,8 +152,8 @@ export const Problem = () => {
             style={{ opacity: title2Opacity, y: title2Y }}
             className="absolute inset-0 text-4xl md:text-6xl font-bold mb-6"
           >
-            Connecting <br />
-            <span className="text-white">Critical Systems</span>
+            {t('problem.title.connectingPart1')} <br />
+            <span className="text-white">{t('problem.title.connectingPart2')}</span>
           </motion.h2>
           
           {/* TITLE 3: AUTOMATION */}
@@ -157,8 +161,8 @@ export const Problem = () => {
             style={{ opacity: title3Opacity, y: title3Y }}
             className="absolute inset-0 text-4xl md:text-6xl font-bold mb-6 text-neon-green"
           >
-            Seamless <br />
-            <span className="text-white">Automation</span>
+            {t('problem.title.automationPart1')} <br />
+            <span className="text-white">{t('problem.title.automationPart2')}</span>
           </motion.h2>
         </div>
 
@@ -193,7 +197,7 @@ export const Problem = () => {
           style={{ opacity: scrollIndicatorOpacity }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-500 text-sm font-mono animate-bounce"
         >
-          Scroll to Connect
+          {t('problem.scroll')}
         </motion.div>
 
       </div>
