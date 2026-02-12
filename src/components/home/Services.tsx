@@ -73,7 +73,8 @@ const ServiceCard = ({ item, index }: { item: any, index: number }) => {
 };
 
 export const Services = () => {
-  const { t } = useTranslation('home');
+  const { t, i18n } = useTranslation('home');
+  const isRtl = i18n.dir() === 'rtl';
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -139,6 +140,7 @@ export const Services = () => {
           >
             <Trans
               i18nKey="services.mainTitle"
+              t={t}
               components={{
                 gray: <span className="text-gray-500" />,
                 br: <br />,
@@ -219,8 +221,10 @@ export const Services = () => {
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
                 <Trans
                   i18nKey="services.cta.title"
+                  t={t}
                   components={{
-                    gradient: <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-500" />
+                    gradient: <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-500" />,
+                    green: <span className="text-neon-green" />
                   }}
                 />
               </h3>
@@ -235,10 +239,13 @@ export const Services = () => {
               className="relative px-8 py-5 bg-neon-green text-charcoal font-bold rounded-xl overflow-hidden group/btn shrink-0"
             >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
-              <div className="relative flex items-center gap-3">
-                <Terminal size={20} />
+              <div className={`relative flex items-center gap-3 ${isRtl ? 'flex-row-reverse' : ''}`}>
+                <Terminal size={20} className={isRtl ? "scale-x-[-1]" : ""} />
                 <span>{t('services.cta.button')}</span>
-                <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />
+                <ArrowRight 
+                  size={20} 
+                  className={`transition-transform ${isRtl ? 'rotate-180 group-hover/btn:-translate-x-1' : 'group-hover/btn:translate-x-1'}`} 
+                />
               </div>
             </motion.button>
           </div>

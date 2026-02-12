@@ -95,7 +95,7 @@ export const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          {t('hero.description.part1')} <span className="text-white font-semibold border-b border-neon-green/30">{t('hero.description.highlight1')}</span>, <span className="text-white font-semibold border-b border-neon-green/30">{t('hero.description.highlight2')}</span>, and <span className="text-neon-green font-semibold">{t('hero.description.highlight3')}</span> {t('hero.description.part2')}
+          {t('hero.description.part1')} <span className="text-white font-semibold border-b border-neon-green/30">{t('hero.description.highlight1')}</span>{t('hero.description.comma')}<span className="text-white font-semibold border-b border-neon-green/30">{t('hero.description.highlight2')}</span>{t('hero.description.and')}<span className="text-neon-green font-semibold">{t('hero.description.highlight3')}</span> {t('hero.description.part2')}
         </motion.p>
       </motion.div>
 

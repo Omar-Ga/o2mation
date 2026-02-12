@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { MessageSquare } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export const ChatWidget = () => {
+  const { t } = useTranslation('common');
+
   return (
     <motion.button
       className="fixed bottom-8 right-8 z-50 bg-neon-green text-charcoal p-4 rounded-full shadow-[0_0_20px_rgba(0,255,128,0.5)] hover:shadow-[0_0_30px_rgba(0,255,128,0.8)] transition-shadow"
@@ -17,7 +20,7 @@ export const ChatWidget = () => {
       >
         <MessageSquare size={24} strokeWidth={2.5} />
       </motion.div>
-      <span className="sr-only">Chat with AI Agent</span>
+      <span className="sr-only">{t('chat.srOnly')}</span>
     </motion.button>
   );
 };

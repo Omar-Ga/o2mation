@@ -43,6 +43,9 @@ i18n
     },
     ns: ['common', 'contact', 'home', 'meetTheTeam', 'solutions'],
     defaultNS: 'common',
+    react: {
+      useSuspense: false,
+    },
   });
 
 export default i18n;

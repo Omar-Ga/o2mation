@@ -1,6 +1,40 @@
 {
-  "welcome": "مرحبًا",
+  "welcome": "مرحباً",
+  "brand": {
+    "name": "O2MATION",
+    "dot": "."
+  },
+  "chat": {
+    "srOnly": "تحدث مع الوكيل الذكي"
+  },
+  "header": {
+    "nav": {
+      "home": "الرئيسية",
+      "solutions": "الحلول",
+      "meetTheTeam": "الفريق",
+      "contact": "تواصل"
+    },
+    "cta": {
+      "initialize": "تهيئة",
+      "startProject": "ابدأ المشروع"
+    },
+    "status": {
+      "ready": "النظام_جاهز // بانتظار_الإدخال"
+    },
+    "language": {
+      "toggle": "EN // AR",
+      "en": "الإنجليزية",
+      "ar": "العربية"
+    }
+  },
   "footer": {
-    "rights": "جميع الحقوق محفوظة"
+    "systemRoot": "O2MATION // جذر_النظام",
+    "rights": "جميع الحقوق محفوظة",
+    "operational": "جميع الأنظمة تعمل بكفاءة.",
+    "links": {
+      "home": "الرئيسية",
+      "solutions": "الحلول",
+      "contact": "تواصل"
+    }
   }
 }

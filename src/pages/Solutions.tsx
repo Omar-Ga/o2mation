@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { 
   Bot, 
   Code2, 
@@ -19,142 +20,75 @@ import { ChatWidget } from '../components/common/ChatWidget';
 
 type Category = 'ALL' | 'AI' | 'WEB' | 'SYSTEMS' | 'OFFLINE';
 
-interface Service {
+interface ServiceConfig {
   id: string;
   category: Category;
+  icon: React.ElementType;
+}
+
+interface Service extends ServiceConfig {
   title: string;
   description: string;
   details: string[];
-  icon: React.ElementType;
   tech: string[];
 }
 
-const SERVICES: Service[] = [
+const SERVICES_CONFIG: ServiceConfig[] = [
   {
     id: 'ai-bpa',
     category: 'AI',
-    title: 'Business Process Automation',
-    description: 'End-to-end workflow automation for routing and logic.',
-    details: [
-      'Intelligent Email Auto-Responders',
-      'Lead Routing & Scoring',
-      'Customer Service Ticketing',
-      'Cross-Platform Data Sync'
-    ],
-    icon: Workflow,
-    tech: ['Python', 'LangChain', 'Zapier', 'OpenAI API']
+    icon: Workflow
   },
   {
     id: 'ai-ocr',
     category: 'OFFLINE',
-    title: 'Offline-to-Online OCR',
-    description: 'Extract text from physical docs to digital databases.',
-    details: [
-      'Receipt & Invoice Processing',
-      'Handwriting Recognition',
-      'Automated Data Entry',
-      'PDF Parsing'
-    ],
-    icon: Scan,
-    tech: ['Tesseract', 'Google Vision API', 'AWS Textract']
+    icon: Scan
   },
   {
     id: 'web-custom',
     category: 'WEB',
-    title: 'Custom Web Architecture',
-    description: 'Tailor-made high-performance websites.',
-    details: [
-      'SPA / PWA Development',
-      'WebGL & 3D Experiences',
-      'Accessibility First (WCAG 2.1)',
-      'Performance Optimization'
-    ],
-    icon: Globe,
-    tech: ['React', 'TypeScript', 'Three.js', 'Vite']
+    icon: Globe
   },
   {
     id: 'sys-erp',
     category: 'SYSTEMS',
-    title: 'Custom Enterprise ERP',
-    description: 'Internal engines for operational efficiency.',
-    details: [
-      'HR & Payroll Modules',
-      'Inventory Management',
-      'Supply Chain Tracking',
-      'Employee Portals'
-    ],
-    icon: Database,
-    tech: ['PostgreSQL', 'Node.js', 'Redis', 'Docker']
+    icon: Database
   },
   {
     id: 'ai-chat',
     category: 'AI',
-    title: 'Context-Aware Chatbots',
-    description: 'AI agents for support and knowledge retrieval.',
-    details: [
-      'RAG (Retrieval Augmented Generation)',
-      'Customer Support Agents',
-      'Internal Knowledge Base Bots',
-      'Multi-modal interaction'
-    ],
-    icon: Bot,
-    tech: ['Vector DB', 'LlamaIndex', 'GPT-4o']
+    icon: Bot
   },
   {
     id: 'web-headless',
     category: 'WEB',
-    title: 'Headless CMS Solutions',
-    description: 'Decoupled content delivery architectures.',
-    details: [
-      'Omnichannel Content Delivery',
-      'High-Performance Static Builds',
-      'Custom Content Modeling',
-      'Editorial Workflow Tools'
-    ],
-    icon: Server,
-    tech: ['Contentful', 'Sanity', 'Next.js']
+    icon: Server
   },
   {
     id: 'sys-legacy',
     category: 'SYSTEMS',
-    title: 'Legacy Modernization',
-    description: 'Upgrading outdated tools to modern web apps.',
-    details: [
-      'Mainframe to Cloud Migration',
-      'UI/UX Overhaul',
-      'Database Normalization',
-      'API Layer Creation'
-    ],
-    icon: Code2,
-    tech: ['Cloud Migration', 'Microservices', 'Modern UI']
+    icon: Code2
   },
   {
     id: 'ai-integration',
     category: 'AI',
-    title: 'LLM Injection',
-    description: 'Enhancing existing platforms with AI capabilities.',
-    details: [
-      'Sentiment Analysis',
-      'Automated Summarization',
-      'Generative Content Tools',
-      'Predictive Analytics'
-    ],
-    icon: Cpu,
-    tech: ['HuggingFace', 'TensorFlow', 'Fine-tuning']
+    icon: Cpu
   }
 ];
 
-const CATEGORIES: { id: Category; label: string }[] = [
-  { id: 'ALL', label: 'ALL_MODULES' },
-  { id: 'AI', label: 'AI_INTELLIGENCE' },
-  { id: 'WEB', label: 'WEB_ARCH' },
-  { id: 'SYSTEMS', label: 'CORE_SYSTEMS' },
-  { id: 'OFFLINE', label: 'OFFLINE_DATA' },
+const CATEGORIES_CONFIG: { id: Category; key: string }[] = [
+  { id: 'ALL', key: 'all' },
+  { id: 'AI', key: 'ai' },
+  { id: 'WEB', key: 'web' },
+  { id: 'SYSTEMS', key: 'systems' },
+  { id: 'OFFLINE', key: 'offline' },
 ];
 
 // --- Components ---
 
 const ServiceCard = ({ service, isExpanded, onToggle }: { service: Service; isExpanded: boolean; onToggle: () => void }) => {
+  const { t } = useTranslation('solutions');
+  
   return (
     <motion.div
       layout
@@ -173,7 +107,7 @@ const ServiceCard = ({ service, isExpanded, onToggle }: { service: Service; isEx
           <div className={`p-3 rounded-none border border-white/10 ${isExpanded ? 'bg-neon-green/10 text-neon-green' : 'text-gray-400 group-hover:text-neon-green'}`}>
             <service.icon size={24} />
           </div>
-          <div className="font-mono text-xs text-gray-500">{service.id.toUpperCase()}</div>
+          <div className="font-mono text-xs text-gray-500">{t('card.moduleId', { id: service.id.toUpperCase() })}</div>
         </div>
 
         <h3 className="text-xl font-bold mb-2 text-white group-hover:text-neon-green transition-colors">{service.title}</h3>
@@ -187,7 +121,7 @@ const ServiceCard = ({ service, isExpanded, onToggle }: { service: Service; isEx
               exit={{ height: 0, opacity: 0 }}
               className="border-t border-white/10 pt-4 mt-4"
             >
-              <h4 className="text-neon-green text-xs font-mono mb-3 tracking-wider">CAPABILITIES:</h4>
+              <h4 className="text-neon-green text-xs font-mono mb-3 tracking-wider">{t('card.capabilities')}</h4>
               <ul className="space-y-2 mb-4">
                 {service.details.map((detail, i) => (
                   <li key={i} className="flex items-start text-sm text-gray-300">
@@ -220,6 +154,7 @@ const ServiceCard = ({ service, isExpanded, onToggle }: { service: Service; isEx
 };
 
 const DemoSandbox = () => {
+  const { t } = useTranslation('solutions');
   const [activeDemo, setActiveDemo] = useState<'OCR' | 'API' | 'CHAT'>('OCR');
   const [logs, setLogs] = useState<string[]>([]);
   const [isRunning, setIsRunning] = useState(false);
@@ -227,52 +162,16 @@ const DemoSandbox = () => {
 
   const demos = {
     OCR: {
-      name: 'LIVE_OCR_PROCESS',
-      steps: [
-        'Initializing camera feed...',
-        'Capturing frame [1920x1080]...',
-        'Preprocessing: Grayscale conversion...',
-        'Preprocessing: Noise reduction...',
-        'Detecting text regions...',
-        'Running Tesseract engine...',
-        'Text found: "TOTAL: $45.99"',
-        'Text found: "DATE: 2024-10-12"',
-        'Confidence score: 98.4%',
-        'Structuring JSON data...',
-        'Pushing to database...',
-        'Sync complete.'
-      ]
+      name: t('demo.ocr.name'),
+      steps: Object.values(t('demo.ocr.steps', { returnObjects: true })) as string[]
     },
     API: {
-      name: 'API_INTEGRATION_TEST',
-      steps: [
-        'Sending POST /api/v1/sync...',
-        'Payload size: 1.2kb',
-        'Authenticating (Bearer Token)...',
-        'Handshake successful.',
-        'Connecting to legacy CRM...',
-        'Mapping fields: name -> customer_name',
-        'Mapping fields: email -> contact_email',
-        'Webhook triggered: "New Lead"',
-        'Slack notification sent.',
-        'Response: 200 OK',
-        'Latency: 42ms'
-      ]
+      name: t('demo.api.name'),
+      steps: Object.values(t('demo.api.steps', { returnObjects: true })) as string[]
     },
     CHAT: {
-      name: 'RAG_QUERY_EXECUTION',
-      steps: [
-        'User Query: "How do I reset my password?"',
-        'Embedding query vector...',
-        'Searching vector database (Pinecone)...',
-        'Found 3 relevant context chunks.',
-        'Injecting context into prompt...',
-        'Calling GPT-4o API...',
-        'Streaming response...',
-        'Generating answer...',
-        'Response complete.',
-        'Citation added: [Manual v2.1, p.45]'
-      ]
+      name: t('demo.chat.name'),
+      steps: Object.values(t('demo.chat.steps', { returnObjects: true })) as string[]
     }
   };
 
@@ -309,7 +208,7 @@ const DemoSandbox = () => {
     <div className="border border-white/10 bg-black/50 backdrop-blur-md rounded-lg overflow-hidden flex flex-col md:flex-row h-[500px]">
       {/* Sidebar Controls */}
       <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-white/10 bg-charcoal-light/30 p-4">
-        <h3 className="text-xs font-mono text-gray-500 mb-4 uppercase tracking-widest">Select Protocol</h3>
+        <h3 className="text-xs font-mono text-gray-500 mb-4 uppercase tracking-widest">{t('demo.selectProtocol')}</h3>
         <div className="space-y-2">
           {(Object.keys(demos) as Array<'OCR' | 'API' | 'CHAT'>).map((key) => (
             <button
@@ -323,7 +222,7 @@ const DemoSandbox = () => {
               } ${isRunning ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               <div className="flex items-center justify-between">
-                <span>{key}_DEMO</span>
+                <span>{t(`demo.names.${key.toLowerCase()}`)}</span>
                 {activeDemo === key && isRunning && <Loader2 size={14} className="animate-spin" />}
               </div>
             </button>
@@ -332,7 +231,7 @@ const DemoSandbox = () => {
         
         <div className="mt-8 p-4 border border-dashed border-white/10 rounded bg-black/20">
           <p className="text-[10px] text-gray-500 font-mono leading-relaxed">
-            NOTE: This is a simulation of our backend processing logic. Real-world performance depends on API latency and dataset size.
+            {t('demo.note')}
           </p>
         </div>
       </div>
@@ -340,7 +239,7 @@ const DemoSandbox = () => {
       {/* Terminal Output */}
       <div className="flex-1 flex flex-col bg-black font-mono text-sm relative">
         <div className="h-8 bg-charcoal-light border-b border-white/10 flex items-center px-4 justify-between">
-          <span className="text-xs text-gray-500">root@o2mation:~/demos/{activeDemo.toLowerCase()}.sh</span>
+          <span className="text-xs text-gray-500">{t('demo.terminal', { script: activeDemo.toLowerCase() })}</span>
           <div className="flex gap-2">
             <div className="w-2 h-2 rounded-full bg-red-500/50" />
             <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
@@ -350,8 +249,8 @@ const DemoSandbox = () => {
         
         <div className="flex-1 p-6 overflow-y-auto space-y-2 font-mono text-xs md:text-sm">
           <div className="text-gray-500 mb-4">
-            # Initializing sandbox environment...<br/>
-            # Ready to execute.
+            {t('demo.initializing')}<br/>
+            {t('demo.ready')}
           </div>
           
           {logs.map((log, i) => (
@@ -367,11 +266,11 @@ const DemoSandbox = () => {
           ))}
           
           {logs.length === 0 && !isRunning && (
-             <div className="text-gray-600 animate-pulse">_ Waiting for input...</div>
+             <div className="text-gray-600 animate-pulse">{t('demo.waiting')}</div>
           )}
           
           {isRunning && (
-            <div className="text-neon-green animate-pulse">_</div>
+            <div className="text-neon-green animate-pulse">{t('demo.cursor')}</div>
           )}
           
           <div ref={logEndRef} />
@@ -385,7 +284,7 @@ const DemoSandbox = () => {
                 className="flex items-center gap-2 px-6 py-3 bg-neon-green text-black font-bold uppercase tracking-wider hover:bg-white transition-colors"
               >
                 <Play size={18} fill="currentColor" />
-                Initialize Demo
+                {t('demo.initializeButton')}
               </button>
            </div>
         )}
@@ -397,10 +296,19 @@ const DemoSandbox = () => {
 // --- Main Page Component ---
 
 const Solutions = () => {
+  const { t } = useTranslation('solutions');
   const [filter, setFilter] = useState<Category>('ALL');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const filteredServices = SERVICES.filter(s => filter === 'ALL' || s.category === filter);
+  const services: Service[] = SERVICES_CONFIG.map(config => ({
+    ...config,
+    title: t(`services.${config.id}.title`),
+    description: t(`services.${config.id}.description`),
+    tech: t(`services.${config.id}.tech`, { returnObjects: true }) as string[],
+    details: Object.values(t(`services.${config.id}.details`, { returnObjects: true }))
+  }));
+
+  const filteredServices = services.filter(s => filter === 'ALL' || s.category === filter);
 
   return (
     <div className="min-h-screen bg-charcoal text-white selection:bg-neon-green selection:text-charcoal pb-20">
@@ -414,7 +322,7 @@ const Solutions = () => {
             animate={{ opacity: 1, y: 0 }}
             className="inline-block px-3 py-1 mb-4 border border-neon-green/30 rounded-full bg-neon-green/5"
           >
-            <span className="text-neon-green text-xs font-mono tracking-wider">SYSTEM_CAPABILITIES // INDEX</span>
+            <span className="text-neon-green text-xs font-mono tracking-wider">{t('header.label')}</span>
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -422,7 +330,7 @@ const Solutions = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-bold mb-6 tracking-tight"
           >
-            Solutions Matrix<span className="text-neon-green">.</span>
+            {t('header.title')}<span className="text-neon-green">{t('header.dot')}</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -430,14 +338,14 @@ const Solutions = () => {
             transition={{ delay: 0.2 }}
             className="text-gray-400 max-w-2xl text-lg leading-relaxed"
           >
-            A modular ecosystem of intelligent services. Filter by category to explore our technical capabilities, or test our live automation protocols in the sandbox below.
+            {t('header.description')}
           </motion.p>
         </header>
 
         {/* Filter Controls */}
         <div className="mb-12 sticky top-20 z-40 bg-charcoal/95 py-4 backdrop-blur-xl border-b border-white/5 -mx-4 px-4 md:mx-0 md:px-0 md:bg-transparent md:backdrop-blur-none md:static md:border-none">
           <div className="flex flex-wrap gap-2 md:gap-4">
-            {CATEGORIES.map((cat) => (
+            {CATEGORIES_CONFIG.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => {
@@ -450,7 +358,7 @@ const Solutions = () => {
                     : 'border-white/10 text-gray-500 hover:border-white/30 hover:text-gray-300'
                 }`}
               >
-                {cat.label}
+                {t(`categories.${cat.key}`)}
               </button>
             ))}
           </div>
@@ -477,15 +385,15 @@ const Solutions = () => {
         <section className="mb-32">
           <div className="flex items-end justify-between mb-8 border-b border-white/10 pb-4">
             <div>
-              <h2 className="text-2xl font-bold mb-2">Live Automations</h2>
-              <p className="text-gray-400 text-sm">Interactive Sandbox Environment v1.0.4</p>
+              <h2 className="text-2xl font-bold mb-2">{t('demo.title')}</h2>
+              <p className="text-gray-400 text-sm">{t('demo.subtitle')}</p>
             </div>
             <div className="hidden md:flex items-center gap-2 text-xs font-mono text-neon-green">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-green opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-neon-green"></span>
               </span>
-              SYSTEM_ONLINE
+              {t('demo.status')}
             </div>
           </div>
           

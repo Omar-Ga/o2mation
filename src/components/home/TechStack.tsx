@@ -1,12 +1,10 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
-const techs = [
-  "REACT", "TYPESCRIPT", "PYTHON", "OPENAI", "AWS", "NODE.JS", "TAILWIND", "POSTGRESQL", "DOCKER", "GRAPHQL", "NEXT.JS", "VERCEL", "STRIPE", "FIREBASE"
-];
-
 export const TechStack = () => {
   const { t } = useTranslation('home');
+  const techs = t('techStack.items', { returnObjects: true }) as string[];
+  
   return (
     <section className="py-20 bg-charcoal border-y border-white/5 overflow-hidden">
       <div className="flex">

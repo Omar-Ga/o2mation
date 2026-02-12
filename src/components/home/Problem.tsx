@@ -142,6 +142,7 @@ export const Problem = () => {
           >
             <Trans
               i18nKey="problem.title.chaosPart1"
+              t={t}
               components={{ line: <span className="text-gray-500 line-through decoration-neon-green/50 decoration-4" /> }}
             /> <br />
             <span className="text-white">{t('problem.title.chaosPart2')}</span>
@@ -207,6 +208,7 @@ export const Problem = () => {
 
 // Sub-component
 const WorkflowItem = ({ item, progress, index }: { item: any, progress: any, index: number }) => {
+  const { t } = useTranslation('home');
   // Phase 1: Chaos to Order (0 - 0.2)
   const x = useTransform(progress, [0, 0.2], [item.chaos.x, item.order.x]);
   const y = useTransform(progress, [0, 0.2], [item.chaos.y, item.order.y]);
@@ -235,7 +237,7 @@ const WorkflowItem = ({ item, progress, index }: { item: any, progress: any, ind
     >
       {/* HUD HEADER */}
       <div className="h-10 border-b border-gray-800 bg-black/50 flex items-center justify-between px-4">
-         <span className="text-[11px] text-gray-500 font-mono uppercase tracking-widest">{item.id}.mod</span>
+         <span className="text-[11px] text-gray-500 font-mono uppercase tracking-widest">{item.label}{t('problem.moduleSuffix')}</span>
          <div className="flex gap-2">
             <motion.div 
                style={{ backgroundColor: iconColor }}
@@ -260,7 +262,7 @@ const WorkflowItem = ({ item, progress, index }: { item: any, progress: any, ind
          <motion.div style={{ opacity: codeOpacity }} className="space-y-1.5">
             {item.code.map((line: string, i: number) => (
                <div key={i} className="text-[11px] font-mono text-neon-green/80 flex gap-2">
-                  <span className="text-gray-700">{'>'}</span>
+                  <span className="text-gray-700">{t('problem.prompt')}</span>
                   {line}
                </div>
             ))}

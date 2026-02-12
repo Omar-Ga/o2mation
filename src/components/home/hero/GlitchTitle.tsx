@@ -3,20 +3,20 @@ import { useTranslation } from 'react-i18next';
 
 export const GlitchTitle = memo(() => {
   const { t } = useTranslation('home');
-  const brandName = t('hero.brandName');
+  const brandName = "O2MATION";
 
-  // Stable random delays for the glitch effect to prevent re-render jumps
+  // Sequential delays for a left-to-right wave effect
   const glitchDelays = useMemo(() => 
-    brandName.split("").map(() => ({
-      main: `-${Math.random() * 6}s`,
-      ghost1: `-${Math.random() * 5}s`,
-      ghost2: `-${Math.random() * 7}s`
+    brandName.split("").map((_, i) => ({
+      main: `${i * 0.1}s`,
+      ghost1: `${i * 0.1 + 0.05}s`,
+      ghost2: `${i * 0.1 + 0.1}s`
     })),
     [brandName]
   );
 
   return (
-    <div className="relative inline-flex items-center tracking-tighter will-change-transform">
+    <div className="relative inline-flex items-center tracking-tighter will-change-transform" dir="ltr">
       <h1 className="flex text-7xl md:text-9xl lg:text-[10rem] font-black leading-[0.85] text-white select-none">
         {brandName.split("").map((char, i) => (
           <div key={i} className="relative group inline-block">
@@ -47,7 +47,6 @@ export const GlitchTitle = memo(() => {
             </span>
           </div>
         ))}
-        <span className="text-neon-green font-light inline-block">.</span>
       </h1>
       
       <style>{`

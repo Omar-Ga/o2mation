@@ -1,159 +1,175 @@
 {
-  "title": "Home Page",
+  "title": "الرئيسية",
   "hero": {
     "brandName": "O2MATION",
     "system": {
-      "online": "SYSTEM: ONLINE",
-      "latency": "LATENCY: {{val}}ms"
+      "online": "النظام: متصل",
+      "latency": "الاستجابة: {{val}}ملي ثانية"
     },
-    "version": "v2.0.4 BUILD STABLE",
-    "mainTitle": "The Future of Digital Infrastructure",
+    "version": "الإصدار 2.0.4 مستقر",
+    "mainTitle": "مستقبل البنية التحتية الرقمية",
     "description": {
-      "part1": "We build integrated ecosystems where",
-      "highlight1": "web applications",
-      "highlight2": "internal systems",
-      "highlight3": "AI agents",
-      "part2": "communicate seamlessly."
+      "part1": "نبني أنظمة بيئية متكاملة تتواصل فيها",
+      "highlight1": "تطبيقات الويب",
+      "highlight2": "الأنظمة الداخلية",
+      "highlight3": "وكلاء الذكاء الاصطناعي",
+      "part2": "مع بعضها بسلاسة تامة.",
+      "comma": "، ",
+      "and": " و "
     },
-    "scroll": "Scroll to Initialize",
-    "terminal": "Initialize system sequence... > Loading modules... > AI Agents: ONLINE > API Gateways: CONNECTED"
+    "scroll": "مرر للبدء",
+    "prompt": ">",
+    "terminal": "بدء تسلسل النظام... > تحميل الوحدات... > وكلاء الذكاء الاصطناعي: متصل > بوابات API: متصلة"
   },
   "techStack": {
-    "systemModules": "[ System Modules Loaded ]"
+    "systemModules": "[ تم تحميل وحدات النظام ]",
+    "items": ["REACT", "TYPESCRIPT", "PYTHON", "OPENAI", "AWS", "NODE.JS", "TAILWIND", "POSTGRESQL", "DOCKER", "GRAPHQL", "NEXT.JS", "VERCEL", "STRIPE", "FIREBASE"]
   },
   "services": {
-    "systemCapabilities": "SYSTEM_CAPABILITIES",
-    "mainTitle": "We Build <gray>Everything</gray>.<br/> <gradient>You Just Watch It Run.</gradient>",
-    "description": "From simple scripts to complex enterprise ecosystems. If it involves data, logic, or the internet, we can automate it.",
+    "systemCapabilities": "إمكانيات_النظام",
+    "mainTitle": "نحن نبني <gray>كل شيء</gray>.<br/> <gradient>وأنت تراقب الإنجاز.</gradient>",
+    "description": "من النصوص البرمجية البسيطة إلى الأنظمة المؤسسية المعقدة. إذا كان الأمر يتعلق بالبيانات أو المنطق أو الإنترنت، يمكننا أتمتته.",
     "categories": {
-      "businessSystems": "Business Systems",
-      "dataOperations": "Data Operations",
-      "digitalGrowth": "Digital Growth"
+      "businessSystems": "أنظمة الأعمال",
+      "dataOperations": "عمليات البيانات",
+      "digitalGrowth": "النمو الرقمي"
     },
     "items": {
       "warehouse": {
-        "title": "Warehouse & Inventory",
-        "desc": "Automated tracking, stock alerts, and logistics management systems."
+        "title": "المستودعات والمخزون",
+        "desc": "تتبع آلي، تنبيهات المخزون، وأنظمة إدارة الخدمات اللوجستية."
       },
       "purchasing": {
-        "title": "Purchasing Systems",
-        "desc": "Streamlined procurement workflows and vendor management automation."
+        "title": "أنظمة المشتريات",
+        "desc": "سير عمل مبسط للمشتريات وأتمتة إدارة الموردين."
       },
       "hr": {
-        "title": "Salary & HR Systems",
-        "desc": "Custom payroll processing and employee management solutions."
+        "title": "الرواتب والموارد البشرية",
+        "desc": "معالجة مخصصة للرواتب وحلول إدارة الموظفين."
       },
       "leads": {
-        "title": "Lead Systems",
-        "desc": "Automated capture, scoring, and routing pipelines for high-velocity sales."
+        "title": "أنظمة العملاء المحتملين",
+        "desc": "أتمتة الجمع، التصنيف، وتوجيه المسارات لمبيعات عالية السرعة."
       },
       "pdf": {
-        "title": "PDF to Excel",
-        "desc": "Intelligent extraction of data from documents into structured formats."
+        "title": "من PDF إلى Excel",
+        "desc": "استخراج ذكي للبيانات من المستندات إلى تنسيقات منظمة."
       },
       "dataEntry": {
-        "title": "Data Entry Automation",
-        "desc": "Bots that handle repetitive data input tasks with 100% accuracy."
+        "title": "أتمتة إدخال البيانات",
+        "desc": "روبوتات تعالج مهام إدخال البيانات المتكررة بدقة 100%."
       },
       "reporting": {
-        "title": "Report Generation",
-        "desc": "Automated compilation of analytics and business intelligence reports."
+        "title": "توليد التقارير",
+        "desc": "تجميع آلي للتحليلات وتقارير ذكاء الأعمال."
       },
       "scraping": {
-        "title": "Web Scraping & Data Extraction",
-        "desc": "Automated systems to harvest market data, competitor pricing, and leads from any digital source."
+        "title": "استخراج بيانات الويب",
+        "desc": "أنظمة آلية لجمع بيانات السوق، أسعار المنافسين، والعملاء المحتملين من أي مصدر رقمي."
       },
       "social": {
-        "title": "Social Media Auto",
-        "desc": "Content scheduling, engagement bots, and cross-platform syncing."
+        "title": "أتمتة التواصل الاجتماعي",
+        "desc": "جدولة المحتوى، روبوتات التفاعل، والمزامة عبر المنصات."
       },
       "chatbots": {
-        "title": "Custom Chatbots",
-        "desc": "AI-powered assistants for customer support and lead generation."
+        "title": "شات بوت مخصص",
+        "desc": "مساعدون مدعومون بالذكاء الاصطناعي لدعم العملاء وتوليد العملاء المحتملين."
       },
       "websites": {
-        "title": "High-End Websites",
-        "desc": "High-performance custom architectures with integrated CMS, as well as professional WordPress development for versatile platforms."
+        "title": "مواقع ويب متطورة",
+        "desc": "بنية مخصصة عالية الأداء مع أنظمة إدارة محتوى مدمجة، وتطوير ووردبريس احترافي لمنصات متعددة الاستخدامات."
       },
       "email": {
-        "title": "Email Automation",
-        "desc": "Smart scheduling, AI auto-replies, and intelligent inbox management systems."
+        "title": "أتمتة البريد الإلكتروني",
+        "desc": "جدولة ذكية، ردود تلقائية بالذكاء الاصطناعي، وأنظمة إدارة البريد الوارد الذكية."
       }
+    },
+    "cta": {
+      "customArch": "بنية النظام",
+      "title": "جاهز <green>للتنفيذ؟</green>",
+      "desc": "توقف عن تشغيل العمليات اليدوية. ابدأ في بناء إمبراطوريتك الرقمية.\nابدأ تسلسل مشروعك اليوم.",
+      "button": "ابدأ المشروع"
     }
   },
   "problem": {
     "title": {
-      "chaosPart1": "The <line>Chaos</line> of",
-      "chaosPart2": "Manual Workflows",
-      "connectingPart1": "Connecting",
-      "connectingPart2": "Critical Systems",
-      "automationPart1": "Seamless",
-      "automationPart2": "Automation"
+      "chaosPart1": "<line>فوضى</line>",
+      "chaosPart2": "سير العمل اليدوي",
+      "connectingPart1": "ربط",
+      "connectingPart2": "الأنظمة الحيوية",
+      "automationPart1": "أتمتة",
+      "automationPart2": "سلسة"
     },
-    "scroll": "Scroll to Connect",
+    "scroll": "مرر للربط",
+    "prompt": ">",
+    "moduleSuffix": ".mod",
     "workflow": {
-      "accounting": { "label": "Accounting", "code1": "GET /invoices", "code2": "Status: Pending" },
-      "hr": { "label": "HR Input", "code1": "Employee_ID: 4021", "code2": "Dept: Engineering" },
-      "management": { "label": "Management", "code1": "Approving...", "code2": "Auth_Token: Verified" },
-      "payroll": { "label": "Payroll", "code1": "Calculated: $4,200", "code2": "Tax_Rate: 15%" },
-      "notifications": { "label": "Notifications", "code1": "Email Sent", "code2": "Slack_Alert: True" },
-      "analytics": { "label": "Analytics", "code1": "Efficiency: +400%", "code2": "Errors: 0" }
+      "accounting": { "label": "المحاسبة", "code1": "GET /invoices", "code2": "الحالة: قيد الانتظار" },
+      "hr": { "label": "إدخال الموارد البشرية", "code1": "رقم_الموظف: 4021", "code2": "القسم: الهندسة" },
+      "management": { "label": "الإدارة", "code1": "جاري الموافقة...", "code2": "رمز_المصادقة: تم التحقق" },
+      "payroll": { "label": "الرواتب", "code1": "المحسوب: $4,200", "code2": "الضريبة: 15%" },
+      "notifications": { "label": "الإشعارات", "code1": "تم إرسال البريد", "code2": "تنبيه_Slack: صحيح" },
+      "analytics": { "label": "التحليلات", "code1": "الكفاءة: +400%", "code2": "الأخطاء: 0" }
     }
   },
   "process": {
-    "pipeline": "EXECUTION_PIPELINE",
-    "title": "The <gradient>Protocol</gradient>",
-    "subtitle": "Our systematic approach to building your automated future.",
+    "pipeline": "خط_التنفيذ",
+    "title": "<gradient>البروتوكول</gradient>",
+    "subtitle": "نهجنا المنهجي لبناء مستقبلك المؤتمت.",
+    "stepNumbers": ["01", "02", "03", "04"],
     "steps": {
       "discovery": {
-        "title": "Discovery & Audit",
-        "desc": "We scan your current infrastructure for bottlenecks. We don't guess; we diagnose."
+        "title": "الاكتشاف والتدقيق",
+        "desc": "نقوم بفحص بنيتك التحتية الحالية بحثًا عن الاختناقات. نحن لا نخمن؛ نحن نشخص."
       },
       "architecture": {
-        "title": "Architecture",
-        "desc": "Bespoke blueprints. API gateways and database schemas mapped before coding."
+        "title": "البنية الهندسية",
+        "desc": "مخططات مخصصة. يتم رسم خرائط بوابات API ومخططات قواعد البيانات قبل كتابة الكود."
       },
       "development": {
-        "title": "Development",
-        "desc": "Fusing traditional full-stack engineering with advanced AI agent workflows."
+        "title": "التطوير",
+        "desc": "دمج الهندسة التقليدية الشاملة مع سير عمل وكلاء الذكاء الاصطناعي المتقدمة."
       },
       "deployment": {
-        "title": "Deployment",
-        "desc": "Launch with real-time monitoring, auto-scaling, and continuous optimization."
+        "title": "الإطلاق",
+        "desc": "إطلاق مع مراقبة في الوقت الفعلي، وتوسع تلقائي، وتحسين مستمر."
       }
     }
   },
   "solution": {
-    "title": "Efficiency <br/> <green>Engineered.</green>",
-    "active": "[ACTIVE]",
+    "title": "كفاءة <br/> <green>مُهندسة.</green>",
+    "active": "[نشط]",
     "items": {
       "automation": {
-        "title": "Automation",
-        "desc": "End-to-end workflows that handle complex business logic without human intervention."
+        "title": "الأتمتة",
+        "desc": "سير عمل شامل يتعامل مع منطق الأعمال المعقد دون تدخل بشري."
       },
       "integration": {
-        "title": "APIs & Integration",
-        "desc": "We connect disparate systems to create a unified, real-time ecosystem."
+        "title": "الربط والتكامل",
+        "desc": "نربط الأنظمة المتباينة لإنشاء نظام بيئي موحد في الوقت الفعلي."
       },
       "ai": {
-        "title": "Custom AI",
-        "desc": "Injecting LLMs and machine learning to supercharge your existing platforms."
+        "title": "ذكاء اصطناعي مخصص",
+        "desc": "تضمين نماذج اللغة الكبيرة والتعلم الآلي لتعزيز منصاتك الحالية."
       }
     }
   },
   "metrics": {
     "items": {
-      "hours": "Hours Automated",
-      "apis": "APIs Integrated",
-      "uptime": "System Uptime",
-      "roi": "ROI Increase"
+      "hours": "ساعات تمت أتمتتها",
+      "apis": "واجهات تم ربطها",
+      "uptime": "وقت تشغيل النظام",
+      "roi": "زيادة العائد"
     }
   },
   "cta": {
-    "title": "Ready to <green>Execute?</green>",
-    "text": "Stop running manual processes. Start building your digital empire.\nInitialize your project sequence today.",
-    "button": "Initialize Project",
-    "secure": "// SECURE CONNECTION",
-    "monitoring": "// 24/7 MONITORING"
+    "title": "جاهز <green>للتنفيذ؟</green>",
+    "text": "توقف عن تشغيل العمليات اليدوية. ابدأ في بناء إمبراطوريتك الرقمية.\nابدأ تسلسل مشروعك اليوم.",
+    "button": "ابدأ المشروع",
+    "secure": "// اتصال آمن",
+    "monitoring": "// مراقبة 24/7"
+  },
+  "brand": {
+    "dot": "."
   }
 }

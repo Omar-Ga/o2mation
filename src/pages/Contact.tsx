@@ -11,8 +11,10 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
+  const { t } = useTranslation('contact');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,17 +27,17 @@ const Contact = () => {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const services = [
-    { id: 'ai', label: 'AI & Automation', icon: Bot },
-    { id: 'web', label: 'Custom Web Dev', icon: Code },
-    { id: 'system', label: 'Enterprise Systems', icon: Server },
-    { id: 'ocr', label: 'Offline-to-Online', icon: Database },
+    { id: 'ai', label: t('form.options.services.ai'), icon: Bot },
+    { id: 'web', label: t('form.options.services.web'), icon: Code },
+    { id: 'system', label: t('form.options.services.system'), icon: Server },
+    { id: 'ocr', label: t('form.options.services.ocr'), icon: Database },
   ];
 
   const companySizes = [
-    "1-10 (Startup)",
-    "11-50 (Growth)",
-    "51-200 (Scale-up)",
-    "200+ (Enterprise)"
+    'startup',
+    'growth',
+    'scaleUp',
+    'enterprise'
   ];
 
   const toggleService = (id: string) => {
@@ -74,14 +76,14 @@ const Contact = () => {
           <div className="mb-12">
              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-green/10 border border-neon-green/20 text-neon-green text-xs font-mono mb-4">
                <Wifi size={12} className="animate-pulse" />
-               <span>UPLINK ESTABLISHED</span>
+               <span>{t('statusPanel.uplinkEstablished')}</span>
              </div>
              <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tighter">
-               Initialize <br />
-               <span className="text-neon-green">Protocol</span>
+               {t('statusPanel.initialize')} <br />
+               <span className="text-neon-green">{t('statusPanel.protocol')}</span>
              </h1>
              <p className="text-gray-400 max-w-sm leading-relaxed">
-               Configure your project parameters below. Our autonomous agents are standing by to process your request.
+               {t('statusPanel.description')}
              </p>
           </div>
         </div>
@@ -90,23 +92,23 @@ const Contact = () => {
         <div className="space-y-6 font-mono text-xs">
           <div className="p-4 bg-black/40 border border-white/5 rounded-sm">
             <div className="flex justify-between text-gray-500 mb-2">
-              <span>SYSTEM_TIME</span>
+              <span>{t('statusPanel.systemTime')}</span>
               <span>{new Date().toLocaleTimeString()}</span>
             </div>
             <div className="flex justify-between text-gray-500 mb-2">
-              <span>LOCATION</span>
-              <span>GLOBAL_NODE</span>
+              <span>{t('statusPanel.location')}</span>
+              <span>{t('statusPanel.globalNode')}</span>
             </div>
             <div className="flex justify-between text-neon-green">
-              <span>AGENT_STATUS</span>
-              <span>READY</span>
+              <span>{t('statusPanel.agentStatus')}</span>
+              <span>{t('statusPanel.ready')}</span>
             </div>
           </div>
 
           <div className="flex gap-4 text-gray-500">
-             <a href="mailto:hello@o2mation.com" className="hover:text-neon-green transition-colors flex items-center gap-2">
+             <a href="mailto:HELLO@O2MATION.COM" className="hover:text-neon-green transition-colors flex items-center gap-2">
                <Terminal size={14} />
-               hello@o2mation.com
+               HELLO@O2MATION.COM
              </a>
           </div>
         </div>
@@ -125,12 +127,12 @@ const Contact = () => {
               <div className="w-20 h-20 rounded-full bg-neon-green/10 flex items-center justify-center mb-8 border border-neon-green">
                 <CheckCircle size={40} className="text-neon-green" />
               </div>
-              <h2 className="text-3xl font-bold mb-4">Transmission Received</h2>
+              <h2 className="text-3xl font-bold mb-4">{t('success.transmissionReceived')}</h2>
               <p className="text-gray-400 max-w-md mb-8">
-                Your project parameters have been successfully logged in our system. An O2mation architect will initialize contact shortly.
+                {t('success.message')}
               </p>
               <Link to="/" className="px-8 py-3 bg-white text-charcoal font-bold hover:bg-neon-green transition-colors uppercase tracking-widest text-sm">
-                Return to Homepage
+                {t('success.returnHome')}
               </Link>
             </motion.div>
           ) : (
@@ -139,13 +141,13 @@ const Contact = () => {
               {/* Section 1: Identity */}
               <section>
                 <h3 className="flex items-center gap-3 text-neon-green font-mono text-sm tracking-widest mb-8 uppercase border-b border-white/10 pb-4">
-                  <span className="text-white/20">01</span> // Identity Verification
+                  <span className="text-white/20">01</span> {t('statusPanel.separator')} {t('form.sections.identity')}
                 </h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="relative group">
                     <label className="block text-xs font-mono text-gray-500 mb-2 group-focus-within:text-neon-green transition-colors">
-                      ENTITY_NAME
+                      {t('form.fields.entityName.label')}
                     </label>
                     <input 
                       required
@@ -153,13 +155,13 @@ const Contact = () => {
                       value={formData.name}
                       onChange={e => setFormData({...formData, name: e.target.value})}
                       className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:border-neon-green focus:outline-none transition-colors rounded-none placeholder-white/10"
-                      placeholder="John Doe"
+                      placeholder={t('form.fields.entityName.placeholder')}
                     />
                   </div>
                   
                   <div className="relative group">
                     <label className="block text-xs font-mono text-gray-500 mb-2 group-focus-within:text-neon-green transition-colors">
-                      COMM_CHANNEL (EMAIL)
+                      {t('form.fields.commChannel.label')}
                     </label>
                     <input 
                       required
@@ -167,7 +169,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={e => setFormData({...formData, email: e.target.value})}
                       className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:border-neon-green focus:outline-none transition-colors rounded-none placeholder-white/10"
-                      placeholder="john@company.com"
+                      placeholder={t('form.fields.commChannel.placeholder')}
                     />
                   </div>
                 </div>
@@ -176,13 +178,13 @@ const Contact = () => {
               {/* Section 2: Parameters */}
               <section>
                 <h3 className="flex items-center gap-3 text-neon-green font-mono text-sm tracking-widest mb-8 uppercase border-b border-white/10 pb-4">
-                  <span className="text-white/20">02</span> // Operational Parameters
+                  <span className="text-white/20">02</span> {t('statusPanel.separator')} {t('form.sections.parameters')}
                 </h3>
 
                 <div className="space-y-8">
                   <div>
                     <label className="block text-xs font-mono text-gray-500 mb-4">
-                      ORGANIZATION_SCALE
+                      {t('form.fields.organizationScale.label')}
                     </label>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                       {companySizes.map((size) => (
@@ -197,7 +199,7 @@ const Contact = () => {
                               : 'border-white/10 text-gray-500 hover:border-white/30 hover:text-gray-300'}
                           `}
                         >
-                          <span className="relative z-10">{size}</span>
+                          <span className="relative z-10">{t(`form.options.companySize.${size}`)}</span>
                           {formData.companySize === size && (
                             <motion.div 
                               layoutId="size-highlight"
@@ -211,7 +213,7 @@ const Contact = () => {
 
                   <div>
                     <label className="block text-xs font-mono text-gray-500 mb-4">
-                      TARGET_MODULES (MULTI-SELECT)
+                      {t('form.fields.targetModules.label')}
                     </label>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {services.map((service) => {
@@ -248,13 +250,13 @@ const Contact = () => {
               {/* Section 3: Mission Brief */}
               <section>
                 <h3 className="flex items-center gap-3 text-neon-green font-mono text-sm tracking-widest mb-8 uppercase border-b border-white/10 pb-4">
-                  <span className="text-white/20">03</span> // Mission Brief
+                  <span className="text-white/20">03</span> {t('statusPanel.separator')} {t('form.sections.missionBrief')}
                 </h3>
                 
                 <div className="space-y-8">
                   <div className="relative group">
                     <label className="block text-xs font-mono text-gray-500 mb-2 group-focus-within:text-neon-green transition-colors">
-                      SYSTEM_DESCRIPTION
+                      {t('form.fields.systemDescription.label')}
                     </label>
                     <textarea 
                       required
@@ -262,20 +264,20 @@ const Contact = () => {
                       onChange={e => setFormData({...formData, description: e.target.value})}
                       rows={4}
                       className="w-full bg-black/20 border border-white/10 p-4 text-sm focus:border-neon-green focus:outline-none transition-colors rounded-sm placeholder-white/10 resize-none"
-                      placeholder="Describe the process you want to automate or the system you need built..."
+                      placeholder={t('form.fields.systemDescription.placeholder')}
                     />
                   </div>
 
                   <div className="relative group">
                     <label className="block text-xs font-mono text-gray-500 mb-2 group-focus-within:text-neon-green transition-colors">
-                      ADDITIONAL_LOGS (OPTIONAL)
+                      {t('form.fields.additionalLogs.label')}
                     </label>
                     <textarea 
                       value={formData.message}
                       onChange={e => setFormData({...formData, message: e.target.value})}
                       rows={2}
                       className="w-full bg-black/20 border border-white/10 p-4 text-sm focus:border-neon-green focus:outline-none transition-colors rounded-sm placeholder-white/10 resize-none"
-                      placeholder="Any other details..."
+                      placeholder={t('form.fields.additionalLogs.placeholder')}
                     />
                   </div>
                 </div>
@@ -292,12 +294,12 @@ const Contact = () => {
                     {status === 'submitting' ? (
                       <>
                         <div className="w-5 h-5 border-2 border-charcoal border-t-transparent rounded-full animate-spin" />
-                        PROCESSING...
+                        {t('form.submit.processing')}
                       </>
                     ) : (
                       <>
                         <Send size={20} />
-                        EXECUTE_PROTOCOL
+                        {t('form.submit.executeProtocol')}
                       </>
                     )}
                   </span>

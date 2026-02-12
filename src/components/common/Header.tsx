@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Terminal, ChevronRight } from 'lucide-react';
+import { Menu, X, Terminal, ChevronRight, ChevronLeft, Globe } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export const Header = () => {
+  const { t, i18n } = useTranslation('common');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'en' ? 'ar' : 'en';
+    i18n.changeLanguage(newLang);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,11 +29,27 @@ export const Header = () => {
   }, [location]);
 
   const navLinks = [
-    { name: 'HOME', path: '/' },
-    { name: 'SOLUTIONS', path: '/solutions' },
-    { name: 'MEET THE TEAM', path: '/meet-the-team' },
-    { name: 'CONTACT', path: '/contact' },
+    { name: t('header.nav.home'), path: '/' },
+    { name: t('header.nav.solutions'), path: '/solutions' },
+    { name: t('header.nav.meetTheTeam'), path: '/meet-the-team' },
+    { name: t('header.nav.contact'), path: '/contact' },
   ];
+
+  const LanguageToggle = ({ className = "" }: { className?: string }) => (
+    <button 
+      onClick={toggleLanguage}
+      className={`relative flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 hover:border-neon-green/30 transition-all group overflow-hidden ${className}`}
+    >
+      <motion.div 
+        className="absolute inset-0 bg-neon-green/5 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"
+      />
+      <Globe size={12} className="text-gray-500 group-hover:text-neon-green transition-colors relative z-10" />
+      <span className="text-[10px] font-mono tracking-[0.2em] text-gray-400 group-hover:text-white uppercase relative z-10">
+        {i18n.language === 'en' ? 'AR' : 'EN'}
+      </span>
+      <div className="w-1 h-1 rounded-full bg-neon-green animate-pulse relative z-10" />
+    </button>
+  );
 
   return (
     <>
@@ -47,7 +70,7 @@ export const Header = () => {
               <Terminal size={16} className="text-neon-green" />
             </div>
             <span className="font-bold text-xl tracking-tighter text-white">
-              O2MATION<span className="text-neon-green">.</span>
+              {t('brand.name')}<span className="text-neon-green">{t('brand.dot')}</span>
             </span>
           </Link>
 
@@ -71,12 +94,18 @@ export const Header = () => {
 
           {/* CTA & Mobile Toggle */}
           <div className="flex items-center gap-4">
+            <LanguageToggle className="hidden md:flex" />
+            
             <Link 
               to="/contact"
               className="hidden md:flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 hover:border-neon-green/50 hover:bg-neon-green/10 transition-all group"
             >
-              <span className="text-xs font-bold tracking-wide text-white group-hover:text-neon-green">INITIALIZE</span>
-              <ChevronRight size={14} className="text-gray-500 group-hover:text-neon-green transition-colors" />
+              <span className="text-xs font-bold tracking-wide text-white group-hover:text-neon-green">{t('header.cta.initialize')}</span>
+              {i18n.language === 'ar' ? (
+                <ChevronLeft size={14} className="text-gray-500 group-hover:text-neon-green transition-colors" />
+              ) : (
+                <ChevronRight size={14} className="text-gray-500 group-hover:text-neon-green transition-colors" />
+              )}
             </Link>
 
             <button 
@@ -122,20 +151,22 @@ export const Header = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="mt-8"
+                className="mt-8 flex flex-col items-center gap-6"
               >
                 <Link 
                   to="/contact"
                   className="px-8 py-4 bg-neon-green text-black font-bold tracking-widest hover:bg-white transition-colors"
                 >
-                  START PROJECT
+                  {t('header.cta.startProject')}
                 </Link>
+
+                <LanguageToggle />
               </motion.div>
             </nav>
 
             {/* Decor */}
             <div className="absolute bottom-12 text-xs font-mono text-gray-600">
-              SYSTEM_READY // WAITING_FOR_INPUT
+              {t('header.status.ready')}
             </div>
           </motion.div>
         )}

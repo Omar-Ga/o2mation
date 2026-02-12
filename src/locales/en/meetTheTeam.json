@@ -1,7 +1,49 @@
 {
   "title": "Meet The Team",
-  "roles": {
-    "ceo": "CEO",
-    "cto": "CTO"
-  }
+  "members": {
+    "omar": {
+      "name": "OMAR GAMAL",
+      "role": "THE STRATEGIST",
+      "group1": {
+        "title": "OMAR GAMAL",
+        "subtitle": "THE STRATEGIST",
+        "description": "Orchestrating digital transformation through high-level architectural foresight. Omar deconstructs chaos into streamlined workflows."
+      },
+      "group2": {
+        "title": "VISIONARY LEAD",
+        "subtitle": "SYSTEM ARCHITECT",
+        "description": "From conceptualization to execution, he ensures that every automated system serves a clear, high-impact business imperative."
+      }
+    },
+    "syed": {
+      "name": "SYED UMAR",
+      "role": "THE ENGINEER",
+      "group1": {
+        "title": "SYED UMAR",
+        "subtitle": "THE ENGINEER",
+        "description": "Architecting robust systems where reliability meets radical innovation. Syed builds the invisible backbones that power seamless automation."
+      },
+      "group2": {
+        "title": "CORE BUILDER",
+        "subtitle": "TECHNICAL LEAD",
+        "description": "Turning complex code into elegant, user-centric experiences. His code isn't just functional; it's a foundation for future scalability."
+      }
+    }
+  },
+  "ui": {
+    "status": "STATUS",
+    "synced": "SYNCED",
+    "transferring": "TRANSFERRING_DATA...",
+    "systemCore": "SYSTEM_CORE",
+    "active": "ACTIVE",
+    "coords": "COORDS",
+    "secureChannel": "SECURE_CHANNEL",
+    "encrypted": "ENCRYPTED"
+  },
+  "labels": {
+    "01": "01",
+    "02": "02",
+    "seq": "SYS_OP_0{{num}} // SEQ_{{label}}"
+  },
+  "coordinates": "34.0522° N, 118.2437° W"
 }

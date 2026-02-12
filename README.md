@@ -1,8 +1,8 @@
-# o2mation
+# O2MATION
 
 **High-Performance AI & Digital Solutions Agency**
 
-o2mation is a modern agency website built to showcase expertise in Advanced Web Development, Custom Software Engineering, and Artificial Intelligence. The platform embodies a "tech-first" aesthetic, utilizing a high-contrast design system to present complex technical services through an immersive, interactive user experience.
+O2MATION is a modern agency website built to showcase expertise in Advanced Web Development, Custom Software Engineering, and Artificial Intelligence. The platform embodies a "tech-first" aesthetic, utilizing a high-contrast design system to present complex technical services through an immersive, interactive user experience.
 
 ![Project Status](https://img.shields.io/badge/status-active-success.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)

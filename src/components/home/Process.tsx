@@ -11,7 +11,7 @@ export const Process = () => {
       icon: FileSearch,
       title: t('process.steps.discovery.title'),
       desc: t('process.steps.discovery.desc'),
-      step: "01",
+      step: t('process.stepNumbers.0'),
       color: "text-blue-400",
       glow: "shadow-[0_0_30px_-10px_rgba(96,165,250,0.3)]",
       border: "group-hover:border-blue-400/50"
@@ -20,7 +20,7 @@ export const Process = () => {
       icon: Layers,
       title: t('process.steps.architecture.title'),
       desc: t('process.steps.architecture.desc'),
-      step: "02",
+      step: t('process.stepNumbers.1'),
       color: "text-purple-400",
       glow: "shadow-[0_0_30px_-10px_rgba(192,132,252,0.3)]",
       border: "group-hover:border-purple-400/50"
@@ -29,7 +29,7 @@ export const Process = () => {
       icon: Code,
       title: t('process.steps.development.title'),
       desc: t('process.steps.development.desc'),
-      step: "03",
+      step: t('process.stepNumbers.2'),
       color: "text-neon-green",
       glow: "shadow-[0_0_30px_-10px_rgba(0,255,128,0.3)]",
       border: "group-hover:border-neon-green/50"
@@ -38,7 +38,7 @@ export const Process = () => {
       icon: Rocket,
       title: t('process.steps.deployment.title'),
       desc: t('process.steps.deployment.desc'),
-      step: "04",
+      step: t('process.stepNumbers.3'),
       color: "text-orange-400",
       glow: "shadow-[0_0_30px_-10px_rgba(251,146,60,0.3)]",
       border: "group-hover:border-orange-400/50"
@@ -80,6 +80,7 @@ export const Process = () => {
           >
             <Trans
               i18nKey="process.title"
+              t={t}
               components={{ 
                 gradient: <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-500" />
               }}

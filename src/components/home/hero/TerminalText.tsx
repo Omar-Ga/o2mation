@@ -18,7 +18,7 @@ export const TerminalText = memo(() => {
 
   return (
     <div className="h-8 font-mono text-sm text-neon-green/80 mb-12 min-h-[20px]">
-      &gt; {text}<span className="animate-pulse">_</span>
+      {t('hero.prompt')} {text}<span className="animate-pulse">_</span>
     </div>
   );
 });

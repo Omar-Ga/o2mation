@@ -3,28 +3,32 @@
   "hero": {
     "brandName": "O2MATION",
     "system": {
-      "online": "SYSTEM: ONLINE",
-      "latency": "LATENCY: {{val}}ms"
+      "online": "System: Online",
+      "latency": "Latency: {{val}}ms"
     },
-    "version": "v2.0.4 BUILD STABLE",
+    "version": "v2.0.4 Build Stable",
     "mainTitle": "The Future of Digital Infrastructure",
     "description": {
       "part1": "We build integrated ecosystems where",
       "highlight1": "web applications",
       "highlight2": "internal systems",
       "highlight3": "AI agents",
-      "part2": "communicate seamlessly."
+      "part2": "communicate seamlessly.",
+      "comma": ", ",
+      "and": " and "
     },
     "scroll": "Scroll to Initialize",
+    "prompt": ">",
     "terminal": "Initialize system sequence... > Loading modules... > AI Agents: ONLINE > API Gateways: CONNECTED"
   },
   "techStack": {
-    "systemModules": "[ System Modules Loaded ]"
+    "systemModules": "[ System Modules Loaded ]",
+    "items": ["REACT", "TYPESCRIPT", "PYTHON", "OPENAI", "AWS", "NODE.JS", "TAILWIND", "POSTGRESQL", "DOCKER", "GRAPHQL", "NEXT.JS", "VERCEL", "STRIPE", "FIREBASE"]
   },
   "services": {
-    "systemCapabilities": "SYSTEM_CAPABILITIES",
+    "systemCapabilities": "System Capabilities",
     "mainTitle": "We Build <gray>Everything</gray>.<br/> <gradient>You Just Watch It Run.</gradient>",
-    "description": "From simple scripts to complex enterprise ecosystems. If it involves data, logic, or the internet, we can automate it.",
+    "description": "From simple scripts to complex enterprise ecosystems, if it involves data, logic, or the internet, we can automate it.",
     "categories": {
       "businessSystems": "Business Systems",
       "dataOperations": "Data Operations",
@@ -79,6 +83,12 @@
         "title": "Email Automation",
         "desc": "Smart scheduling, AI auto-replies, and intelligent inbox management systems."
       }
+    },
+    "cta": {
+      "customArch": "System Architecture",
+      "title": "Ready to <green>Execute?</green>",
+      "desc": "Stop running manual processes. Start building your digital empire.\nInitialize your project sequence today.",
+      "button": "Initialize Project"
     }
   },
   "problem": {
@@ -91,6 +101,8 @@
       "automationPart2": "Automation"
     },
     "scroll": "Scroll to Connect",
+    "prompt": ">",
+    "moduleSuffix": ".mod",
     "workflow": {
       "accounting": { "label": "Accounting", "code1": "GET /invoices", "code2": "Status: Pending" },
       "hr": { "label": "HR Input", "code1": "Employee_ID: 4021", "code2": "Dept: Engineering" },
@@ -101,9 +113,10 @@
     }
   },
   "process": {
-    "pipeline": "EXECUTION_PIPELINE",
+    "pipeline": "Execution Pipeline",
     "title": "The <gradient>Protocol</gradient>",
     "subtitle": "Our systematic approach to building your automated future.",
+    "stepNumbers": ["01", "02", "03", "04"],
     "steps": {
       "discovery": {
         "title": "Discovery & Audit",
@@ -125,7 +138,7 @@
   },
   "solution": {
     "title": "Efficiency <br/> <green>Engineered.</green>",
-    "active": "[ACTIVE]",
+    "active": "[Active]",
     "items": {
       "automation": {
         "title": "Automation",
@@ -155,5 +168,8 @@
     "button": "Initialize Project",
     "secure": "// SECURE CONNECTION",
     "monitoring": "// 24/7 MONITORING"
+  },
+  "brand": {
+    "dot": "."
   }
 }

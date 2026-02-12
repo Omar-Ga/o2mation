@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLenis } from 'lenis/react';
+import { useTranslation } from 'react-i18next';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import Solutions from './pages/Solutions';
@@ -9,6 +10,7 @@ import { Header } from './components/common/Header';
 import { Footer } from './components/Footer';
 import { FooterReveal } from './components/FooterReveal';
 import SmoothScroll from './components/common/SmoothScroll';
+import { MotionConfig } from 'framer-motion';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -25,9 +27,14 @@ const ScrollToTop = () => {
   return null;
 };
 
-import { MotionConfig } from 'framer-motion';
-
 function App() {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
+
   return (
     <MotionConfig reducedMotion="user">
       <SmoothScroll>

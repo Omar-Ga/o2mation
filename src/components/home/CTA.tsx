@@ -22,6 +22,7 @@ export const CTA = () => {
         >
           <Trans
             i18nKey="cta.title"
+            t={t}
             components={{ 
               green: <span className="text-neon-green" />
             }}

@@ -1,9 +1,68 @@
 {
-  "title": "Contact Us",
+  "statusPanel": {
+    "uplinkEstablished": "UPLINK ESTABLISHED",
+    "separator": "//",
+    "initialize": "Initialize",
+    "protocol": "Protocol",
+    "description": "Configure your project parameters below. Our autonomous agents are standing by to process your request.",
+    "systemTime": "SYSTEM_TIME",
+    "location": "LOCATION",
+    "globalNode": "GLOBAL_NODE",
+    "agentStatus": "AGENT_STATUS",
+    "ready": "READY"
+  },
+  "success": {
+    "transmissionReceived": "Transmission Received",
+    "message": "Your project parameters have been successfully logged in our system. An O2MATION architect will initialize contact shortly.",
+    "returnHome": "Return to Base"
+  },
   "form": {
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "submit": "Send"
+    "sections": {
+      "identity": "Identity Verification",
+      "parameters": "Operational Parameters",
+      "missionBrief": "Mission Brief"
+    },
+    "fields": {
+      "entityName": {
+        "label": "ENTITY_NAME",
+        "placeholder": "John Doe"
+      },
+      "commChannel": {
+        "label": "COMM_CHANNEL (EMAIL)",
+        "placeholder": "john@company.com"
+      },
+      "organizationScale": {
+        "label": "ORGANIZATION_SCALE"
+      },
+      "targetModules": {
+        "label": "TARGET_MODULES (MULTI-SELECT)"
+      },
+      "systemDescription": {
+        "label": "SYSTEM_DESCRIPTION",
+        "placeholder": "Describe the process you want to automate or the system you need built..."
+      },
+      "additionalLogs": {
+        "label": "ADDITIONAL_LOGS (OPTIONAL)",
+        "placeholder": "Any other details..."
+      }
+    },
+    "options": {
+      "companySize": {
+        "startup": "1-10 (Startup)",
+        "growth": "11-50 (Growth)",
+        "scaleUp": "51-200 (Scale-up)",
+        "enterprise": "200+ (Enterprise)"
+      },
+      "services": {
+        "ai": "AI & Automation",
+        "web": "Custom Web Dev",
+        "system": "Enterprise Systems",
+        "ocr": "Offline-to-Online"
+      }
+    },
+    "submit": {
+      "processing": "PROCESSING...",
+      "executeProtocol": "EXECUTE_PROTOCOL"
+    }
   }
 }

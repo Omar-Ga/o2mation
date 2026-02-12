@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { ReactiveGrid } from '../components/home/hero/ReactiveGrid';
 import { Shield, Cpu, Terminal } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 // --- Types & Interfaces ---
 interface TextGroup {
@@ -31,6 +32,7 @@ const OperatorProfile = ({
   activeRange,
   imageContent 
 }: OperatorProfileProps) => {
+  const { t } = useTranslation('meetTheTeam');
   const [start, end] = activeRange;
   const duration = end - start;
   
@@ -112,7 +114,7 @@ const OperatorProfile = ({
             style={{ opacity: opacity1, x: textX1 }}
             className={`absolute top-0 w-full flex flex-col ${textAlignment}`}
           >
-            <HeaderBlock alignment={alignment} label="01" />
+            <HeaderBlock alignment={alignment} label={t('labels.01')} />
             <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-2">
               {textGroup1.title}
             </h1>
@@ -129,7 +131,7 @@ const OperatorProfile = ({
             style={{ opacity: opacity2, x: textX2 }}
             className={`absolute top-0 w-full flex flex-col ${textAlignment}`}
           >
-             <HeaderBlock alignment={alignment} label="02" />
+             <HeaderBlock alignment={alignment} label={t('labels.02')} />
             <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-2">
               {textGroup2.title}
             </h1>
@@ -143,7 +145,7 @@ const OperatorProfile = ({
             {/* Decorative Data Block (Only on 2nd group for finality) */}
             <div className={`mt-8 p-4 border border-white/5 bg-white/5 backdrop-blur-sm rounded-sm font-mono text-xs text-gray-500 w-fit ${alignment === 'right' ? 'self-end' : ''}`}>
               <div className="flex gap-4 mb-2">
-                <span>STATUS: <span className="text-neon-green">SYNCED</span></span>
+                <span>{t('ui.status')}: <span className="text-neon-green">{t('ui.synced')}</span></span>
               </div>
               <div className="flex gap-1 opacity-50">
                 {Array.from({ length: 20 }).map((_, i) => (
@@ -168,20 +170,24 @@ const OperatorProfile = ({
   );
 };
 
-const HeaderBlock = ({ alignment, label }: { alignment: string, label: string }) => (
-  <div className="overflow-hidden mb-4">
-    <div className="flex items-center gap-3 text-neon-green mb-2">
-      <Terminal size={16} />
-      <span className="font-mono text-xs tracking-[0.2em] uppercase">
-        SYS_OP_0{alignment === 'left' ? '1' : '2'} // SEQ_{label}
-      </span>
+const HeaderBlock = ({ alignment, label }: { alignment: string, label: string }) => {
+  const { t } = useTranslation('meetTheTeam');
+  return (
+    <div className="overflow-hidden mb-4">
+      <div className="flex items-center gap-3 text-neon-green mb-2">
+        <Terminal size={16} />
+        <span className="font-mono text-xs tracking-[0.2em] uppercase">
+          {t('labels.seq', { num: alignment === 'left' ? '1' : '2', label })}
+        </span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // --- Main Page Component ---
 
 const MeetTheTeam = () => {
+  const { t } = useTranslation('meetTheTeam');
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -213,17 +219,17 @@ const MeetTheTeam = () => {
 
         {/* Phase A: Omar Gamal (0% - 45%) */}
         <OperatorProfile
-          name="OMAR GAMAL"
-          role="THE STRATEGIST"
+          name={t('members.omar.name')}
+          role={t('members.omar.role')}
           textGroup1={{
-            title: "OMAR GAMAL",
-            subtitle: "THE STRATEGIST",
-            description: "Orchestrating digital transformation through high-level architectural foresight. Omar deconstructs chaos into streamlined workflows."
+            title: t('members.omar.group1.title'),
+            subtitle: t('members.omar.group1.subtitle'),
+            description: t('members.omar.group1.description')
           }}
           textGroup2={{
-            title: "VISIONARY LEAD",
-            subtitle: "SYSTEM ARCHITECT",
-            description: "From conceptualization to execution, he ensures that every automated system serves a clear, high-impact business imperative."
+            title: t('members.omar.group2.title'),
+            subtitle: t('members.omar.group2.subtitle'),
+            description: t('members.omar.group2.description')
           }}
           alignment="left"
           scrollProgress={scrollYProgress}
@@ -238,7 +244,7 @@ const MeetTheTeam = () => {
                   <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(0,255,128,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%] animate-shine" />
                   <img 
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" 
-                    alt="Omar Gamal" 
+                    alt={t('members.omar.name')} 
                     className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                   />
                   <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent" />
@@ -263,7 +269,7 @@ const MeetTheTeam = () => {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="bg-charcoal/90 border border-neon-green/50 px-8 py-4 backdrop-blur-xl">
                 <span className="font-mono text-neon-green text-xl tracking-[0.5em] animate-pulse">
-                  TRANSFERRING_DATA...
+                  {t('ui.transferring')}
                 </span>
               </div>
             </div>
@@ -272,17 +278,17 @@ const MeetTheTeam = () => {
 
         {/* Phase C: Syed Umar (55% - 100%) */}
         <OperatorProfile
-          name="SYED UMAR"
-          role="THE ENGINEER"
+          name={t('members.syed.name')}
+          role={t('members.syed.role')}
           textGroup1={{
-            title: "SYED UMAR",
-            subtitle: "THE ENGINEER",
-            description: "Architecting robust systems where reliability meets radical innovation. Syed builds the invisible backbones that power seamless automation."
+            title: t('members.syed.group1.title'),
+            subtitle: t('members.syed.group1.subtitle'),
+            description: t('members.syed.group1.description')
           }}
           textGroup2={{
-            title: "CORE BUILDER",
-            subtitle: "TECHNICAL LEAD",
-            description: "Turning complex code into elegant, user-centric experiences. His code isn't just functional; it's a foundation for future scalability."
+            title: t('members.syed.group2.title'),
+            subtitle: t('members.syed.group2.subtitle'),
+            description: t('members.syed.group2.description')
           }}
           alignment="right"
           scrollProgress={scrollYProgress}
@@ -296,7 +302,7 @@ const MeetTheTeam = () => {
                   <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(0,255,128,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%] animate-shine" />
                   <img 
                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop" 
-                    alt="Syed Umar" 
+                    alt={t('members.syed.name')} 
                     className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                   />
                   <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent" />
@@ -313,10 +319,10 @@ const MeetTheTeam = () => {
            <div className="flex flex-col gap-2 text-[10px] font-mono text-gray-600">
              <div className="flex items-center gap-2">
                <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse" />
-               SYSTEM_CORE // ACTIVE
+               {t('ui.systemCore')} // {t('ui.active')}
              </div>
-             <div>COORDS: 34.0522° N, 118.2437° W</div>
-             <div>SECURE_CHANNEL: ENCRYPTED</div>
+             <div>{t('ui.coords')}: {t('coordinates')}</div>
+             <div>{t('ui.secureChannel')}: {t('ui.encrypted')}</div>
            </div>
         </div>
 

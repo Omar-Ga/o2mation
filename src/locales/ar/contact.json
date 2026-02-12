@@ -1,9 +1,68 @@
 {
-  "title": "اتصل بنا",
+  "statusPanel": {
+    "uplinkEstablished": "تم إنشاء الاتصال",
+    "separator": "//",
+    "initialize": "تهيئة",
+    "protocol": "البروتوكول",
+    "description": "قم بتكوين معلمات مشروعك أدناه. وكلاؤنا المستقلون على أهبة الاستعداد لمعالجة طلبك.",
+    "systemTime": "وقت_النظام",
+    "location": "الموقع",
+    "globalNode": "عقدة_عالمية",
+    "agentStatus": "حالة_الوكيل",
+    "ready": "جاهز"
+  },
+  "success": {
+    "transmissionReceived": "تم استقبال الإرسال",
+    "message": "تم تسجيل معلمات مشروعك بنجاح في نظامنا. سيقوم مهندس O2MATION ببدء الاتصال قريباً.",
+    "returnHome": "العودة للقاعدة"
+  },
   "form": {
-    "name": "الاسم",
-    "email": "البريد الإلكتروني",
-    "message": "الرسالة",
-    "submit": "إرسال"
+    "sections": {
+      "identity": "التحقق من الهوية",
+      "parameters": "المعلمات التشغيلية",
+      "missionBrief": "ملخص المهمة"
+    },
+    "fields": {
+      "entityName": {
+        "label": "اسم_الجهة",
+        "placeholder": "الاسم الكامل"
+      },
+      "commChannel": {
+        "label": "قناة_الاتصال (البريد)",
+        "placeholder": "email@example.com"
+      },
+      "organizationScale": {
+        "label": "حجم_المنظمة"
+      },
+      "targetModules": {
+        "label": "الوحدات_المستهدفة (متعدد)"
+      },
+      "systemDescription": {
+        "label": "وصف_النظام",
+        "placeholder": "صف العملية التي تريد أتمتتها أو النظام الذي تحتاج لبنائه..."
+      },
+      "additionalLogs": {
+        "label": "سجلات_إضافية (اختياري)",
+        "placeholder": "أي تفاصيل أخرى..."
+      }
+    },
+    "options": {
+      "companySize": {
+        "startup": "1-10 (شركة ناشئة)",
+        "growth": "11-50 (نمو)",
+        "scaleUp": "51-200 (توسع)",
+        "enterprise": "200+ (مؤسسة)"
+      },
+      "services": {
+        "ai": "الذكاء الاصطناعي والأتمتة",
+        "web": "تطوير ويب مخصص",
+        "system": "أنظمة المؤسسات",
+        "ocr": "التحول الرقمي (أوفلاين لأونلاين)"
+      }
+    },
+    "submit": {
+      "processing": "جاري المعالجة...",
+      "executeProtocol": "تنفيذ_البروتوكول"
+    }
   }
 }

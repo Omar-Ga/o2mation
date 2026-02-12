@@ -48,6 +48,7 @@ export const Solution = () => {
           >
             <Trans
               i18nKey="solution.title"
+              t={t}
               components={{ 
                 br: <br />,
                 green: <span className="text-neon-green" />
