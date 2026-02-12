@@ -128,10 +128,20 @@ export const Problem = () => {
     <section ref={containerRef} className="relative h-[400vh] bg-charcoal">
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center justify-center">
         
-        {/* BACKGROUND NOISE */}
-        <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" 
-             style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
-        />
+        {/* BACKGROUND - Minimal Tech Grid + Subtle Glow */}
+        <div className="absolute inset-0 z-0 pointer-events-none bg-black">
+           {/* Subtle Grid */}
+           <div className="absolute inset-0 opacity-[0.05]" 
+                style={{ 
+                  backgroundImage: `linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px)`,
+                  backgroundSize: '64px 64px'
+                }} 
+           />
+           {/* Ambient Green Glow - Top Center */}
+           <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[80vw] h-[60vh] bg-neon-green/5 rounded-full blur-[150px]" />
+           {/* Ambient Bottom Glow */}
+           <div className="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[80vw] h-[40vh] bg-neon-green/5 rounded-full blur-[150px]" />
+        </div>
 
         {/* TITLE SECTION */}
         <div className="absolute top-20 left-0 right-0 z-20 text-center pointer-events-none h-32">

@@ -46,27 +46,16 @@ export const Process = () => {
   ], [t]);
 
   return (
-    <section className="py-32 bg-charcoal relative overflow-hidden">
-      {/* Circuit Board Background */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,128,0.1),transparent_50%)]" />
-        <svg className="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" opacity="0.2"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
-
+    <section className="py-32 bg-black relative overflow-hidden">
+      {/* Background - Clean */}
+      
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-24">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-neon-green font-mono text-xs tracking-widest mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-white/5 text-white font-mono text-xs tracking-widest mb-6"
           >
             <GitBranch size={14} />
             <span>{t('process.pipeline')}</span>
@@ -76,17 +65,17 @@ export const Process = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-bold mb-6 text-white"
+            className="text-4xl md:text-6xl font-bold mb-6 text-white tracking-tight"
           >
             <Trans
               i18nKey="process.title"
               t={t}
               components={{ 
-                gradient: <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-500" />
+                gradient: <span className="text-white" />
               }}
             />
           </motion.h2>
-          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+          <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
             {t('process.subtitle')}
           </p>
         </div>
@@ -101,11 +90,11 @@ export const Process = () => {
               transition={{ delay: index * 0.15 }}
               className="relative group"
             >
-              {/* Animated Connector Line (Desktop) */}
+              {/* Animated Connector Line (Desktop) - Made Monochrome */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-16 left-full w-full h-[2px] bg-charcoal-light -translate-x-8 z-0 overflow-hidden">
+                <div className="hidden lg:block absolute top-16 left-full w-full h-[1px] bg-zinc-800 -translate-x-8 z-0 overflow-hidden">
                   <motion.div 
-                    className="h-full w-full bg-gradient-to-r from-transparent via-neon-green to-transparent"
+                    className="h-full w-full bg-gradient-to-r from-transparent via-white/50 to-transparent"
                     animate={{ x: ["-100%", "100%"] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: index * 0.5 }}
                     style={{ willChange: "transform" }}
@@ -114,31 +103,28 @@ export const Process = () => {
               )}
 
               <div className={`
-                h-full p-8 rounded-3xl border border-white/5 bg-charcoal/50 backdrop-blur-xl 
+                h-full p-8 rounded-3xl border border-white/5 bg-zinc-900 
                 transition-all duration-500 relative z-10 overflow-hidden group-hover:-translate-y-2
-                ${step.border} ${step.glow}
+                group-hover:bg-zinc-800 group-hover:border-neon-green/30 group-hover:shadow-[0_0_30px_-10px_rgba(0,255,163,0.15)]
               `}>
-                {/* Hover Gradient Overlay */}
-                <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br from-white to-transparent`} />
                 
                 <div className="relative z-10">
                   <div className="flex justify-between items-start mb-8">
                     <div className={`
-                      p-4 rounded-2xl bg-white/5 border border-white/10 
-                      group-hover:scale-110 transition-transform duration-500
-                      ${step.color}
+                      p-4 rounded-2xl bg-black/50 border border-white/5 text-white
+                      group-hover:scale-110 group-hover:text-neon-green group-hover:border-neon-green/30 transition-all duration-500
                     `}>
                       <step.icon size={28} />
                     </div>
-                    <span className="font-mono text-4xl font-black text-white/40 group-hover:text-white/50 transition-colors">
+                    <span className="font-mono text-4xl font-black text-zinc-800 group-hover:text-neon-green/20 transition-colors">
                       {step.step}
                     </span>
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:translate-x-2 transition-transform duration-300">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:translate-x-2 group-hover:text-neon-green transition-all duration-300">
                     {step.title}
                   </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">
+                  <p className="text-zinc-400 text-sm leading-relaxed group-hover:text-zinc-300 transition-colors">
                     {step.desc}
                   </p>
                 </div>

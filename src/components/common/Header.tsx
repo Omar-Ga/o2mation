@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 
 export const Header = () => {
   const { t, i18n } = useTranslation('common');
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   const toggleLanguage = () => {
@@ -17,7 +17,7 @@ export const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -25,152 +25,132 @@ export const Header = () => {
 
   // Close mobile menu on route change
   useEffect(() => {
-    setIsMobileMenuOpen(false);
+    setIsOpen(false);
   }, [location]);
 
-  const navLinks = [
-    { name: t('header.nav.home'), path: '/' },
-    { name: t('header.nav.solutions'), path: '/solutions' },
-    { name: t('header.nav.meetTheTeam'), path: '/meet-the-team' },
-    { name: t('header.nav.contact'), path: '/contact' },
+  const navItems = [
+    { path: '/', label: t('header.nav.home') },
+    { path: '/solutions', label: t('header.nav.solutions') },
+    { path: '/meet-the-team', label: t('header.nav.meetTheTeam') },
+    { path: '/contact', label: t('header.nav.contact') },
   ];
 
   const LanguageToggle = ({ className = "" }: { className?: string }) => (
     <button 
       onClick={toggleLanguage}
-      className={`relative flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 hover:border-neon-green/30 transition-all group overflow-hidden ${className}`}
+      className={`relative flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 hover:border-brand-neon/30 transition-all group overflow-hidden ${className}`}
     >
       <motion.div 
-        className="absolute inset-0 bg-neon-green/5 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"
+        className="absolute inset-0 bg-brand-neon/5 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"
       />
-      <Globe size={12} className="text-gray-500 group-hover:text-neon-green transition-colors relative z-10" />
+      <Globe size={12} className="text-gray-500 group-hover:text-brand-neon transition-colors relative z-10" />
       <span className="text-[10px] font-mono tracking-[0.2em] text-gray-400 group-hover:text-white uppercase relative z-10">
         {i18n.language === 'en' ? 'AR' : 'EN'}
       </span>
-      <div className="w-1 h-1 rounded-full bg-neon-green animate-pulse relative z-10" />
+      <div className="w-1 h-1 rounded-full bg-brand-neon animate-pulse relative z-10" />
     </button>
   );
 
   return (
-    <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
-          isScrolled 
-            ? 'bg-charcoal/90 backdrop-blur-md border-white/10 py-4' 
-            : 'bg-transparent border-transparent py-6'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'py-4' : 'py-6'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        <div
+          className={`flex items-center justify-between px-6 py-3 rounded-xl transition-all duration-500 ${
+            scrolled ? 'bg-zinc-900/80 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/50' : 'bg-transparent'
+          }`}
+        >
           {/* Logo */}
-          <Link to="/" className="group flex items-center gap-2 z-50">
-            <div className="w-8 h-8 bg-neon-green/10 border border-neon-green/30 flex items-center justify-center rounded-sm group-hover:bg-neon-green/20 transition-colors">
-              <Terminal size={16} className="text-neon-green" />
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="w-9 h-9 bg-brand-neon rounded-lg flex items-center justify-center text-black font-bold group-hover:scale-110 transition-transform">
+              <Terminal size={18} />
             </div>
-            <span className="font-bold text-xl tracking-tighter text-white">
-              {t('brand.name')}<span className="text-neon-green">{t('brand.dot')}</span>
+            <span className="font-display font-bold text-xl tracking-tight text-white">
+              O2MATION<span className="text-brand-neon">.</span>
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.path} 
-                to={link.path}
-                className={`text-xs font-mono tracking-widest hover:text-neon-green transition-colors relative group ${
-                  location.pathname === link.path ? 'text-neon-green' : 'text-gray-400'
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`text-xs font-bold uppercase tracking-widest transition-colors ${
+                  location.pathname === item.path ? 'text-brand-neon' : 'text-gray-400 hover:text-white'
                 }`}
               >
-                {link.name}
-                <span className={`absolute -bottom-2 left-0 h-[1px] bg-neon-green transition-all duration-300 ${
-                  location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
-                }`} />
+                {item.label}
               </Link>
             ))}
-          </nav>
+          </div>
 
-          {/* CTA & Mobile Toggle */}
+          {/* Controls */}
           <div className="flex items-center gap-4">
-            <LanguageToggle className="hidden md:flex" />
+            <LanguageToggle className="hidden md:flex rounded-full border-white/10" />
             
             <Link 
               to="/contact"
-              className="hidden md:flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 hover:border-neon-green/50 hover:bg-neon-green/10 transition-all group"
+              className={`hidden md:flex items-center gap-2 px-5 py-2 rounded-full transition-all group ${
+                scrolled 
+                  ? 'bg-white text-black hover:bg-brand-neon hover:shadow-[0_0_20px_rgba(0,255,163,0.4)]' 
+                  : 'bg-white text-black hover:bg-brand-neon hover:shadow-[0_0_20px_rgba(0,255,163,0.4)]'
+              }`}
             >
-              <span className="text-xs font-bold tracking-wide text-white group-hover:text-neon-green">{t('header.cta.initialize')}</span>
+              <span className="text-xs font-bold tracking-wide">{t('header.cta.initialize')}</span>
               {i18n.language === 'ar' ? (
-                <ChevronLeft size={14} className="text-gray-500 group-hover:text-neon-green transition-colors" />
+                <ChevronLeft size={14} className="text-black/50 group-hover:text-black transition-colors" />
               ) : (
-                <ChevronRight size={14} className="text-gray-500 group-hover:text-neon-green transition-colors" />
+                <ChevronRight size={14} className="text-black/50 group-hover:text-black transition-colors" />
               )}
             </Link>
 
-            <button 
-              className="md:hidden z-50 text-white hover:text-neon-green transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            <button
+              className="md:hidden text-white w-9 h-9 flex items-center justify-center rounded bg-white/5"
+              onClick={() => setIsOpen(!isOpen)}
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
-      </motion.header>
+      </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
+        {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-40 bg-charcoal/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden fixed top-24 left-6 right-6 z-50 overflow-hidden"
           >
-            <nav className="flex flex-col items-center gap-8">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.path}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + i * 0.1 }}
+            <div className="bg-zinc-900/90 backdrop-blur-xl border border-white/10 p-6 rounded-2xl flex flex-col gap-2 shadow-xl">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className="text-lg font-bold text-gray-200 hover:text-brand-neon p-2"
+                  onClick={() => setIsOpen(false)}
                 >
-                  <Link 
-                    to={link.path}
-                    className={`text-3xl font-bold tracking-tighter ${
-                      location.pathname === link.path ? 'text-neon-green' : 'text-white'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                </motion.div>
-              ))}
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="mt-8 flex flex-col items-center gap-6"
-              >
-                <Link 
-                  to="/contact"
-                  className="px-8 py-4 bg-neon-green text-black font-bold tracking-widest hover:bg-white transition-colors"
-                >
-                  {t('header.cta.startProject')}
+                  {item.label}
                 </Link>
-
-                <LanguageToggle />
-              </motion.div>
-            </nav>
-
-            {/* Decor */}
-            <div className="absolute bottom-12 text-xs font-mono text-gray-600">
-              {t('header.status.ready')}
+              ))}
+              <div className="h-[1px] bg-white/10 my-2" />
+              <Link to="/contact" onClick={() => setIsOpen(false)}>
+                <button className="w-full py-3 bg-brand-neon text-black font-bold rounded">
+                  {t('header.cta.initialize')}
+                </button>
+              </Link>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </motion.nav>
   );
 };

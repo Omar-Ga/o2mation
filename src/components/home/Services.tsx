@@ -39,16 +39,16 @@ const ServiceCard = ({ item, index }: { item: any, index: number }) => {
         ease: "easeOut" 
       }}
       onMouseMove={handleMouseMove}
-      className="group relative h-full min-h-[140px] rounded-xl border border-white/10 bg-white/5 p-6 hover:border-neon-green/30 transition-colors duration-300"
+      className="group relative h-full min-h-[140px] rounded-3xl border border-white/5 bg-zinc-900 p-6 hover:bg-zinc-800 hover:border-neon-green/30 hover:shadow-[0_0_20px_rgba(0,255,163,0.1)] transition-all duration-300"
     >
-      {/* Spotlight Overlay */}
+      {/* Spotlight Overlay - Made Subtler */}
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
             radial-gradient(
               400px circle at ${mouseX}px ${mouseY}px,
-              rgba(74, 222, 128, 0.1),
+              rgba(0, 255, 163, 0.05),
               transparent 80%
             )
           `,
@@ -56,14 +56,14 @@ const ServiceCard = ({ item, index }: { item: any, index: number }) => {
       />
       
       <div className="relative flex items-start gap-4 h-full z-10">
-        <div className="p-3 rounded-lg bg-charcoal border border-white/10 text-neon-green group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(74,222,128,0.2)] transition-all duration-300 shrink-0">
+        <div className="p-3 rounded-2xl bg-black/50 border border-white/5 text-white group-hover:scale-110 group-hover:text-neon-green group-hover:border-neon-green/20 transition-all duration-300 shrink-0">
           <item.icon size={20} />
         </div>
         <div className="flex flex-col h-full">
           <h4 className="text-white font-medium mb-1 group-hover:text-neon-green transition-colors">
             {item.title}
           </h4>
-          <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors leading-relaxed flex-grow">
+          <p className="text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors leading-relaxed flex-grow">
             {item.desc}
           </p>
         </div>
@@ -115,9 +115,8 @@ export const Services = () => {
   }
 
   return (
-    <section className="py-32 bg-charcoal relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(74,222,128,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(74,222,128,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+    <section className="py-32 bg-black relative overflow-hidden">
+      {/* Background Decor - Removed Green Grid */}
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="mb-20">
@@ -127,8 +126,8 @@ export const Services = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="flex items-center gap-2 mb-6"
           >
-            <div className="h-px w-8 bg-neon-green" />
-            <span className="text-neon-green font-mono text-sm tracking-wider">{t('services.systemCapabilities')}</span>
+            <div className="h-px w-8 bg-white" />
+            <span className="text-white font-mono text-sm tracking-wider">{t('services.systemCapabilities')}</span>
           </motion.div>
           
           <motion.h2 
@@ -136,15 +135,15 @@ export const Services = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold mb-6 text-white"
+            className="text-4xl md:text-6xl font-bold mb-6 text-white tracking-tight"
           >
             <Trans
               i18nKey="services.mainTitle"
               t={t}
               components={{
-                gray: <span className="text-gray-500" />,
+                gray: <span className="text-zinc-500" />,
                 br: <br />,
-                gradient: <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500" />
+                gradient: <span className="text-white" />
               }}
             />
           </motion.h2>
@@ -154,7 +153,7 @@ export const Services = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.2 }}
-            className="text-gray-300 text-lg max-w-2xl leading-relaxed"
+            className="text-zinc-400 text-lg max-w-2xl leading-relaxed"
           >
             {t('services.description')}
           </motion.p>
@@ -168,7 +167,7 @@ export const Services = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ delay: catIndex * 0.1 }}
-                className="text-xl font-bold text-white border-l-2 border-neon-green pl-4 mb-6"
+                className="text-xl font-bold text-white border-l-2 border-white pl-4 mb-6"
               >
                 {category.category}
               </motion.h3>
@@ -188,16 +187,16 @@ export const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           onMouseMove={handleMouseMove}
-          className="mt-20 relative overflow-hidden rounded-2xl group border border-white/10 bg-charcoal-light/50 backdrop-blur-sm"
+          className="mt-20 relative overflow-hidden rounded-3xl group border border-white/5 bg-zinc-900"
         >
           {/* Spotlight Effect */}
           <motion.div
-            className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+            className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
             style={{
               background: useMotionTemplate`
                 radial-gradient(
                   650px circle at ${mouseX}px ${mouseY}px,
-                  rgba(0, 255, 128, 0.15),
+                  rgba(255, 255, 255, 0.05),
                   transparent 80%
                 )
               `,
@@ -205,30 +204,30 @@ export const Services = () => {
           />
           
           <div className="relative p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 z-10">
-            {/* Animated Grid Background inside CTA */}
-            <div className="absolute inset-0 opacity-20 pointer-events-none">
+            {/* Animated Grid Background inside CTA - Subtler */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:20px_20px]" />
             </div>
 
             <div className="max-w-2xl relative">
               <div className="flex items-center gap-2 mb-4">
-                <div className="p-2 rounded-lg bg-neon-green/10 border border-neon-green/20">
-                  <Sparkles size={18} className="text-neon-green animate-pulse" />
+                <div className="p-2 rounded-lg bg-white/5 border border-white/10">
+                  <Sparkles size={18} className="text-white animate-pulse" />
                 </div>
-                <span className="text-neon-green font-mono text-xs tracking-widest uppercase">{t('services.cta.customArch')}</span>
+                <span className="text-white font-mono text-xs tracking-widest uppercase">{t('services.cta.customArch')}</span>
               </div>
               
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight tracking-tight">
                 <Trans
                   i18nKey="services.cta.title"
                   t={t}
                   components={{
-                    gradient: <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-500" />,
-                    green: <span className="text-neon-green" />
+                    gradient: <span className="text-white" />,
+                    green: <span className="text-white" />
                   }}
                 />
               </h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <p className="text-zinc-400 text-lg leading-relaxed">
                 {t('services.cta.desc')}
               </p>
             </div>
@@ -236,9 +235,9 @@ export const Services = () => {
             <motion.button 
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="relative px-8 py-5 bg-neon-green text-charcoal font-bold rounded-xl overflow-hidden group/btn shrink-0"
+              className="relative px-8 py-5 bg-white text-black font-bold rounded-2xl overflow-hidden group/btn shrink-0 hover:bg-neon-green hover:shadow-[0_0_20px_rgba(0,255,163,0.4)] transition-all duration-300"
             >
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
+              <div className="absolute inset-0 bg-black/5 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
               <div className={`relative flex items-center gap-3 ${isRtl ? 'flex-row-reverse' : ''}`}>
                 <Terminal size={20} className={isRtl ? "scale-x-[-1]" : ""} />
                 <span>{t('services.cta.button')}</span>

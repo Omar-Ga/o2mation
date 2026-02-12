@@ -7,13 +7,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'neon-green': '#00ff80',
-        'charcoal': '#020202',
-        'charcoal-light': '#1a1a1a',
+        'neon-green': '#00FFA3', // Keep the brand accent
+        'brand-neon': '#00FFA3',
+        'charcoal': '#000000',   // Deepest Black
+        'charcoal-light': '#09090b', // Zinc-950/900 for cards (Hierarchy of Darkness)
+        'zinc-900': '#18181b',   // Explicit Zinc-900 for reference
+        'zinc-800': '#27272a',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'], // Assuming Inter might be available or fallback
-        mono: ['JetBrains Mono', 'monospace'], // Tech feel
+        sans: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'], // Cleaner sans-serif
+        mono: ['Space Mono', 'JetBrains Mono', 'monospace'], // Cleaner monospace
+        display: ['Space Grotesk', 'sans-serif'], // For large titles
       },
     },
   },

@@ -1,14 +1,11 @@
 import { motion, useScroll, useTransform, useMotionValue } from 'framer-motion';
-import { ArrowDown, Terminal, Wifi } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import { useRef } from 'react';
-import { useTranslation } from 'react-i18next';
 import { GlitchTitle } from './hero/GlitchTitle';
-import { TerminalText } from './hero/TerminalText';
 import { ReactiveGrid } from './hero/ReactiveGrid';
 import { BackgroundEffects } from './hero/BackgroundEffects';
 
 export const Hero = () => {
-  const { t } = useTranslation('home');
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -18,7 +15,7 @@ export const Hero = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-  // Mouse tracking for background effect - using MotionValues to avoid re-renders
+  // Mouse tracking for background effect
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -32,87 +29,89 @@ export const Hero = () => {
     <section 
       ref={ref} 
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-charcoal text-white pt-20 group perspective-1000"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white pt-20"
     >
-      {/* Isolated Heavy Background Effects */}
+      {/* Background Elements */}
       <BackgroundEffects mouseX={mouseX} mouseY={mouseY} />
-
-      {/* Isolated Interactive Grid */}
       <ReactiveGrid />
-
-      <style>{`
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-      `}</style>
+      
+      {/* Ambient Glows from user snippet - adapted to existing style */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-[100px] pointer-events-none" />
 
       <motion.div 
-        style={{ y, opacity, willChange: "transform, opacity" }}
-        className="relative z-10 text-center px-4 max-w-6xl mx-auto w-full pointer-events-none"
+        style={{ y, opacity }}
+        className="max-w-7xl mx-auto px-6 w-full relative z-10 flex flex-col items-center justify-center text-center pointer-events-none"
       >
-        {/* Top Status Bar - Static enough to stay here */}
-        <div className="flex justify-between items-center w-full max-w-4xl mx-auto mb-12 text-xs font-mono text-gray-500 border-b border-gray-800 pb-2 pointer-events-auto">
-           <div className="flex items-center gap-2">
-             <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse" />
-             <span>{t('hero.system.online')}</span>
-           </div>
-           <div className="flex items-center gap-2">
-             <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse delay-75" />
-             <Wifi size={14} />
-             <span>{t('hero.system.latency', { val: 12 })}</span>
-           </div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-8 pointer-events-auto"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-green/10 border border-neon-green/20 text-neon-green text-xs font-mono mb-6">
-            <Terminal size={12} />
-            <span>{t('hero.version')}</span>
-          </div>
-          
-          <h2 className="text-neon-green font-mono text-sm md:text-base tracking-[0.3em] mb-4 uppercase">
-            {t('hero.mainTitle')}
-          </h2>
-        </motion.div>
-
-        {/* Isolated Heavy Glitch Title */}
-        <div className="pointer-events-auto">
-          <GlitchTitle />
-        </div>
-          
-        {/* Isolated Terminal Typing Effect */}
-        <div className="pointer-events-auto">
-          <TerminalText />
-        </div>
-
-        <motion.p 
-          className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed pointer-events-auto"
+        
+        {/* Top Status Bar */}
+        <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
+          className="flex items-center gap-4 md:gap-8 text-xs font-mono text-zinc-500 mb-8 md:mb-12 uppercase tracking-widest pointer-events-auto"
         >
-          {t('hero.description.part1')} <span className="text-white font-semibold border-b border-neon-green/30">{t('hero.description.highlight1')}</span>{t('hero.description.comma')}<span className="text-white font-semibold border-b border-neon-green/30">{t('hero.description.highlight2')}</span>{t('hero.description.and')}<span className="text-neon-green font-semibold">{t('hero.description.highlight3')}</span> {t('hero.description.part2')}
+           <div className="flex items-center gap-2">
+             <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+             System: Online
+           </div>
+           <div className="hidden md:flex items-center gap-2">
+             <span className="w-2 h-2 bg-zinc-700 rounded-full" />
+             Latency: 12ms
+           </div>
+           <div className="px-3 py-1 border border-white/10 rounded-full text-white bg-white/5">
+             v2.0.4 Build Stable
+           </div>
+        </motion.div>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-zinc-400 font-mono text-sm md:text-base tracking-[0.3em] uppercase mb-4 pointer-events-auto"
+        >
+          The Future of Digital Infrastructure
         </motion.p>
-      </motion.div>
+        
+        {/* THE GLITCH TEXT */}
+        <div className="mb-8 pointer-events-auto">
+           <GlitchTitle />
+        </div>
+        
+        {/* Initializing Text */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="font-mono text-zinc-400 text-xs md:text-sm flex flex-col md:flex-row gap-4 mb-12 pointer-events-auto"
+        >
+          <span>&gt; Initialize system sequence...</span>
+          <span className="hidden md:inline text-zinc-700">|</span>
+          <span>&gt; Loading modules...</span>
+          <span className="hidden md:inline text-zinc-700">|</span>
+          <span className="text-white">&gt; AI Agents: <span className="text-white">ONLINE</span></span>
+        </motion.div>
 
+
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto leading-relaxed mb-12 pointer-events-auto"
+        >
+          We build integrated ecosystems where <span className="text-white font-bold underline decoration-white/20 underline-offset-4">web applications</span>, <span className="text-white font-bold underline decoration-white/20 underline-offset-4">internal systems</span>, and <span className="text-white font-bold">AI agents</span> communicate seamlessly.
+        </motion.p>
+
+      </motion.div>
+      
+      {/* Scroll Indicator */}
       <motion.div 
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 pointer-events-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white cursor-pointer hover:text-neon-green transition-colors duration-300 pointer-events-auto"
+        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2"
-        >
-          <span className="text-xs font-mono text-neon-green/80 tracking-widest uppercase">{t('hero.scroll')}</span>
-          <ArrowDown className="text-neon-green w-6 h-6 animate-bounce" />
-        </motion.div>
+        <span className="text-xs font-mono tracking-widest uppercase animate-pulse">Scroll to Initialize</span>
+        <Zap size={20} className="animate-bounce" />
       </motion.div>
     </section>
   );

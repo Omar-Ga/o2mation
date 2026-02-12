@@ -1,13 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Updated brand-neon to cleaner, brighter green */
+    --brand-neon: #00FFA3;
+  }
+
   body {
-    @apply bg-charcoal text-white antialiased relative;
+    @apply bg-black text-white antialiased relative font-sans selection:bg-white/20 selection:text-white;
   }
   
-  /* Global Noise Texture for 'Film Grain' feel */
+  /* Global Noise Texture for 'Film Grain' feel - Made subtler */
   body::before {
     content: "";
     position: fixed;
@@ -17,28 +24,24 @@
     height: 100%;
     pointer-events: none;
     z-index: 50;
-    opacity: 0.015;
+    opacity: 0.015; /* Reduced for cleaner look */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
-  ::selection {
-    @apply bg-neon-green text-charcoal;
+  /* Minimalistic Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
   }
-}
 
-/* Custom Scrollbar for that "Tech" feel */
-::-webkit-scrollbar {
-  width: 8px;
-}
+  ::-webkit-scrollbar-track {
+    @apply bg-black;
+  }
 
-::-webkit-scrollbar-track {
-  @apply bg-charcoal;
-}
+  ::-webkit-scrollbar-thumb {
+    @apply bg-zinc-800 rounded-full;
+  }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-charcoal-light rounded-full border border-gray-800;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-neon-green/50;
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-700;
+  }
 }

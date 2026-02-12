@@ -6,7 +6,7 @@ export const TechStack = () => {
   const techs = t('techStack.items', { returnObjects: true }) as string[];
   
   return (
-    <section className="py-20 bg-charcoal border-y border-white/5 overflow-hidden">
+    <section className="py-20 bg-black border-y border-white/5 overflow-hidden">
       <div className="flex">
         <motion.div 
           className="flex whitespace-nowrap"
@@ -15,10 +15,10 @@ export const TechStack = () => {
         >
           {[...techs, ...techs, ...techs, ...techs].map((tech, index) => (
             <div key={index} className="flex items-center mx-8">
-              <span className="text-4xl md:text-6xl font-black text-transparent stroke-text hover:text-neon-green transition-all duration-300 cursor-default select-none">
+              <span className="text-4xl md:text-6xl font-black text-transparent stroke-text hover:text-white transition-all duration-300 cursor-default select-none">
                 {tech}
               </span>
-              <div className="w-2 h-2 bg-gray-700 rounded-full ml-16" />
+              <div className="w-2 h-2 bg-zinc-800 rounded-full ml-16" />
             </div>
           ))}
         </motion.div>
@@ -26,16 +26,16 @@ export const TechStack = () => {
       
       {/* Label */}
       <div className="text-center mt-8">
-        <span className="text-xs font-mono text-neon-green/70 tracking-widest uppercase">{t('techStack.systemModules')}</span>
+        <span className="text-xs font-mono text-zinc-500 tracking-widest uppercase">{t('techStack.systemModules')}</span>
       </div>
 
       <style>{`
         .stroke-text {
-          -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+          -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
         }
         .stroke-text:hover {
-          -webkit-text-stroke: 1px #00ff80;
-          filter: drop-shadow(0 0 5px rgba(0, 255, 128, 0.5));
+          -webkit-text-stroke: 1px #fff;
+          filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
         }
       `}</style>
     </section>
