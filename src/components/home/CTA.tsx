@@ -11,7 +11,7 @@ export const CTA = () => {
       </div>
 
       <div className="relative z-10 text-center px-4 w-full max-w-4xl">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -19,8 +19,8 @@ export const CTA = () => {
         >
           Ready to <span className="text-neon-green">Execute?</span>
         </motion.h2>
-        
-        <motion.p 
+
+        <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -35,7 +35,7 @@ export const CTA = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative inline-flex items-center gap-4 px-12 py-6 bg-neon-green text-charcoal text-xl font-bold rounded-none hover:bg-white transition-colors uppercase tracking-widest overflow-hidden cursor-pointer"
+            className="group relative inline-flex items-center gap-4 px-12 py-6 bg-neon-green text-charcoal text-xl font-bold rounded-full hover:bg-white transition-colors uppercase tracking-widest overflow-hidden cursor-pointer"
           >
             <span className="relative z-10 flex items-center gap-2">
               <Power size={24} />
@@ -44,7 +44,7 @@ export const CTA = () => {
             <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0" />
           </motion.div>
         </Link>
-        
+
         <div className="mt-8 flex justify-center gap-8 text-sm font-mono text-gray-600">
           <span>// SECURE CONNECTION</span>
           <span>// 24/7 MONITORING</span>

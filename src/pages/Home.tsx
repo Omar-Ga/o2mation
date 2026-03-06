@@ -1,8 +1,6 @@
-import { Hero } from '../components/home/Hero';
-import { Services } from '../components/home/Services';
-import { Problem } from '../components/home/Problem';
-import { Solution } from '../components/home/Solution';
-import { Process } from '../components/home/Process';
+import { ModernHero } from '../components/home/ModernHero';
+import { BentoGridSection } from '../components/home/BentoGridSection';
+import { ServicesGrid } from '../components/home/ServicesGrid';
 import { TechStack } from '../components/home/TechStack';
 import { Metrics } from '../components/home/Metrics';
 import { CTA } from '../components/home/CTA';
@@ -10,13 +8,11 @@ import { ChatWidget } from '../components/common/ChatWidget';
 
 const Home = () => {
   return (
-    <main className="bg-charcoal min-h-screen selection:bg-neon-green selection:text-charcoal">
-      <Hero />
+    <main className="bg-charcoal min-h-screen selection:bg-neon-green selection:text-charcoal font-sans text-gray-300">
+      <ModernHero />
+      <BentoGridSection />
       <TechStack />
-      <Services />
-      <Problem />
-      <Process />
-      <Solution />
+      <ServicesGrid />
       <Metrics />
       <CTA />
       <ChatWidget />
