@@ -115,13 +115,13 @@ const OperatorProfile = ({
             className={`absolute top-0 w-full flex flex-col ${textAlignment}`}
           >
             <HeaderBlock alignment={alignment} label={t('labels.01')} />
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-2">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-black dark:text-white mb-2">
               {textGroup1.title}
             </h1>
             <h2 className="text-xl font-mono text-neon-green mb-8 tracking-widest border-b border-neon-green/30 pb-2 inline-block">
               // {textGroup1.subtitle}
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed max-w-md font-sans">
+            <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed max-w-md font-sans">
               {textGroup1.description}
             </p>
           </motion.div>
@@ -132,18 +132,18 @@ const OperatorProfile = ({
             className={`absolute top-0 w-full flex flex-col ${textAlignment}`}
           >
              <HeaderBlock alignment={alignment} label={t('labels.02')} />
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-2">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-black dark:text-white mb-2">
               {textGroup2.title}
             </h1>
             <h2 className="text-xl font-mono text-neon-green mb-8 tracking-widest border-b border-neon-green/30 pb-2 inline-block">
               // {textGroup2.subtitle}
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed max-w-md font-sans">
+            <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed max-w-md font-sans">
               {textGroup2.description}
             </p>
             
             {/* Decorative Data Block (Only on 2nd group for finality) */}
-            <div className={`mt-8 p-4 border border-white/5 bg-white/5 backdrop-blur-sm rounded-sm font-mono text-xs text-gray-500 w-fit ${alignment === 'right' ? 'self-end' : ''}`}>
+            <div className={`mt-8 p-4 border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 backdrop-blur-sm rounded-sm font-mono text-xs text-gray-500 w-fit ${alignment === 'right' ? 'self-end' : ''}`}>
               <div className="flex gap-4 mb-2">
                 <span>{t('ui.status')}: <span className="text-neon-green">{t('ui.synced')}</span></span>
               </div>
@@ -201,13 +201,13 @@ const MeetTheTeam = () => {
   const noiseOpacity = useTransform(scrollYProgress, [0.30, 0.5, 0.70], [0.3, 0.6, 0.3]);
 
   return (
-    <div ref={containerRef} className="relative h-[600vh] bg-charcoal">
+    <div ref={containerRef} className="relative h-[600vh] bg-white dark:bg-charcoal">
       
       {/* Sticky Viewport */}
       <div className="sticky top-0 h-screen overflow-hidden">
         
         {/* Ambient Background Layer */}
-        <div className="absolute inset-0 bg-charcoal z-0">
+        <div className="absolute inset-0 bg-white dark:bg-charcoal z-0">
           <div className="absolute inset-0 opacity-20 pointer-events-none">
             <ReactiveGrid />
           </div>
@@ -238,16 +238,16 @@ const MeetTheTeam = () => {
             <div className="relative w-[350px] h-[450px] md:w-[400px] md:h-[500px] group">
               {/* Image Frame */}
               <div className="absolute inset-0 border border-neon-green/30 translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-charcoal-light border border-white/10 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
-                <div className="w-full h-full bg-gradient-to-br from-charcoal to-charcoal-light flex items-center justify-center relative">
-                  <Shield size={64} className="text-white/10 absolute" />
+              <div className="absolute inset-0 bg-gray-50 dark:bg-charcoal-light border border-black/10 dark:border-white/10 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div className="w-full h-full bg-gradient-to-br from-white dark:from-charcoal to-white dark:to-charcoal-light flex items-center justify-center relative">
+                  <Shield size={64} className="text-black/10 dark:text-white/10 absolute" />
                   <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(0,255,128,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%] animate-shine" />
                   <img 
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" 
                     alt={t('members.omar.name')} 
                     className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                   />
-                  <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent" />
+                  <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white dark:from-charcoal via-white dark:via-charcoal/80 to-transparent" />
                 </div>
               </div>
               <div className="absolute -top-1 -left-1 w-4 h-4 border-t border-l border-neon-green" />
@@ -267,7 +267,7 @@ const MeetTheTeam = () => {
               className="absolute left-0 w-full h-[2px] bg-neon-green shadow-[0_0_20px_rgba(0,255,128,0.8)] z-40"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-charcoal/90 border border-neon-green/50 px-8 py-4 backdrop-blur-xl">
+              <div className="bg-white dark:bg-charcoal/90 border border-neon-green/50 px-8 py-4 backdrop-blur-xl">
                 <span className="font-mono text-neon-green text-xl tracking-[0.5em] animate-pulse">
                   {t('ui.transferring')}
                 </span>
@@ -296,16 +296,16 @@ const MeetTheTeam = () => {
           imageContent={
             <div className="relative w-[350px] h-[450px] md:w-[400px] md:h-[500px] group">
               <div className="absolute inset-0 border border-neon-green/30 -translate-x-4 translate-y-4 group-hover:-translate-x-2 group-hover:translate-y-2 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-charcoal-light border border-white/10 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
-                <div className="w-full h-full bg-gradient-to-bl from-charcoal to-charcoal-light flex items-center justify-center relative">
-                  <Cpu size={64} className="text-white/10 absolute" />
+              <div className="absolute inset-0 bg-gray-50 dark:bg-charcoal-light border border-black/10 dark:border-white/10 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div className="w-full h-full bg-gradient-to-bl from-white dark:from-charcoal to-white dark:to-charcoal-light flex items-center justify-center relative">
+                  <Cpu size={64} className="text-black/10 dark:text-white/10 absolute" />
                   <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(0,255,128,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%] animate-shine" />
                   <img 
                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop" 
                     alt={t('members.syed.name')} 
                     className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                   />
-                  <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent" />
+                  <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white dark:from-charcoal via-white dark:via-charcoal/80 to-transparent" />
                 </div>
               </div>
                <div className="absolute -top-1 -right-1 w-4 h-4 border-t border-r border-neon-green" />

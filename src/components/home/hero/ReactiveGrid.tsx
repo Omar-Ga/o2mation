@@ -15,7 +15,7 @@ const GridCell = memo(({ index, isHovered, onHover, onLeave }: {
 
   return (
     <motion.div
-      className="relative w-[10%] h-[10%] border-[0.5px] border-white/5 overflow-hidden will-change-transform"
+      className="relative w-[10%] h-[10%] border-[0.5px] border-black/5 dark:border-white/5 overflow-hidden will-change-transform"
       onMouseEnter={() => onHover(index)}
       onMouseLeave={onLeave}
     >
@@ -44,7 +44,7 @@ const GridCell = memo(({ index, isHovered, onHover, onLeave }: {
 
       {/* Connecting Lines (Circuit Effect) */}
       <motion.div
-         className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white/10"
+         className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-black/10 dark:border-white/10"
          animate={{ borderColor: isHovered ? "rgba(74,222,128,0.5)" : "rgba(255,255,255,0.1)" }}
       />
     </motion.div>

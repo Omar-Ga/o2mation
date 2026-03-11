@@ -10,7 +10,7 @@ import { ChatWidget } from '../components/common/ChatWidget';
 
 const Home = () => {
   return (
-    <main className="bg-charcoal min-h-screen selection:bg-neon-green selection:text-charcoal">
+    <main className="bg-white dark:bg-charcoal min-h-screen selection:bg-neon-green selection:text-charcoal">
       <Hero />
       <TechStack />
       <Services />

@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-charcoal text-white antialiased relative;
+    @apply bg-white text-black dark:bg-charcoal dark:text-white antialiased relative transition-colors duration-300;
   }
   
   /* Global Noise Texture for 'Film Grain' feel */
@@ -22,7 +22,7 @@
   }
 
   ::selection {
-    @apply bg-neon-green text-charcoal;
+    @apply bg-neon-green text-black;
   }
 }
 
@@ -32,11 +32,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-charcoal;
+  @apply bg-white dark:bg-charcoal;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-charcoal-light rounded-full border border-gray-800;
+  @apply bg-gray-200 dark:bg-gray-50 dark:bg-charcoal-light rounded-full border border-gray-300 dark:border-gray-800;
 }
 
 ::-webkit-scrollbar-thumb:hover {

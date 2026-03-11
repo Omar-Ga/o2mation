@@ -15,7 +15,7 @@ export const GlitchTitle = memo(() => {
 
   return (
     <div className="relative inline-flex items-center tracking-tighter will-change-transform" dir="ltr">
-      <h1 className="flex text-7xl md:text-9xl lg:text-[10rem] font-black leading-[0.85] text-white select-none">
+      <h1 className="flex text-7xl md:text-9xl lg:text-[10rem] font-black leading-[0.85] text-black dark:text-white select-none">
         {brandName.split("").map((char, i) => (
           <div key={i} className="relative group inline-block">
             {/* The Main Letter - Glitches & Clips */}

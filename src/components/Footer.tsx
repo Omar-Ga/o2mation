@@ -5,7 +5,7 @@ export const Footer = () => {
   const { t } = useTranslation('common');
 
   return (
-    <footer className="border-t border-white/10 pt-12 pb-8 bg-charcoal">
+    <footer className="border-t border-black/10 dark:border-white/10 pt-12 pb-8 bg-white dark:bg-charcoal">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
           <div className="mb-4 md:mb-0">

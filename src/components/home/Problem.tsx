@@ -125,7 +125,7 @@ export const Problem = () => {
   const scrollIndicatorOpacity = useTransform(scrollYProgress, [0.9, 1], [1, 0]);
 
   return (
-    <section ref={containerRef} className="relative h-[400vh] bg-charcoal">
+    <section ref={containerRef} className="relative h-[400vh] bg-white dark:bg-charcoal">
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center justify-center">
         
         {/* BACKGROUND NOISE */}
@@ -145,7 +145,7 @@ export const Problem = () => {
               t={t}
               components={{ line: <span className="text-gray-500 line-through decoration-neon-green/50 decoration-4" /> }}
             /> <br />
-            <span className="text-white">{t('problem.title.chaosPart2')}</span>
+            <span className="text-black dark:text-white">{t('problem.title.chaosPart2')}</span>
           </motion.h2>
 
           {/* TITLE 2: CONNECTING */}
@@ -154,7 +154,7 @@ export const Problem = () => {
             className="absolute inset-0 text-4xl md:text-6xl font-bold mb-6"
           >
             {t('problem.title.connectingPart1')} <br />
-            <span className="text-white">{t('problem.title.connectingPart2')}</span>
+            <span className="text-black dark:text-white">{t('problem.title.connectingPart2')}</span>
           </motion.h2>
           
           {/* TITLE 3: AUTOMATION */}
@@ -163,7 +163,7 @@ export const Problem = () => {
             className="absolute inset-0 text-4xl md:text-6xl font-bold mb-6 text-neon-green"
           >
             {t('problem.title.automationPart1')} <br />
-            <span className="text-white">{t('problem.title.automationPart2')}</span>
+            <span className="text-black dark:text-white">{t('problem.title.automationPart2')}</span>
           </motion.h2>
         </div>
 
@@ -265,7 +265,7 @@ const WorkflowItem = ({ item, progress, index }: { item: WorkflowItemType, progr
             <motion.div style={{ color: iconColor }}>
                {item.icon}
             </motion.div>
-            <div className="font-mono text-lg font-bold text-white tracking-wide">
+            <div className="font-mono text-lg font-bold text-black dark:text-white tracking-wide">
                {item.label}
             </div>
          </div>
@@ -292,11 +292,11 @@ const WorkflowItem = ({ item, progress, index }: { item: WorkflowItemType, progr
       />
       
       {/* Connector Dot - Left */}
-      <div className="absolute top-[50%] -left-2 w-4 h-4 bg-charcoal border border-gray-700 rounded-full -translate-y-1/2 z-20 flex items-center justify-center">
+      <div className="absolute top-[50%] -left-2 w-4 h-4 bg-white dark:bg-charcoal border border-gray-700 rounded-full -translate-y-1/2 z-20 flex items-center justify-center">
          <motion.div style={{ opacity: glowOpacity }} className="w-2 h-2 bg-neon-green rounded-full" />
       </div>
       {/* Connector Dot - Right */}
-      <div className="absolute top-[50%] -right-2 w-4 h-4 bg-charcoal border border-gray-700 rounded-full -translate-y-1/2 z-20 flex items-center justify-center">
+      <div className="absolute top-[50%] -right-2 w-4 h-4 bg-white dark:bg-charcoal border border-gray-700 rounded-full -translate-y-1/2 z-20 flex items-center justify-center">
          <motion.div style={{ opacity: glowOpacity }} className="w-2 h-2 bg-neon-green rounded-full" />
       </div>
 

@@ -96,7 +96,7 @@ const ServiceCard = ({ service, isExpanded, onToggle }: { service: Service; isEx
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.3 }}
-      className={`group relative border ${isExpanded ? 'border-neon-green bg-charcoal-light/50' : 'border-white/10 bg-charcoal-light/20 hover:border-neon-green/50'} backdrop-blur-sm overflow-hidden transition-colors cursor-pointer`}
+      className={`group relative border ${isExpanded ? 'border-neon-green bg-gray-50 dark:bg-charcoal-light/50' : 'border-black/10 dark:border-white/10 bg-gray-50 dark:bg-charcoal-light/20 hover:border-neon-green/50'} backdrop-blur-sm overflow-hidden transition-colors cursor-pointer`}
       onClick={onToggle}
     >
       {/* Tech Decoration Lines */}
@@ -104,14 +104,14 @@ const ServiceCard = ({ service, isExpanded, onToggle }: { service: Service; isEx
       
       <div className="p-6">
         <div className="flex justify-between items-start mb-4">
-          <div className={`p-3 rounded-none border border-white/10 ${isExpanded ? 'bg-neon-green/10 text-neon-green' : 'text-gray-400 group-hover:text-neon-green'}`}>
+          <div className={`p-3 rounded-none border border-black/10 dark:border-white/10 ${isExpanded ? 'bg-neon-green/10 text-neon-green' : 'text-gray-600 dark:text-gray-400 group-hover:text-neon-green'}`}>
             <service.icon size={24} />
           </div>
           <div className="font-mono text-xs text-gray-500">{t('card.moduleId', { id: service.id.toUpperCase() })}</div>
         </div>
 
-        <h3 className="text-xl font-bold mb-2 text-white group-hover:text-neon-green transition-colors">{service.title}</h3>
-        <p className="text-gray-400 text-sm mb-4 leading-relaxed">{service.description}</p>
+        <h3 className="text-xl font-bold mb-2 text-black dark:text-white group-hover:text-neon-green transition-colors">{service.title}</h3>
+        <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">{service.description}</p>
 
         <AnimatePresence>
           {isExpanded && (
@@ -119,12 +119,12 @@ const ServiceCard = ({ service, isExpanded, onToggle }: { service: Service; isEx
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="border-t border-white/10 pt-4 mt-4"
+              className="border-t border-black/10 dark:border-white/10 pt-4 mt-4"
             >
               <h4 className="text-neon-green text-xs font-mono mb-3 tracking-wider">{t('card.capabilities')}</h4>
               <ul className="space-y-2 mb-4">
                 {service.details.map((detail, i) => (
-                  <li key={i} className="flex items-start text-sm text-gray-300">
+                  <li key={i} className="flex items-start text-sm text-gray-700 dark:text-gray-300">
                     <span className="text-neon-green mr-2">▹</span>
                     {detail}
                   </li>
@@ -133,7 +133,7 @@ const ServiceCard = ({ service, isExpanded, onToggle }: { service: Service; isEx
               
               <div className="flex flex-wrap gap-2">
                 {service.tech.map((tech) => (
-                  <span key={tech} className="px-2 py-1 text-[10px] font-mono border border-white/20 text-gray-400 uppercase">
+                  <span key={tech} className="px-2 py-1 text-[10px] font-mono border border-black/20 dark:border-white/20 text-gray-600 dark:text-gray-400 uppercase">
                     {tech}
                   </span>
                 ))}
@@ -205,9 +205,9 @@ const DemoSandbox = () => {
   }, [logs]);
 
   return (
-    <div className="border border-white/10 bg-black/50 backdrop-blur-md rounded-lg overflow-hidden flex flex-col md:flex-row h-[500px]">
+    <div className="border border-black/10 dark:border-white/10 bg-black/50 backdrop-blur-md rounded-lg overflow-hidden flex flex-col md:flex-row h-[500px]">
       {/* Sidebar Controls */}
-      <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-white/10 bg-charcoal-light/30 p-4">
+      <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-black/10 dark:border-white/10 bg-gray-50 dark:bg-charcoal-light/30 p-4">
         <h3 className="text-xs font-mono text-gray-500 mb-4 uppercase tracking-widest">{t('demo.selectProtocol')}</h3>
         <div className="space-y-2">
           {(Object.keys(demos) as Array<'OCR' | 'API' | 'CHAT'>).map((key) => (
@@ -218,7 +218,7 @@ const DemoSandbox = () => {
               className={`w-full text-left px-4 py-3 text-sm font-mono border transition-all ${
                 activeDemo === key 
                   ? 'border-neon-green text-neon-green bg-neon-green/5' 
-                  : 'border-white/5 text-gray-400 hover:border-white/20 hover:text-white'
+                  : 'border-black/5 dark:border-white/5 text-gray-600 dark:text-gray-400 hover:border-black/20 dark:border-white/20 hover:text-black dark:text-white'
               } ${isRunning ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               <div className="flex items-center justify-between">
@@ -229,7 +229,7 @@ const DemoSandbox = () => {
           ))}
         </div>
         
-        <div className="mt-8 p-4 border border-dashed border-white/10 rounded bg-black/20">
+        <div className="mt-8 p-4 border border-dashed border-black/10 dark:border-white/10 rounded bg-black/20">
           <p className="text-[10px] text-gray-500 font-mono leading-relaxed">
             {t('demo.note')}
           </p>
@@ -238,7 +238,7 @@ const DemoSandbox = () => {
 
       {/* Terminal Output */}
       <div className="flex-1 flex flex-col bg-black font-mono text-sm relative">
-        <div className="h-8 bg-charcoal-light border-b border-white/10 flex items-center px-4 justify-between">
+        <div className="h-8 bg-gray-50 dark:bg-charcoal-light border-b border-black/10 dark:border-white/10 flex items-center px-4 justify-between">
           <span className="text-xs text-gray-500">{t('demo.terminal', { script: activeDemo.toLowerCase() })}</span>
           <div className="flex gap-2">
             <div className="w-2 h-2 rounded-full bg-red-500/50" />
@@ -311,7 +311,7 @@ const Solutions = () => {
   const filteredServices = services.filter(s => filter === 'ALL' || s.category === filter);
 
   return (
-    <div className="min-h-screen bg-charcoal text-white selection:bg-neon-green selection:text-charcoal pb-20">
+    <div className="min-h-screen bg-white dark:bg-charcoal text-black dark:text-white selection:bg-neon-green selection:text-charcoal pb-20">
       
       <main className="pt-32 px-4 md:px-8 max-w-7xl mx-auto">
         
@@ -336,14 +336,14 @@ const Solutions = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 max-w-2xl text-lg leading-relaxed"
+            className="text-gray-600 dark:text-gray-400 max-w-2xl text-lg leading-relaxed"
           >
             {t('header.description')}
           </motion.p>
         </header>
 
         {/* Filter Controls */}
-        <div className="mb-12 sticky top-20 z-40 bg-charcoal/95 py-4 backdrop-blur-xl border-b border-white/5 -mx-4 px-4 md:mx-0 md:px-0 md:bg-transparent md:backdrop-blur-none md:static md:border-none">
+        <div className="mb-12 sticky top-20 z-40 bg-white dark:bg-charcoal/95 py-4 backdrop-blur-xl border-b border-black/5 dark:border-white/5 -mx-4 px-4 md:mx-0 md:px-0 md:bg-transparent md:backdrop-blur-none md:static md:border-none">
           <div className="flex flex-wrap gap-2 md:gap-4">
             {CATEGORIES_CONFIG.map((cat) => (
               <button
@@ -355,7 +355,7 @@ const Solutions = () => {
                 className={`px-4 py-2 text-xs md:text-sm font-mono border transition-all duration-300 ${
                   filter === cat.id 
                     ? 'border-neon-green bg-neon-green/10 text-neon-green shadow-[0_0_15px_rgba(0,255,128,0.2)]' 
-                    : 'border-white/10 text-gray-500 hover:border-white/30 hover:text-gray-300'
+                    : 'border-black/10 dark:border-white/10 text-gray-500 hover:border-black/30 dark:border-white/30 hover:text-gray-700 dark:text-gray-300'
                 }`}
               >
                 {t(`categories.${cat.key}`)}
@@ -383,10 +383,10 @@ const Solutions = () => {
 
         {/* Interactive Sandbox */}
         <section className="mb-32">
-          <div className="flex items-end justify-between mb-8 border-b border-white/10 pb-4">
+          <div className="flex items-end justify-between mb-8 border-b border-black/10 dark:border-white/10 pb-4">
             <div>
               <h2 className="text-2xl font-bold mb-2">{t('demo.title')}</h2>
-              <p className="text-gray-400 text-sm">{t('demo.subtitle')}</p>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">{t('demo.subtitle')}</p>
             </div>
             <div className="hidden md:flex items-center gap-2 text-xs font-mono text-neon-green">
               <span className="relative flex h-2 w-2">

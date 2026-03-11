@@ -11,6 +11,7 @@ import { Footer } from './components/Footer';
 import { FooterReveal } from './components/FooterReveal';
 import SmoothScroll from './components/common/SmoothScroll';
 import { MotionConfig } from 'framer-motion';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -36,22 +37,23 @@ function App() {
   }, [i18n.language]);
 
   return (
-    <MotionConfig reducedMotion="user">
-      <SmoothScroll>
-        <Router>
-          <ScrollToTop />
-          
-          <div className="relative min-h-screen bg-charcoal">
-          <Header />
-          
-          {/* 
-            Main Content Wrapper 
-            - z-10 and bg-charcoal to cover the fixed reveal layer
-            - mb-[300px/350px] creates the "window" at the bottom for the reveal
-            - shadow added to create depth separation from the flat reveal layer
-          */}
-          <div className="relative z-10 bg-charcoal mb-[300px] md:mb-[350px] shadow-2xl border-b border-white/5">
-            <Routes>
+    <ThemeProvider>
+      <MotionConfig reducedMotion="user">
+        <SmoothScroll>
+          <Router>
+            <ScrollToTop />
+
+            <div className="relative min-h-screen bg-white dark:bg-charcoal transition-colors duration-300">
+            <Header />
+
+            {/*
+              Main Content Wrapper
+              - z-10 and bg-white dark:bg-charcoal to cover the fixed reveal layer
+              - mb-[300px/350px] creates the "window" at the bottom for the reveal
+              - shadow added to create depth separation from the flat reveal layer
+            */}
+            <div className="relative z-10 bg-white dark:bg-charcoal mb-[300px] md:mb-[350px] shadow-2xl border-b border-black/5 dark:border-black/5 dark:border-white/5 transition-colors duration-300">
+              <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/solutions" element={<Solutions />} />
               <Route path="/meet-the-team" element={<MeetTheTeam />} />
@@ -60,12 +62,13 @@ function App() {
             <Footer />
           </div>
 
-          {/* The Fixed Reveal Layer that sits behind everything */}
-          <FooterReveal />
-        </div>
-        </Router>
-      </SmoothScroll>
-    </MotionConfig>
+            {/* The Fixed Reveal Layer that sits behind everything */}
+            <FooterReveal />
+          </div>
+          </Router>
+        </SmoothScroll>
+      </MotionConfig>
+    </ThemeProvider>
   )
 }
 

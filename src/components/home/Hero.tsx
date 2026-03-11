@@ -32,7 +32,7 @@ export const Hero = () => {
     <section 
       ref={ref} 
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-charcoal text-white pt-20 group perspective-1000"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-charcoal text-black dark:text-white pt-20 group perspective-1000"
     >
       {/* Isolated Heavy Background Effects */}
       <BackgroundEffects mouseX={mouseX} mouseY={mouseY} />
@@ -90,12 +90,12 @@ export const Hero = () => {
         </div>
 
         <motion.p 
-          className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed pointer-events-auto"
+          className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed pointer-events-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          {t('hero.description.part1')} <span className="text-white font-semibold border-b border-neon-green/30">{t('hero.description.highlight1')}</span>{t('hero.description.comma')}<span className="text-white font-semibold border-b border-neon-green/30">{t('hero.description.highlight2')}</span>{t('hero.description.and')}<span className="text-neon-green font-semibold">{t('hero.description.highlight3')}</span> {t('hero.description.part2')}
+          {t('hero.description.part1')} <span className="text-black dark:text-white font-semibold border-b border-neon-green/30">{t('hero.description.highlight1')}</span>{t('hero.description.comma')}<span className="text-black dark:text-white font-semibold border-b border-neon-green/30">{t('hero.description.highlight2')}</span>{t('hero.description.and')}<span className="text-neon-green font-semibold">{t('hero.description.highlight3')}</span> {t('hero.description.part2')}
         </motion.p>
       </motion.div>
 

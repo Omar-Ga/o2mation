@@ -59,7 +59,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-charcoal text-white font-sans selection:bg-neon-green selection:text-charcoal flex flex-col md:flex-row relative">
+    <div className="min-h-screen bg-white dark:bg-charcoal text-black dark:text-white font-sans selection:bg-neon-green selection:text-charcoal flex flex-col md:flex-row relative">
       {/* Background Grid */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-20 fixed">
          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
@@ -70,7 +70,7 @@ const Contact = () => {
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="w-full md:w-1/3 border-r border-white/5 bg-charcoal-light/50 backdrop-blur-sm relative z-10 flex flex-col p-8 pt-24 md:p-12 md:pt-32 justify-between md:sticky md:top-0 md:h-screen"
+        className="w-full md:w-1/3 border-r border-black/5 dark:border-white/5 bg-gray-50 dark:bg-charcoal-light/50 backdrop-blur-sm relative z-10 flex flex-col p-8 pt-24 md:p-12 md:pt-32 justify-between md:sticky md:top-0 md:h-screen"
       >
         <div>
           <div className="mb-12">
@@ -82,7 +82,7 @@ const Contact = () => {
                {t('statusPanel.initialize')} <br />
                <span className="text-neon-green">{t('statusPanel.protocol')}</span>
              </h1>
-             <p className="text-gray-400 max-w-sm leading-relaxed">
+             <p className="text-gray-600 dark:text-gray-400 max-w-sm leading-relaxed">
                {t('statusPanel.description')}
              </p>
           </div>
@@ -90,7 +90,7 @@ const Contact = () => {
 
         {/* System Stats */}
         <div className="space-y-6 font-mono text-xs">
-          <div className="p-4 bg-black/40 border border-white/5 rounded-sm">
+          <div className="p-4 bg-black/40 border border-black/5 dark:border-white/5 rounded-sm">
             <div className="flex justify-between text-gray-500 mb-2">
               <span>{t('statusPanel.systemTime')}</span>
               <span>{new Date().toLocaleTimeString()}</span>
@@ -128,7 +128,7 @@ const Contact = () => {
                 <CheckCircle size={40} className="text-neon-green" />
               </div>
               <h2 className="text-3xl font-bold mb-4">{t('success.transmissionReceived')}</h2>
-              <p className="text-gray-400 max-w-md mb-8">
+              <p className="text-gray-600 dark:text-gray-400 max-w-md mb-8">
                 {t('success.message')}
               </p>
               <Link to="/" className="px-8 py-3 bg-white text-charcoal font-bold hover:bg-neon-green transition-colors uppercase tracking-widest text-sm">
@@ -140,8 +140,8 @@ const Contact = () => {
               
               {/* Section 1: Identity */}
               <section>
-                <h3 className="flex items-center gap-3 text-neon-green font-mono text-sm tracking-widest mb-8 uppercase border-b border-white/10 pb-4">
-                  <span className="text-white/20">01</span> {t('statusPanel.separator')} {t('form.sections.identity')}
+                <h3 className="flex items-center gap-3 text-neon-green font-mono text-sm tracking-widest mb-8 uppercase border-b border-black/10 dark:border-white/10 pb-4">
+                  <span className="text-black/20 dark:text-white/20">01</span> {t('statusPanel.separator')} {t('form.sections.identity')}
                 </h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -154,7 +154,7 @@ const Contact = () => {
                       type="text" 
                       value={formData.name}
                       onChange={e => setFormData({...formData, name: e.target.value})}
-                      className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:border-neon-green focus:outline-none transition-colors rounded-none placeholder-white/10"
+                      className="w-full bg-transparent border-b border-black/20 dark:border-white/20 py-3 text-lg focus:border-neon-green focus:outline-none transition-colors rounded-none placeholder-white/10"
                       placeholder={t('form.fields.entityName.placeholder')}
                     />
                   </div>
@@ -168,7 +168,7 @@ const Contact = () => {
                       type="email" 
                       value={formData.email}
                       onChange={e => setFormData({...formData, email: e.target.value})}
-                      className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:border-neon-green focus:outline-none transition-colors rounded-none placeholder-white/10"
+                      className="w-full bg-transparent border-b border-black/20 dark:border-white/20 py-3 text-lg focus:border-neon-green focus:outline-none transition-colors rounded-none placeholder-white/10"
                       placeholder={t('form.fields.commChannel.placeholder')}
                     />
                   </div>
@@ -177,8 +177,8 @@ const Contact = () => {
 
               {/* Section 2: Parameters */}
               <section>
-                <h3 className="flex items-center gap-3 text-neon-green font-mono text-sm tracking-widest mb-8 uppercase border-b border-white/10 pb-4">
-                  <span className="text-white/20">02</span> {t('statusPanel.separator')} {t('form.sections.parameters')}
+                <h3 className="flex items-center gap-3 text-neon-green font-mono text-sm tracking-widest mb-8 uppercase border-b border-black/10 dark:border-white/10 pb-4">
+                  <span className="text-black/20 dark:text-white/20">02</span> {t('statusPanel.separator')} {t('form.sections.parameters')}
                 </h3>
 
                 <div className="space-y-8">
@@ -195,8 +195,8 @@ const Contact = () => {
                           className={`
                             px-4 py-3 text-sm border text-left transition-all duration-300 relative overflow-hidden group
                             ${formData.companySize === size 
-                              ? 'border-neon-green bg-neon-green/5 text-white' 
-                              : 'border-white/10 text-gray-500 hover:border-white/30 hover:text-gray-300'}
+                              ? 'border-neon-green bg-neon-green/5 text-black dark:text-white'
+                              : 'border-black/10 dark:border-white/10 text-gray-500 hover:border-black/30 dark:border-white/30 hover:text-gray-700 dark:text-gray-300'}
                           `}
                         >
                           <span className="relative z-10">{t(`form.options.companySize.${size}`)}</span>
@@ -227,13 +227,13 @@ const Contact = () => {
                             className={`
                               flex items-center gap-4 p-4 border transition-all duration-300 group
                               ${isSelected 
-                                ? 'border-neon-green bg-neon-green/10 text-white' 
-                                : 'border-white/10 text-gray-500 hover:border-white/30 hover:text-gray-300'}
+                                ? 'border-neon-green bg-neon-green/10 text-black dark:text-white'
+                                : 'border-black/10 dark:border-white/10 text-gray-500 hover:border-black/30 dark:border-white/30 hover:text-gray-700 dark:text-gray-300'}
                             `}
                           >
                             <div className={`
                               p-2 rounded-sm transition-colors
-                              ${isSelected ? 'bg-neon-green text-charcoal' : 'bg-white/5 text-gray-500 group-hover:bg-white/10'}
+                              ${isSelected ? 'bg-neon-green text-charcoal' : 'bg-black/5 dark:bg-white/5 text-gray-500 group-hover:bg-black/10 dark:bg-white/10'}
                             `}>
                               <Icon size={20} />
                             </div>
@@ -249,8 +249,8 @@ const Contact = () => {
 
               {/* Section 3: Mission Brief */}
               <section>
-                <h3 className="flex items-center gap-3 text-neon-green font-mono text-sm tracking-widest mb-8 uppercase border-b border-white/10 pb-4">
-                  <span className="text-white/20">03</span> {t('statusPanel.separator')} {t('form.sections.missionBrief')}
+                <h3 className="flex items-center gap-3 text-neon-green font-mono text-sm tracking-widest mb-8 uppercase border-b border-black/10 dark:border-white/10 pb-4">
+                  <span className="text-black/20 dark:text-white/20">03</span> {t('statusPanel.separator')} {t('form.sections.missionBrief')}
                 </h3>
                 
                 <div className="space-y-8">
@@ -263,7 +263,7 @@ const Contact = () => {
                       value={formData.description}
                       onChange={e => setFormData({...formData, description: e.target.value})}
                       rows={4}
-                      className="w-full bg-black/20 border border-white/10 p-4 text-sm focus:border-neon-green focus:outline-none transition-colors rounded-sm placeholder-white/10 resize-none"
+                      className="w-full bg-black/20 border border-black/10 dark:border-white/10 p-4 text-sm focus:border-neon-green focus:outline-none transition-colors rounded-sm placeholder-white/10 resize-none"
                       placeholder={t('form.fields.systemDescription.placeholder')}
                     />
                   </div>
@@ -276,7 +276,7 @@ const Contact = () => {
                       value={formData.message}
                       onChange={e => setFormData({...formData, message: e.target.value})}
                       rows={2}
-                      className="w-full bg-black/20 border border-white/10 p-4 text-sm focus:border-neon-green focus:outline-none transition-colors rounded-sm placeholder-white/10 resize-none"
+                      className="w-full bg-black/20 border border-black/10 dark:border-white/10 p-4 text-sm focus:border-neon-green focus:outline-none transition-colors rounded-sm placeholder-white/10 resize-none"
                       placeholder={t('form.fields.additionalLogs.placeholder')}
                     />
                   </div>
@@ -284,7 +284,7 @@ const Contact = () => {
               </section>
 
               {/* Submit Action */}
-              <div className="pt-8 border-t border-white/5">
+              <div className="pt-8 border-t border-black/5 dark:border-white/5">
                 <button
                   type="submit"
                   disabled={status === 'submitting'}

@@ -49,12 +49,12 @@ export const Metrics = () => {
   ], [t]);
 
   return (
-    <section className="py-24 bg-charcoal border-b border-white/5">
+    <section className="py-24 bg-white dark:bg-charcoal border-b border-black/5 dark:border-white/5">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
           {stats.map((stat, index) => (
             <div key={index} className="group">
-              <div className="text-4xl md:text-6xl font-black text-white mb-2 group-hover:text-neon-green transition-colors">
+              <div className="text-4xl md:text-6xl font-black text-black dark:text-white mb-2 group-hover:text-neon-green transition-colors">
                 <Counter value={stat.value} decimals={stat.decimals} />
                 {stat.suffix}
               </div>

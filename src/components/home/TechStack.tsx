@@ -6,7 +6,7 @@ export const TechStack = () => {
   const techs = t('techStack.items', { returnObjects: true }) as string[];
   
   return (
-    <section className="py-20 bg-charcoal border-y border-white/5 overflow-hidden">
+    <section className="py-20 bg-white dark:bg-charcoal border-y border-black/5 dark:border-white/5 overflow-hidden">
       <div className="flex">
         <motion.div 
           className="flex whitespace-nowrap"

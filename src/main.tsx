@@ -6,7 +6,7 @@ import './i18n'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Suspense fallback={<div className="bg-charcoal min-h-screen text-white flex items-center justify-center font-mono">INITIALIZING SYSTEM...</div>}>
+    <Suspense fallback={<div className="bg-white dark:bg-charcoal min-h-screen text-black dark:text-white flex items-center justify-center font-mono">INITIALIZING SYSTEM...</div>}>
       <App />
     </Suspense>
   </React.StrictMode>,

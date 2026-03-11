@@ -46,7 +46,7 @@ export const Process = () => {
   ], [t]);
 
   return (
-    <section className="py-32 bg-charcoal relative overflow-hidden">
+    <section className="py-32 bg-white dark:bg-charcoal relative overflow-hidden">
       {/* Circuit Board Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,128,0.1),transparent_50%)]" />
@@ -66,7 +66,7 @@ export const Process = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-neon-green font-mono text-xs tracking-widest mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-neon-green font-mono text-xs tracking-widest mb-6"
           >
             <GitBranch size={14} />
             <span>{t('process.pipeline')}</span>
@@ -76,7 +76,7 @@ export const Process = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-bold mb-6 text-white"
+            className="text-4xl md:text-6xl font-bold mb-6 text-black dark:text-white"
           >
             <Trans
               i18nKey="process.title"
@@ -86,7 +86,7 @@ export const Process = () => {
               }}
             />
           </motion.h2>
-          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+          <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto text-lg">
             {t('process.subtitle')}
           </p>
         </div>
@@ -103,7 +103,7 @@ export const Process = () => {
             >
               {/* Animated Connector Line (Desktop) */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-16 left-full w-full h-[2px] bg-charcoal-light -translate-x-8 z-0 overflow-hidden">
+                <div className="hidden lg:block absolute top-16 left-full w-full h-[2px] bg-gray-50 dark:bg-charcoal-light -translate-x-8 z-0 overflow-hidden">
                   <motion.div 
                     className="h-full w-full bg-gradient-to-r from-transparent via-neon-green to-transparent"
                     animate={{ x: ["-100%", "100%"] }}
@@ -114,7 +114,7 @@ export const Process = () => {
               )}
 
               <div className={`
-                h-full p-8 rounded-3xl border border-white/5 bg-charcoal/50 backdrop-blur-xl 
+                h-full p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-white dark:bg-charcoal/50 backdrop-blur-xl
                 transition-all duration-500 relative z-10 overflow-hidden group-hover:-translate-y-2
                 ${step.border} ${step.glow}
               `}>
@@ -124,21 +124,21 @@ export const Process = () => {
                 <div className="relative z-10">
                   <div className="flex justify-between items-start mb-8">
                     <div className={`
-                      p-4 rounded-2xl bg-white/5 border border-white/10 
+                      p-4 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10
                       group-hover:scale-110 transition-transform duration-500
                       ${step.color}
                     `}>
                       <step.icon size={28} />
                     </div>
-                    <span className="font-mono text-4xl font-black text-white/40 group-hover:text-white/50 transition-colors">
+                    <span className="font-mono text-4xl font-black text-black/40 dark:text-white/40 group-hover:text-black/50 dark:text-white/50 transition-colors">
                       {step.step}
                     </span>
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:translate-x-2 transition-transform duration-300">
+                  <h3 className="text-2xl font-bold text-black dark:text-white mb-4 group-hover:translate-x-2 transition-transform duration-300">
                     {step.title}
                   </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">
+                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">
                     {step.desc}
                   </p>
                 </div>

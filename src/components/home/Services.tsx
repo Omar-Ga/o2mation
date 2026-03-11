@@ -45,7 +45,7 @@ const ServiceCard = ({ item, index }: { item: ServiceItemType, index: number }) 
         ease: "easeOut" 
       }}
       onMouseMove={handleMouseMove}
-      className="group relative h-full min-h-[140px] rounded-xl border border-white/10 bg-white/5 p-6 hover:border-neon-green/30 transition-colors duration-300"
+      className="group relative h-full min-h-[140px] rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 p-6 hover:border-neon-green/30 transition-colors duration-300"
     >
       {/* Spotlight Overlay */}
       <motion.div
@@ -62,14 +62,14 @@ const ServiceCard = ({ item, index }: { item: ServiceItemType, index: number }) 
       />
       
       <div className="relative flex items-start gap-4 h-full z-10">
-        <div className="p-3 rounded-lg bg-charcoal border border-white/10 text-neon-green group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(74,222,128,0.2)] transition-all duration-300 shrink-0">
+        <div className="p-3 rounded-lg bg-white dark:bg-charcoal border border-black/10 dark:border-white/10 text-neon-green group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(74,222,128,0.2)] transition-all duration-300 shrink-0">
           <item.icon size={20} />
         </div>
         <div className="flex flex-col h-full">
-          <h4 className="text-white font-medium mb-1 group-hover:text-neon-green transition-colors">
+          <h4 className="text-black dark:text-white font-medium mb-1 group-hover:text-neon-green transition-colors">
             {item.title}
           </h4>
-          <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors leading-relaxed flex-grow">
+          <p className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-200 transition-colors leading-relaxed flex-grow">
             {item.desc}
           </p>
         </div>
@@ -121,7 +121,7 @@ export const Services = () => {
   }
 
   return (
-    <section className="py-32 bg-charcoal relative overflow-hidden">
+    <section className="py-32 bg-white dark:bg-charcoal relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(74,222,128,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(74,222,128,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
       
@@ -142,7 +142,7 @@ export const Services = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold mb-6 text-white"
+            className="text-4xl md:text-6xl font-bold mb-6 text-black dark:text-white"
           >
             <Trans
               i18nKey="services.mainTitle"
@@ -160,7 +160,7 @@ export const Services = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.2 }}
-            className="text-gray-300 text-lg max-w-2xl leading-relaxed"
+            className="text-gray-700 dark:text-gray-300 text-lg max-w-2xl leading-relaxed"
           >
             {t('services.description')}
           </motion.p>
@@ -174,7 +174,7 @@ export const Services = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ delay: catIndex * 0.1 }}
-                className="text-xl font-bold text-white border-l-2 border-neon-green pl-4 mb-6"
+                className="text-xl font-bold text-black dark:text-white border-l-2 border-neon-green pl-4 mb-6"
               >
                 {category.category}
               </motion.h3>
@@ -194,7 +194,7 @@ export const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           onMouseMove={handleMouseMove}
-          className="mt-20 relative overflow-hidden rounded-2xl group border border-white/10 bg-charcoal-light/50 backdrop-blur-sm"
+          className="mt-20 relative overflow-hidden rounded-2xl group border border-black/10 dark:border-white/10 bg-gray-50 dark:bg-charcoal-light/50 backdrop-blur-sm"
         >
           {/* Spotlight Effect */}
           <motion.div
@@ -224,7 +224,7 @@ export const Services = () => {
                 <span className="text-neon-green font-mono text-xs tracking-widest uppercase">{t('services.cta.customArch')}</span>
               </div>
               
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+              <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-4 leading-tight">
                 <Trans
                   i18nKey="services.cta.title"
                   t={t}
@@ -234,7 +234,7 @@ export const Services = () => {
                   }}
                 />
               </h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                 {t('services.cta.desc')}
               </p>
             </div>
@@ -244,7 +244,7 @@ export const Services = () => {
               whileTap={{ scale: 0.98 }}
               className="relative px-8 py-5 bg-neon-green text-charcoal font-bold rounded-xl overflow-hidden group/btn shrink-0"
             >
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
+              <div className="absolute inset-0 bg-black/20 dark:bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
               <div className={`relative flex items-center gap-3 ${isRtl ? 'flex-row-reverse' : ''}`}>
                 <Terminal size={20} className={isRtl ? "scale-x-[-1]" : ""} />
                 <span>{t('services.cta.button')}</span>

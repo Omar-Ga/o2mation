@@ -28,7 +28,7 @@ export const Solution = () => {
   ], [t]);
 
   return (
-    <section className="relative py-32 bg-charcoal text-white overflow-hidden">
+    <section className="relative py-32 bg-white dark:bg-charcoal text-black dark:text-white overflow-hidden">
       {/* Grid Background */}
       <div 
         className="absolute inset-0 opacity-20"
@@ -67,9 +67,9 @@ export const Solution = () => {
               viewport={{ once: true }}
               transition={{ delay: item.delay, duration: 0.5 }}
               whileHover={{ y: -10 }}
-              className="group p-8 border border-white/10 bg-charcoal-light/50 backdrop-blur-sm hover:border-neon-green/50 transition-colors rounded-xl"
+              className="group p-8 border border-black/10 dark:border-white/10 bg-gray-50 dark:bg-charcoal-light/50 backdrop-blur-sm hover:border-neon-green/50 transition-colors rounded-xl"
             >
-              <div className="mb-6 p-4 bg-white/5 w-fit rounded-lg group-hover:bg-neon-green/10 transition-colors relative overflow-hidden">
+              <div className="mb-6 p-4 bg-black/5 dark:bg-white/5 w-fit rounded-lg group-hover:bg-neon-green/10 transition-colors relative overflow-hidden">
                 <div className="absolute inset-0 bg-neon-green/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 <item.icon className="w-8 h-8 text-neon-green relative z-10" />
               </div>
@@ -79,7 +79,7 @@ export const Solution = () => {
                   {t('solution.active')}
                 </span>
               </h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 {item.desc}
               </p>
             </motion.div>
