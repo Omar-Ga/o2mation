@@ -1,8 +1,6 @@
 import { memo, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
 
 export const GlitchTitle = memo(() => {
-  const { t } = useTranslation('home');
   const brandName = "O2MATION";
 
   // Sequential delays for a left-to-right wave effect

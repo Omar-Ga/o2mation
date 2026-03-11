@@ -15,7 +15,7 @@ const Counter = ({ value, duration = 2, decimals = 0 }: CounterProps) => {
 
   useEffect(() => {
     if (isInView) {
-      let start = 0;
+      const start = 0;
       const end = value;
       const totalFrames = duration * 60;
       const increment = (end - start) / totalFrames;
