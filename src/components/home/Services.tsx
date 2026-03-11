@@ -18,7 +18,13 @@ import {
 import { MouseEvent } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 
-const ServiceCard = ({ item, index }: { item: any, index: number }) => {
+interface ServiceItemType {
+  icon: React.ElementType;
+  title: string;
+  desc: string;
+}
+
+const ServiceCard = ({ item, index }: { item: ServiceItemType, index: number }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 

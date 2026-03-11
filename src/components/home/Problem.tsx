@@ -207,7 +207,19 @@ export const Problem = () => {
 };
 
 // Sub-component
-const WorkflowItem = ({ item, progress, index }: { item: any, progress: any, index: number }) => {
+import { MotionValue } from 'framer-motion';
+
+interface WorkflowItemType {
+  id: string;
+  icon: React.ReactNode;
+  label: string;
+  code: string[];
+  chaos: { x: number; y: number; rotate: number };
+  order: { x: number; y: number; rotate: number };
+  isCore?: boolean;
+}
+
+const WorkflowItem = ({ item, progress, index }: { item: WorkflowItemType, progress: MotionValue<number>, index: number }) => {
   const { t } = useTranslation('home');
   // Phase 1: Chaos to Order (0 - 0.2)
   const x = useTransform(progress, [0, 0.2], [item.chaos.x, item.order.x]);
