@@ -9,17 +9,17 @@
   },
   "header": {
     "nav": {
-      "home": "HOME",
-      "solutions": "SOLUTIONS",
-      "meetTheTeam": "MEET THE TEAM",
-      "contact": "CONTACT"
+      "home": "Home",
+      "solutions": "Solutions",
+      "meetTheTeam": "About Us",
+      "contact": "Contact"
     },
     "cta": {
-      "initialize": "INITIALIZE",
-      "startProject": "START PROJECT"
+      "initialize": "Get Started",
+      "startProject": "Start a Project"
     },
     "status": {
-      "ready": "SYSTEM_READY // WAITING_FOR_INPUT"
+      "ready": "Ready"
     },
     "language": {
       "toggle": "EN // AR",
@@ -28,7 +28,7 @@
     }
   },
   "footer": {
-    "systemRoot": "O2MATION // SYSTEM.ROOT",
+    "systemRoot": "O2MATION",
     "rights": "All rights reserved",
     "operational": "All systems operational.",
     "links": {

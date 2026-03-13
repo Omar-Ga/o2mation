@@ -49,16 +49,16 @@ export const Metrics = () => {
   ], [t]);
 
   return (
-    <section className="py-24 bg-white dark:bg-charcoal border-b border-black/5 dark:border-white/5">
+    <section className="py-20 bg-surface dark:bg-charcoal">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat, index) => (
-            <div key={index} className="group">
-              <div className="text-4xl md:text-6xl font-black text-black dark:text-white mb-2 group-hover:text-neon-green transition-colors">
+            <div key={index} className="text-center group">
+              <div className="text-4xl md:text-5xl font-display font-extrabold text-ink dark:text-white mb-2 group-hover:text-brand-muted transition-colors duration-300">
                 <Counter value={stat.value} decimals={stat.decimals} />
                 {stat.suffix}
               </div>
-              <div className="text-sm font-mono text-gray-500 uppercase tracking-widest">
+              <div className="text-xs font-mono text-ink-faint dark:text-gray-500 uppercase tracking-widest">
                 {stat.label}
               </div>
             </div>

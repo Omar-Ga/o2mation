@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Terminal, ChevronRight, ChevronLeft, Globe } from 'lucide-react';
+import { Menu, X, Globe, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ThemeToggle } from './ThemeToggle';
 
@@ -24,7 +24,6 @@ export const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
@@ -39,16 +38,12 @@ export const Header = () => {
   const LanguageToggle = ({ className = "" }: { className?: string }) => (
     <button 
       onClick={toggleLanguage}
-      className={`relative flex items-center gap-2 px-3 py-1.5 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-neon-green/30 transition-all group overflow-hidden ${className}`}
+      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-ink-faint dark:text-gray-500 hover:text-ink dark:hover:text-white transition-colors ${className}`}
     >
-      <motion.div 
-        className="absolute inset-0 bg-neon-green/5 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"
-      />
-      <Globe size={12} className="text-gray-500 group-hover:text-neon-green transition-colors relative z-10" />
-      <span className="text-[10px] font-mono tracking-[0.2em] text-gray-600 dark:text-gray-400 group-hover:text-black dark:text-white uppercase relative z-10">
+      <Globe size={14} />
+      <span className="text-xs font-mono tracking-wider">
         {i18n.language === 'en' ? 'AR' : 'EN'}
       </span>
-      <div className="w-1 h-1 rounded-full bg-neon-green animate-pulse relative z-10" />
     </button>
   );
 
@@ -57,61 +52,57 @@ export const Header = () => {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'bg-white dark:bg-charcoal/90 backdrop-blur-md border-black/10 dark:border-white/10 py-4'
-            : 'bg-transparent border-transparent py-6'
+            ? 'bg-white/80 dark:bg-charcoal/90 backdrop-blur-xl border-b border-surface-dim dark:border-white/10 py-3'
+            : 'bg-transparent border-b border-transparent py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           
           {/* Logo */}
-          <Link to="/" className="group flex items-center gap-2 z-50">
-            <div className="w-8 h-8 bg-neon-green/10 border border-neon-green/30 flex items-center justify-center rounded-sm group-hover:bg-neon-green/20 transition-colors">
-              <Terminal size={16} className="text-neon-green" />
+          <Link to="/" className="group flex items-center gap-2.5 z-50">
+            <div className="w-8 h-8 bg-brand rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
+              <span className="text-charcoal font-display font-extrabold text-sm">O2</span>
             </div>
-            <span className="font-bold text-xl tracking-tighter text-black dark:text-white">
-              {t('brand.name')}<span className="text-neon-green">{t('brand.dot')}</span>
+            <span className="font-display font-bold text-lg tracking-tight text-ink dark:text-white">
+              {t('brand.name')}<span className="text-brand">{t('brand.dot')}</span>
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => (
               <Link 
                 key={link.path} 
                 to={link.path}
-                className={`text-xs font-mono tracking-widest hover:text-neon-green transition-colors relative group ${
-                  location.pathname === link.path ? 'text-neon-green' : 'text-gray-600 dark:text-gray-400'
+                className={`text-sm font-sans font-medium tracking-wide hover:text-brand-muted transition-colors relative ${
+                  location.pathname === link.path ? 'text-brand-muted' : 'text-ink-muted dark:text-gray-400'
                 }`}
               >
                 {link.name}
-                <span className={`absolute -bottom-2 left-0 h-[1px] bg-neon-green transition-all duration-300 ${
+                <span className={`absolute -bottom-1.5 left-0 h-[2px] bg-brand-muted rounded-full transition-all duration-300 ${
                   location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
                 }`} />
               </Link>
             ))}
           </nav>
 
-          {/* CTA & Mobile Toggle */}
-          <div className="flex items-center gap-4">
+          {/* Right side */}
+          <div className="flex items-center gap-3">
             <ThemeToggle className="hidden md:flex" />
             <LanguageToggle className="hidden md:flex" />
             
             <Link 
               to="/contact"
-              className="hidden md:flex items-center gap-2 px-4 py-2 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-neon-green/50 hover:bg-neon-green/10 transition-all group"
+              className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-charcoal dark:bg-white text-white dark:text-charcoal font-sans font-semibold text-sm rounded-lg hover:bg-charcoal/80 dark:hover:bg-white/90 transition-colors"
             >
-              <span className="text-xs font-bold tracking-wide text-black dark:text-white group-hover:text-neon-green">{t('header.cta.initialize')}</span>
-              {i18n.language === 'ar' ? (
-                <ChevronLeft size={14} className="text-gray-500 group-hover:text-neon-green transition-colors" />
-              ) : (
-                <ChevronRight size={14} className="text-gray-500 group-hover:text-neon-green transition-colors" />
-              )}
+              <span>{t('header.cta.initialize')}</span>
+              <ArrowRight size={14} />
             </Link>
 
             <button 
-              className="md:hidden z-50 text-black dark:text-white hover:text-neon-green transition-colors"
+              className="md:hidden z-50 text-ink dark:text-white hover:text-brand-muted transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -120,7 +111,7 @@ export const Header = () => {
         </div>
       </motion.header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -128,7 +119,7 @@ export const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-40 bg-white dark:bg-charcoal/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center"
+            className="fixed inset-0 z-40 bg-white dark:bg-charcoal md:hidden flex flex-col items-center justify-center"
           >
             <nav className="flex flex-col items-center gap-8">
               {navLinks.map((link, i) => (
@@ -140,8 +131,8 @@ export const Header = () => {
                 >
                   <Link 
                     to={link.path}
-                    className={`text-3xl font-bold tracking-tighter ${
-                      location.pathname === link.path ? 'text-neon-green' : 'text-black dark:text-white'
+                    className={`text-3xl font-display font-bold tracking-tight ${
+                      location.pathname === link.path ? 'text-brand-muted' : 'text-ink dark:text-white'
                     }`}
                   >
                     {link.name}
@@ -152,12 +143,12 @@ export const Header = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.5 }}
                 className="mt-8 flex flex-col items-center gap-6"
               >
                 <Link 
                   to="/contact"
-                  className="px-8 py-4 bg-neon-green text-black font-bold tracking-widest hover:bg-white transition-colors"
+                  className="px-8 py-4 bg-brand text-charcoal font-display font-bold rounded-lg"
                 >
                   {t('header.cta.startProject')}
                 </Link>
@@ -168,11 +159,6 @@ export const Header = () => {
                 </div>
               </motion.div>
             </nav>
-
-            {/* Decor */}
-            <div className="absolute bottom-12 text-xs font-mono text-gray-600">
-              {t('header.status.ready')}
-            </div>
           </motion.div>
         )}
       </AnimatePresence>

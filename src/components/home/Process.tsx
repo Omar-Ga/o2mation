@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FileSearch, Layers, Code, Rocket, GitBranch } from 'lucide-react';
+import { FileSearch, Layers, Code, Rocket } from 'lucide-react';
 import { useTranslation, Trans } from 'react-i18next';
 import { useMemo } from 'react';
 
@@ -12,63 +12,48 @@ export const Process = () => {
       title: t('process.steps.discovery.title'),
       desc: t('process.steps.discovery.desc'),
       step: t('process.stepNumbers.0'),
-      color: "text-blue-400",
-      glow: "shadow-[0_0_30px_-10px_rgba(96,165,250,0.3)]",
-      border: "group-hover:border-blue-400/50"
+      accent: 'group-hover:border-blue-400/40 group-hover:shadow-blue-400/10',
+      iconColor: 'text-blue-400',
     },
     {
       icon: Layers,
       title: t('process.steps.architecture.title'),
       desc: t('process.steps.architecture.desc'),
       step: t('process.stepNumbers.1'),
-      color: "text-purple-400",
-      glow: "shadow-[0_0_30px_-10px_rgba(192,132,252,0.3)]",
-      border: "group-hover:border-purple-400/50"
+      accent: 'group-hover:border-purple-400/40 group-hover:shadow-purple-400/10',
+      iconColor: 'text-purple-400',
     },
     {
       icon: Code,
       title: t('process.steps.development.title'),
       desc: t('process.steps.development.desc'),
       step: t('process.stepNumbers.2'),
-      color: "text-neon-green",
-      glow: "shadow-[0_0_30px_-10px_rgba(0,255,128,0.3)]",
-      border: "group-hover:border-neon-green/50"
+      accent: 'group-hover:border-brand-muted/40 group-hover:shadow-brand-muted/10',
+      iconColor: 'text-brand-muted',
     },
     {
       icon: Rocket,
       title: t('process.steps.deployment.title'),
       desc: t('process.steps.deployment.desc'),
       step: t('process.stepNumbers.3'),
-      color: "text-orange-400",
-      glow: "shadow-[0_0_30px_-10px_rgba(251,146,60,0.3)]",
-      border: "group-hover:border-orange-400/50"
+      accent: 'group-hover:border-amber-400/40 group-hover:shadow-amber-400/10',
+      iconColor: 'text-amber-400',
     }
   ], [t]);
 
   return (
-    <section className="py-32 bg-white dark:bg-charcoal relative overflow-hidden">
-      {/* Circuit Board Background */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,128,0.1),transparent_50%)]" />
-        <svg className="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" opacity="0.2"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
+    <section className="py-28 bg-charcoal text-white relative overflow-hidden">
+      {/* Subtle gradient */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-brand/5 to-transparent rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-24">
+        <div className="text-center mb-20">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-neon-green font-mono text-xs tracking-widest mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-brand font-mono text-xs tracking-widest mb-6"
           >
-            <GitBranch size={14} />
             <span>{t('process.pipeline')}</span>
           </motion.div>
           
@@ -76,72 +61,61 @@ export const Process = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-bold mb-6 text-black dark:text-white"
+            className="text-display-lg font-display font-extrabold mb-5"
           >
             <Trans
               i18nKey="process.title"
               t={t}
               components={{ 
-                gradient: <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-500" />
+                gradient: <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand to-emerald-400" />
               }}
             />
           </motion.h2>
-          <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto text-lg">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-gray-400 max-w-2xl mx-auto text-lg"
+          >
             {t('process.subtitle')}
-          </p>
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15 }}
+              transition={{ delay: index * 0.12 }}
               className="relative group"
             >
-              {/* Animated Connector Line (Desktop) */}
+              {/* Connector (desktop) */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-16 left-full w-full h-[2px] bg-gray-50 dark:bg-charcoal-light -translate-x-8 z-0 overflow-hidden">
-                  <motion.div 
-                    className="h-full w-full bg-gradient-to-r from-transparent via-neon-green to-transparent"
-                    animate={{ x: ["-100%", "100%"] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: index * 0.5 }}
-                    style={{ willChange: "transform" }}
-                  />
-                </div>
+                <div className="hidden lg:block absolute top-14 left-full w-full h-px bg-white/10 -translate-x-6 z-0" />
               )}
 
               <div className={`
-                h-full p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-white dark:bg-charcoal/50 backdrop-blur-xl
-                transition-all duration-500 relative z-10 overflow-hidden group-hover:-translate-y-2
-                ${step.border} ${step.glow}
+                h-full p-7 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm
+                transition-all duration-500 relative z-10 group-hover:-translate-y-1
+                group-hover:shadow-lg ${step.accent}
               `}>
-                {/* Hover Gradient Overlay */}
-                <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br from-white to-transparent`} />
-                
-                <div className="relative z-10">
-                  <div className="flex justify-between items-start mb-8">
-                    <div className={`
-                      p-4 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10
-                      group-hover:scale-110 transition-transform duration-500
-                      ${step.color}
-                    `}>
-                      <step.icon size={28} />
-                    </div>
-                    <span className="font-mono text-4xl font-black text-black/40 dark:text-white/40 group-hover:text-black/50 dark:text-white/50 transition-colors">
-                      {step.step}
-                    </span>
+                <div className="flex justify-between items-start mb-6">
+                  <div className={`p-3 rounded-xl bg-white/5 border border-white/10 ${step.iconColor} group-hover:scale-110 transition-transform duration-300`}>
+                    <step.icon size={24} />
                   </div>
-                  
-                  <h3 className="text-2xl font-bold text-black dark:text-white mb-4 group-hover:translate-x-2 transition-transform duration-300">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">
-                    {step.desc}
-                  </p>
+                  <span className="font-mono text-3xl font-black text-white/10 group-hover:text-white/20 transition-colors">
+                    {step.step}
+                  </span>
                 </div>
+                
+                <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:translate-x-1 transition-transform duration-300">
+                  {step.title}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {step.desc}
+                </p>
               </div>
             </motion.div>
           ))}

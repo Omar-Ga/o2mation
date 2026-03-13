@@ -43,7 +43,7 @@ function App() {
           <Router>
             <ScrollToTop />
 
-            <div className="relative min-h-screen bg-white dark:bg-charcoal transition-colors duration-300">
+            <div className="relative min-h-screen bg-surface dark:bg-charcoal transition-colors duration-300">
             <Header />
 
             {/*
@@ -52,7 +52,7 @@ function App() {
               - mb-[300px/350px] creates the "window" at the bottom for the reveal
               - shadow added to create depth separation from the flat reveal layer
             */}
-            <div className="relative z-10 bg-white dark:bg-charcoal mb-[300px] md:mb-[350px] shadow-2xl border-b border-black/5 dark:border-black/5 dark:border-white/5 transition-colors duration-300">
+            <div className="relative z-10 bg-surface dark:bg-charcoal mb-[300px] md:mb-[350px] shadow-2xl border-b border-surface-dim dark:border-white/5 transition-colors duration-300">
               <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/solutions" element={<Solutions />} />

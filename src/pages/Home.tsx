@@ -10,14 +10,22 @@ import { ChatWidget } from '../components/common/ChatWidget';
 
 const Home = () => {
   return (
-    <main className="bg-white dark:bg-charcoal min-h-screen selection:bg-neon-green selection:text-charcoal">
+    <main className="bg-surface dark:bg-charcoal min-h-screen selection:bg-brand selection:text-charcoal">
+      {/* 1. Hero — Dark, confident value proposition */}
       <Hero />
+      {/* 2. Tech ticker — Subtle credibility */}
       <TechStack />
-      <Services />
+      {/* 3. Problem — Before/After pain-point contrast */}
       <Problem />
-      <Process />
+      {/* 4. Services — What we build */}
+      <Services />
+      {/* 5. Results — Concrete case studies (formerly Solution) */}
       <Solution />
+      {/* 6. Process — How we work */}
+      <Process />
+      {/* 7. Metrics — Key numbers */}
       <Metrics />
+      {/* 8. CTA — Convert */}
       <CTA />
       <ChatWidget />
     </main>

@@ -4,41 +4,54 @@
 
 @layer base {
   body {
-    @apply bg-white text-black dark:bg-charcoal dark:text-white antialiased relative transition-colors duration-300;
-  }
-  
-  /* Global Noise Texture for 'Film Grain' feel */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 50;
-    opacity: 0.015;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    @apply bg-surface text-ink dark:bg-charcoal dark:text-white antialiased relative transition-colors duration-300 font-sans;
   }
 
   ::selection {
-    @apply bg-neon-green text-black;
+    @apply bg-brand text-charcoal;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
   }
 }
 
-/* Custom Scrollbar for that "Tech" feel */
+/* Refined scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-white dark:bg-charcoal;
+  @apply bg-transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-200 dark:bg-gray-50 dark:bg-charcoal-light rounded-full border border-gray-300 dark:border-gray-800;
+  @apply bg-surface-dim dark:bg-charcoal-light rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-neon-green/50;
+  @apply bg-brand-muted;
+}
+
+/* Subtle noise texture */
+.noise-overlay::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.012;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Section transitions */
+.section-dark {
+  @apply bg-charcoal text-white;
+}
+
+.section-light {
+  @apply bg-surface text-ink dark:bg-charcoal dark:text-white;
 }

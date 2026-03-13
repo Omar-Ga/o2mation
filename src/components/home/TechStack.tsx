@@ -6,38 +6,23 @@ export const TechStack = () => {
   const techs = t('techStack.items', { returnObjects: true }) as string[];
   
   return (
-    <section className="py-20 bg-white dark:bg-charcoal border-y border-black/5 dark:border-white/5 overflow-hidden">
+    <section className="py-6 bg-charcoal border-t border-white/5 overflow-hidden">
       <div className="flex">
         <motion.div 
           className="flex whitespace-nowrap"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, duration: 120, ease: "linear" }}
+          transition={{ repeat: Infinity, duration: 80, ease: "linear" }}
         >
           {[...techs, ...techs, ...techs, ...techs].map((tech, index) => (
-            <div key={index} className="flex items-center mx-8">
-              <span className="text-4xl md:text-6xl font-black text-transparent stroke-text hover:text-neon-green transition-all duration-300 cursor-default select-none">
+            <div key={index} className="flex items-center mx-6">
+              <span className="text-sm font-mono font-medium text-white/30 hover:text-brand transition-colors duration-300 tracking-wider cursor-default select-none uppercase">
                 {tech}
               </span>
-              <div className="w-2 h-2 bg-gray-700 rounded-full ml-16" />
+              <div className="w-1 h-1 bg-brand/30 rounded-full ml-12" />
             </div>
           ))}
         </motion.div>
       </div>
-      
-      {/* Label */}
-      <div className="text-center mt-8">
-        <span className="text-xs font-mono text-neon-green/70 tracking-widest uppercase">{t('techStack.systemModules')}</span>
-      </div>
-
-      <style>{`
-        .stroke-text {
-          -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
-        }
-        .stroke-text:hover {
-          -webkit-text-stroke: 1px #00ff80;
-          filter: drop-shadow(0 0 5px rgba(0, 255, 128, 0.5));
-        }
-      `}</style>
     </section>
   );
 };

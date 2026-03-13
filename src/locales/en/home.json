@@ -1,59 +1,59 @@
 {
   "title": "Home Page",
   "hero": {
-    "brandName": "O2MATION",
-    "system": {
-      "online": "System: Online",
-      "latency": "Latency: {{val}}ms"
+    "eyebrow": "AI-Powered Business Automation",
+    "headline": {
+      "line1": "We Build Systems That",
+      "highlight": "Run Your Business",
+      "line2": "While You Sleep"
     },
-    "version": "v2.0.4 Build Stable",
-    "mainTitle": "The Future of Digital Infrastructure",
-    "description": {
-      "part1": "We build integrated ecosystems where",
-      "highlight1": "web applications",
-      "highlight2": "internal systems",
-      "highlight3": "AI agents",
-      "part2": "communicate seamlessly.",
-      "comma": ", ",
-      "and": " and "
+    "subheadline": "Custom automation, AI integrations, and enterprise systems that eliminate manual work and save your team thousands of hours every year.",
+    "cta": {
+      "primary": "Book a Free Audit",
+      "secondary": "See Our Work"
     },
-    "scroll": "Scroll to Initialize",
-    "prompt": ">",
-    "terminal": "Initialize system sequence... > Loading modules... > AI Agents: ONLINE > API Gateways: CONNECTED"
+    "socialProof": {
+      "label": "Trusted Results",
+      "stats": [
+        { "value": "10,000+", "label": "Hours Automated" },
+        { "value": "50+", "label": "Systems Built" },
+        { "value": "99.9%", "label": "Uptime" }
+      ]
+    }
   },
   "techStack": {
-    "systemModules": "[ System Modules Loaded ]",
+    "systemModules": "Technology Stack",
     "items": ["REACT", "TYPESCRIPT", "PYTHON", "OPENAI", "AWS", "NODE.JS", "TAILWIND", "POSTGRESQL", "DOCKER", "GRAPHQL", "NEXT.JS", "VERCEL", "STRIPE", "FIREBASE"]
   },
   "services": {
-    "systemCapabilities": "System Capabilities",
-    "mainTitle": "We Build <gray>Everything</gray>.<br/> <gradient>You Just Watch It Run.</gradient>",
-    "description": "From simple scripts to complex enterprise ecosystems, if it involves data, logic, or the internet, we can automate it.",
+    "systemCapabilities": "What We Build",
+    "mainTitle": "Everything Your Business Needs.\n<br/>From <muted>Concept to Completion.</muted>",
+    "description": "From simple scripts to complex enterprise ecosystems — if it involves data, logic, or automation, we build it. Here's our toolkit.",
     "categories": {
-      "businessSystems": "Business Systems",
-      "dataOperations": "Data Operations",
+      "businessSystems": "Enterprise Systems",
+      "dataOperations": "Data & Automation",
       "digitalGrowth": "Digital Growth"
     },
     "items": {
       "warehouse": {
         "title": "Warehouse & Inventory",
-        "desc": "Automated tracking, stock alerts, and logistics management systems."
+        "desc": "Automated tracking, stock alerts, and logistics management that runs 24/7."
       },
       "purchasing": {
         "title": "Purchasing Systems",
         "desc": "Streamlined procurement workflows and vendor management automation."
       },
       "hr": {
-        "title": "Salary & HR Systems",
-        "desc": "Custom payroll processing and employee management solutions."
+        "title": "Payroll & HR Systems",
+        "desc": "Custom payroll processing and employee management — zero manual spreadsheets."
       },
       "leads": {
-        "title": "Lead Systems",
+        "title": "Lead Management",
         "desc": "Automated capture, scoring, and routing pipelines for high-velocity sales."
       },
       "pdf": {
-        "title": "PDF to Excel",
-        "desc": "Intelligent extraction of data from documents into structured formats."
+        "title": "Document Processing",
+        "desc": "AI-powered extraction from PDFs, invoices, and receipts into structured data."
       },
       "dataEntry": {
         "title": "Data Entry Automation",
@@ -64,110 +64,126 @@
         "desc": "Automated compilation of analytics and business intelligence reports."
       },
       "scraping": {
-        "title": "Web Scraping & Data Extraction",
-        "desc": "Automated systems to harvest market data, competitor pricing, and leads from any digital source."
+        "title": "Market Intelligence",
+        "desc": "Automated systems to harvest market data, competitor pricing, and leads from any source."
       },
       "social": {
-        "title": "Social Media Auto",
-        "desc": "Content scheduling, engagement bots, and cross-platform syncing."
+        "title": "Social Media Automation",
+        "desc": "Content scheduling, engagement automation, and cross-platform syncing."
       },
       "chatbots": {
-        "title": "Custom Chatbots",
-        "desc": "AI-powered assistants for customer support and lead generation."
+        "title": "AI Chatbots & Agents",
+        "desc": "Context-aware AI assistants for customer support and lead generation."
       },
       "websites": {
-        "title": "High-End Websites",
-        "desc": "High-performance custom architectures with integrated CMS, as well as professional WordPress development for versatile platforms."
+        "title": "High-Performance Websites",
+        "desc": "Custom-built web applications with integrated CMS, optimized for speed and conversion."
       },
       "email": {
         "title": "Email Automation",
-        "desc": "Smart scheduling, AI auto-replies, and intelligent inbox management systems."
+        "desc": "Smart scheduling, AI auto-replies, and intelligent inbox management."
       }
     },
     "cta": {
-      "customArch": "System Architecture",
-      "title": "Ready to <green>Execute?</green>",
-      "desc": "Stop running manual processes. Start building your digital empire.\nInitialize your project sequence today.",
-      "button": "Initialize Project"
+      "customArch": "Custom Solutions",
+      "title": "Don't See What You Need? <green>Let's Build It.</green>",
+      "desc": "Every business is unique. Tell us what's slowing you down, and we'll design a custom system to fix it.",
+      "button": "Start a Conversation"
     }
   },
   "problem": {
-    "title": {
-      "chaosPart1": "The <line>Chaos</line> of",
-      "chaosPart2": "Manual Workflows",
-      "connectingPart1": "Connecting",
-      "connectingPart2": "Critical Systems",
-      "automationPart1": "Seamless",
-      "automationPart2": "Automation"
+    "eyebrow": "The Problem We Solve",
+    "headline": {
+      "line1": "Manual Work Is",
+      "highlight": "Costing You a Fortune"
     },
-    "scroll": "Scroll to Connect",
-    "prompt": ">",
-    "moduleSuffix": ".mod",
-    "workflow": {
-      "accounting": { "label": "Accounting", "code1": "GET /invoices", "code2": "Status: Pending" },
-      "hr": { "label": "HR Input", "code1": "Employee_ID: 4021", "code2": "Dept: Engineering" },
-      "management": { "label": "Management", "code1": "Approving...", "code2": "Auth_Token: Verified" },
-      "payroll": { "label": "Payroll", "code1": "Calculated: $4,200", "code2": "Tax_Rate: 15%" },
-      "notifications": { "label": "Notifications", "code1": "Email Sent", "code2": "Slack_Alert: True" },
-      "analytics": { "label": "Analytics", "code1": "Efficiency: +400%", "code2": "Errors: 0" }
-    }
+    "subtitle": "Your team is spending hours on tasks that machines can do in seconds. Here's what changes when you automate.",
+    "beforeLabel": "Without Automation",
+    "afterLabel": "With O2MATION",
+    "painPoints": [
+      { "title": "40+ Hours/Week on Data Entry", "desc": "Your team copy-pastes between spreadsheets, emails, and databases. Every. Single. Day." },
+      { "title": "Errors That Cost Real Money", "desc": "Manual processes mean human errors — wrong invoices, missed deadlines, lost leads." },
+      { "title": "Systems That Don't Talk", "desc": "Your CRM, accounting, HR, and inventory run on separate islands. Zero integration." }
+    ],
+    "outcomes": [
+      { "title": "Reclaim 1,000+ Hours/Year", "desc": "Automated workflows handle the grunt work. Your team focuses on strategy and growth." },
+      { "title": "99.9% Accuracy, Zero Burnout", "desc": "AI-powered systems run 24/7 without fatigue, mistakes, or Monday blues." },
+      { "title": "One Connected Ecosystem", "desc": "Every system talks to every other system. Real-time data, instant decisions." }
+    ]
   },
   "process": {
-    "pipeline": "Execution Pipeline",
-    "title": "The <gradient>Protocol</gradient>",
-    "subtitle": "Our systematic approach to building your automated future.",
+    "pipeline": "How We Work",
+    "title": "The <gradient>Process</gradient>",
+    "subtitle": "A clear, proven methodology. No surprises, no scope creep, no black boxes.",
     "stepNumbers": ["01", "02", "03", "04"],
     "steps": {
       "discovery": {
         "title": "Discovery & Audit",
-        "desc": "We scan your current infrastructure for bottlenecks. We don't guess; we diagnose."
+        "desc": "We map your current workflows to find bottlenecks. We don't guess — we measure."
       },
       "architecture": {
-        "title": "Architecture",
-        "desc": "Bespoke blueprints. API gateways and database schemas mapped before coding."
+        "title": "Solution Design",
+        "desc": "Custom blueprints: API architecture, database schemas, and integration maps designed before any code is written."
       },
       "development": {
-        "title": "Development",
-        "desc": "Fusing traditional full-stack engineering with advanced AI agent workflows."
+        "title": "Build & Iterate",
+        "desc": "Full-stack engineering paired with AI workflows. You see progress weekly, not just at launch."
       },
       "deployment": {
-        "title": "Deployment",
-        "desc": "Launch with real-time monitoring, auto-scaling, and continuous optimization."
+        "title": "Launch & Monitor",
+        "desc": "Go live with real-time monitoring, auto-scaling, and a dedicated support window."
       }
     }
   },
   "solution": {
-    "title": "Efficiency <br/> <green>Engineered.</green>",
-    "active": "[Active]",
-    "items": {
-      "automation": {
-        "title": "Automation",
-        "desc": "End-to-end workflows that handle complex business logic without human intervention."
+    "eyebrow": "Real Results",
+    "headline": {
+      "line1": "Outcomes That",
+      "highlight": "Speak for Themselves"
+    },
+    "subtitle": "Here's what happens when businesses stop doing things manually and start automating with us.",
+    "cases": {
+      "logistics": {
+        "metric": "$120K",
+        "metricLabel": "Annual Savings",
+        "title": "Logistics Company Invoice Automation",
+        "desc": "Replaced manual vendor invoice processing with an OCR-powered pipeline. 2,000+ invoices processed monthly with zero human intervention.",
+        "tags": ["OCR", "Python", "PostgreSQL", "API"]
       },
-      "integration": {
-        "title": "APIs & Integration",
-        "desc": "We connect disparate systems to create a unified, real-time ecosystem."
+      "finance": {
+        "metric": "160hrs",
+        "metricLabel": "Saved Per Month",
+        "title": "Financial Services Data Migration",
+        "desc": "Automated the extraction and reconciliation of data across 3 legacy systems into a unified modern platform.",
+        "tags": ["Data Pipelines", "Node.js", "AWS", "React"]
       },
-      "ai": {
-        "title": "Custom AI",
-        "desc": "Injecting LLMs and machine learning to supercharge your existing platforms."
+      "retail": {
+        "metric": "340%",
+        "metricLabel": "ROI Increase",
+        "title": "Retail Chain Inventory Intelligence",
+        "desc": "Built a real-time inventory forecasting system using ML models, reducing stockouts by 67% and overstock by 45%.",
+        "tags": ["Machine Learning", "Python", "Real-time", "Dashboard"]
       }
     }
   },
   "metrics": {
     "items": {
       "hours": "Hours Automated",
-      "apis": "APIs Integrated",
+      "apis": "Systems Integrated",
       "uptime": "System Uptime",
-      "roi": "ROI Increase"
+      "roi": "Avg. ROI Increase"
     }
   },
   "cta": {
-    "title": "Ready to <green>Execute?</green>",
-    "text": "Stop running manual processes. Start building your digital empire.\nInitialize your project sequence today.",
-    "button": "Initialize Project",
-    "secure": "// SECURE CONNECTION",
-    "monitoring": "// 24/7 MONITORING"
+    "headline": {
+      "line1": "Ready to Stop Doing Things",
+      "highlight": "The Hard Way",
+      "line2": "?"
+    },
+    "text": "Book a free 30-minute automation audit. We'll map your biggest bottlenecks and show you exactly how much time and money you can save.",
+    "button": "Book Your Free Audit",
+    "secure": "Free • No commitment",
+    "monitoring": "30-minute call"
   },
   "brand": {
     "dot": "."

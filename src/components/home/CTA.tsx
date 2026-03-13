@@ -1,32 +1,28 @@
 import { motion } from 'framer-motion';
-import { Power } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 export const CTA = () => {
-  const { t } = useTranslation('home');
+  const { t, i18n } = useTranslation('home');
+  const isRTL = i18n.language === 'ar';
 
   return (
-    <section className="py-32 bg-charcoal relative overflow-hidden flex items-center justify-center text-white">
-      {/* Background Pulse */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-[500px] h-[500px] bg-neon-green/5 rounded-full blur-[100px] animate-pulse" />
-      </div>
+    <section className="py-32 bg-charcoal relative overflow-hidden">
+      {/* Gradient accents */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-brand/8 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/20 to-transparent" />
 
-      <div className="relative z-10 text-center px-4 w-full max-w-4xl">
+      <div className="relative z-10 text-center px-4 w-full max-w-3xl mx-auto">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-bold mb-8"
+          className="text-display-lg font-display font-extrabold mb-6 text-white"
         >
-          <Trans
-            i18nKey="cta.title"
-            t={t}
-            components={{ 
-              green: <span className="text-neon-green" />
-            }}
-          />
+          {t('cta.headline.line1')}{' '}
+          <span className="text-brand">{t('cta.headline.highlight')}</span>
+          {t('cta.headline.line2')}
         </motion.h2>
         
         <motion.p 
@@ -34,29 +30,40 @@ export const CTA = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto whitespace-pre-line"
+          className="text-lg text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed"
         >
           {t('cta.text')}
         </motion.p>
 
-        <Link to="/contact" className="inline-block">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="group relative inline-flex items-center gap-4 px-12 py-6 bg-neon-green text-charcoal text-xl font-bold rounded-none hover:bg-white transition-colors uppercase tracking-widest overflow-hidden cursor-pointer"
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              <Power size={24} />
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          <Link to="/contact">
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="group px-10 py-5 bg-brand text-charcoal font-display font-bold text-lg rounded-lg hover:bg-brand/90 transition-colors inline-flex items-center gap-3"
+            >
               {t('cta.button')}
-            </span>
-            <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0" />
-          </motion.div>
-        </Link>
+              <ArrowRight size={20} className={`transition-transform group-hover:translate-x-1 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
+            </motion.button>
+          </Link>
+        </motion.div>
         
-        <div className="mt-8 flex justify-center gap-8 text-sm font-mono text-gray-500">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="mt-8 flex justify-center gap-8 text-xs font-mono text-gray-600"
+        >
           <span>{t('cta.secure')}</span>
+          <span className="text-gray-700">•</span>
           <span>{t('cta.monitoring')}</span>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
