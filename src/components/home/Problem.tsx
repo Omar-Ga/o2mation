@@ -1,9 +1,11 @@
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useRef, useMemo } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
+import { useTheme } from '../../contexts/ThemeContext';
 
 export const Problem = () => {
-  const { t } = useTranslation('home');
+  const { t, i18n } = useTranslation('home');
+  const isRTL = i18n.language === 'ar';
   const containerRef = useRef(null);
   
   const WORKFLOW_ITEMS = useMemo(() => [
@@ -95,13 +97,9 @@ export const Problem = () => {
     restDelta: 0.001
   });
 
-  // PHASE 1: CHAOS TO ORDER (0% - 20%)
-  // Boxes move from random spots to a straight line
-  
   // PHASE 2: HORIZONTAL SCROLL (20% - 100%)
-  // The entire container slides left to reveal the chain
-  // We want to show 2 items initially, then slide to show the rest
-  const containerX = useTransform(smoothProgress, [0.2, 1], [0, -1500]); 
+  // The entire container slides to reveal the chain
+  const containerX = useTransform(smoothProgress, [0.2, 1], [0, isRTL ? 1500 : -1500]); 
   
   // LINE ANIMATION
   // The gray line is always visible once organized
@@ -115,7 +113,8 @@ export const Problem = () => {
   const title1Y = useTransform(smoothProgress, [0, 0.2, 0.25], [0, 0, -20]);
 
   // Stage 2: Connecting (0.3 - 0.6)
-  const title2Opacity = useTransform(smoothProgress, [0.25, 0.35, 0.55, 0.65], [0, 1, 1, 0]);
+  const title2OpacityBase = useTransform(smoothProgress, [0.25, 0.35, 0.55, 0.65], [0, 1, 1, 0]);
+  const title2Opacity = t('problem.title.connectingPart1') ? title2OpacityBase : 0;
   const title2Y = useTransform(smoothProgress, [0.25, 0.35, 0.55, 0.65], [20, 0, 0, -20]);
 
   // Stage 3: Automation (0.7 - 1.0)
@@ -171,14 +170,13 @@ export const Problem = () => {
         <motion.div 
           style={{ x: containerX }}
           className="relative h-[400px] flex items-center"
-          // Start position centered on the first 2 items (approx)
           initial={{ x: 0 }}
         >
           {/* CONNECTING LINES */}
-          <div className="absolute top-1/2 left-0 w-[2000px] h-1.5 bg-gray-800 -translate-y-1/2 z-0 rounded-full overflow-hidden">
+          <div className={`absolute top-1/2 ${isRTL ? 'right-0' : 'left-0'} w-[2000px] h-1.5 bg-gray-200 dark:bg-gray-800 -translate-y-1/2 z-0 rounded-full overflow-hidden`}>
              <motion.div 
                style={{ scaleX: lineFill, opacity: lineOpacity }}
-               className="h-full w-full bg-neon-green origin-left shadow-[0_0_25px_rgba(0,255,128,0.6)]"
+               className={`h-full w-full bg-neon-green ${isRTL ? 'origin-right' : 'origin-left'} shadow-[0_0_25px_rgba(0,255,128,0.6)]`}
              />
           </div>
 
@@ -220,58 +218,60 @@ interface WorkflowItemType {
 }
 
 const WorkflowItem = ({ item, progress, index }: { item: WorkflowItemType, progress: MotionValue<number>, index: number }) => {
-  const { t } = useTranslation('home');
+  const { t, i18n } = useTranslation('home');
+  const { theme } = useTheme();
+  const isRTL = i18n.language === 'ar';
+
   // Phase 1: Chaos to Order (0 - 0.2)
-  const x = useTransform(progress, [0, 0.2], [item.chaos.x, item.order.x]);
+  const x = useTransform(progress, [0, 0.2], [isRTL ? -item.chaos.x : item.chaos.x, isRTL ? -item.order.x : item.order.x]);
   const y = useTransform(progress, [0, 0.2], [item.chaos.y, item.order.y]);
-  const rotate = useTransform(progress, [0, 0.2], [item.chaos.rotate, item.order.rotate]);
+  const rotate = useTransform(progress, [0, 0.2], [isRTL ? -item.chaos.rotate : item.chaos.rotate, isRTL ? -item.order.rotate : item.order.rotate]);
   const scale = useTransform(progress, [0, 0.2], [0.8, 1]);
   
   // Phase 2: Activation (based on scroll position relative to item index)
-  // Calculate roughly when the green line hits this item
-  const activationStart = 0.2 + (index * 0.12); // Staggered activation
-  const borderColor = useTransform(progress, [activationStart, activationStart + 0.05], ["#333", "#00ff80"]);
+  const activationStart = 0.2 + (index * 0.12);
+  const borderColor = useTransform(progress, [activationStart, activationStart + 0.05], [theme === 'dark' ? "#333" : "#e5e7eb", "#00ff80"]);
   const glowOpacity = useTransform(progress, [activationStart, activationStart + 0.05], [0, 1]);
-  const iconColor = useTransform(progress, [activationStart, activationStart + 0.05], ["#6b7280", "#00ff80"]); // gray-500 to neon-green
+  const iconColor = useTransform(progress, [activationStart, activationStart + 0.05], [theme === 'dark' ? "#6b7280" : "#9ca3af", "#00ff80"]);
   const codeOpacity = useTransform(progress, [activationStart, activationStart + 0.05], [0, 1]);
 
   return (
     <motion.div
       style={{ 
-        x, // This is the relative position within the container
+        x, 
         y, 
         rotate, 
         scale,
         borderColor,
         backgroundColor: "rgba(10, 10, 10, 0.95)"
       }}
-      className={`absolute w-80 h-52 flex flex-col p-0 border border-gray-800 rounded-xl backdrop-blur-md z-10 shadow-2xl overflow-hidden`}
+      className={`absolute w-80 h-52 flex flex-col p-0 border rounded-xl backdrop-blur-md z-10 shadow-2xl overflow-hidden`}
     >
       {/* HUD HEADER */}
-      <div className="h-10 border-b border-gray-800 bg-black/50 flex items-center justify-between px-4">
-         <span className="text-[11px] text-gray-500 font-mono uppercase tracking-widest">{item.label}{t('problem.moduleSuffix')}</span>
+      <div className={`h-10 border-b border-gray-800 bg-black/50 flex items-center justify-between px-4`}>
+         <span className={`text-[11px] text-gray-500 font-mono uppercase tracking-widest text-start`}>{item.label}{t('problem.moduleSuffix')}</span>
          <div className="flex gap-2">
             <motion.div 
                style={{ backgroundColor: iconColor }}
                className="w-2 h-2 rounded-full"
             />
-            <div className="w-2 h-2 rounded-full bg-gray-800" />
+            <div className={`w-2 h-2 rounded-full bg-gray-800`} />
          </div>
       </div>
 
       {/* CONTENT */}
       <div className="flex-1 p-6 flex flex-col justify-center relative">
-         <div className="flex items-center gap-4 mb-3">
+          <div className="flex items-center gap-4 mb-3">
             <motion.div style={{ color: iconColor }}>
                {item.icon}
             </motion.div>
-            <div className="font-mono text-lg font-bold text-black dark:text-white tracking-wide">
+            <div className="font-mono text-lg font-bold text-white tracking-wide">
                {item.label}
             </div>
          </div>
          
          {/* FAKE CODE / METRICS */}
-         <motion.div style={{ opacity: codeOpacity }} className="space-y-1.5">
+         <motion.div style={{ opacity: codeOpacity }} className="space-y-1.5 text-start">
             {item.code.map((line: string, i: number) => (
                <div key={i} className="text-[11px] font-mono text-neon-green/80 flex gap-2">
                   <span className="text-gray-700">{t('problem.prompt')}</span>
@@ -281,8 +281,8 @@ const WorkflowItem = ({ item, progress, index }: { item: WorkflowItemType, progr
          </motion.div>
 
          {/* Corner Accents */}
-         <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-gray-700" />
-         <div className="absolute bottom-0 left-0 w-4 h-4 border-l border-b border-gray-700" />
+         <div className={`absolute bottom-0 right-0 w-4 h-4 border-r border-b border-gray-700`} />
+         <div className={`absolute bottom-0 left-0 w-4 h-4 border-l border-b border-gray-700`} />
       </div>
       
       {/* Active Glow Effect */}
@@ -292,11 +292,11 @@ const WorkflowItem = ({ item, progress, index }: { item: WorkflowItemType, progr
       />
       
       {/* Connector Dot - Left */}
-      <div className="absolute top-[50%] -left-2 w-4 h-4 bg-white dark:bg-charcoal border border-gray-700 rounded-full -translate-y-1/2 z-20 flex items-center justify-center">
+      <div className={`absolute top-[50%] -left-2 w-4 h-4 bg-charcoal border-gray-700 border rounded-full -translate-y-1/2 z-20 flex items-center justify-center`}>
          <motion.div style={{ opacity: glowOpacity }} className="w-2 h-2 bg-neon-green rounded-full" />
       </div>
       {/* Connector Dot - Right */}
-      <div className="absolute top-[50%] -right-2 w-4 h-4 bg-white dark:bg-charcoal border border-gray-700 rounded-full -translate-y-1/2 z-20 flex items-center justify-center">
+      <div className={`absolute top-[50%] -right-2 w-4 h-4 bg-charcoal border-gray-700 border rounded-full -translate-y-1/2 z-20 flex items-center justify-center`}>
          <motion.div style={{ opacity: glowOpacity }} className="w-2 h-2 bg-neon-green rounded-full" />
       </div>
 

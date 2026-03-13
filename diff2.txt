@@ -1,0 +1,83 @@
+﻿diff --git a/src/components/home/Metrics.tsx b/src/components/home/Metrics.tsx
+index 1f30975..a0f9889 100644
+--- a/src/components/home/Metrics.tsx
++++ b/src/components/home/Metrics.tsx
+@@ -15,7 +15,7 @@ const Counter = ({ value, duration = 2, decimals = 0 }: CounterProps) => {
+ 
+   useEffect(() => {
+     if (isInView) {
+-      let start = 0;
++      const start = 0;
+       const end = value;
+       const totalFrames = duration * 60;
+       const increment = (end - start) / totalFrames;
+diff --git a/src/components/home/Problem.tsx b/src/components/home/Problem.tsx
+index 619de63..b636517 100644
+--- a/src/components/home/Problem.tsx
++++ b/src/components/home/Problem.tsx
+@@ -207,7 +207,19 @@ export const Problem = () => {
+ };
+ 
+ // Sub-component
+-const WorkflowItem = ({ item, progress, index }: { item: any, progress: any, index: number }) => {
++import { MotionValue } from 'framer-motion';
++
++interface WorkflowItemType {
++  id: string;
++  icon: React.ReactNode;
++  label: string;
++  code: string[];
++  chaos: { x: number; y: number; rotate: number };
++  order: { x: number; y: number; rotate: number };
++  isCore?: boolean;
++}
++
++const WorkflowItem = ({ item, progress, index }: { item: WorkflowItemType, progress: MotionValue<number>, index: number }) => {
+   const { t } = useTranslation('home');
+   // Phase 1: Chaos to Order (0 - 0.2)
+   const x = useTransform(progress, [0, 0.2], [item.chaos.x, item.order.x]);
+diff --git a/src/components/home/Services.tsx b/src/components/home/Services.tsx
+index 99dc3d2..dc751e1 100644
+--- a/src/components/home/Services.tsx
++++ b/src/components/home/Services.tsx
+@@ -18,7 +18,13 @@ import {
+ import { MouseEvent } from 'react';
+ import { useTranslation, Trans } from 'react-i18next';
+ 
+-const ServiceCard = ({ item, index }: { item: any, index: number }) => {
++interface ServiceItemType {
++  icon: React.ElementType;
++  title: string;
++  desc: string;
++}
++
++const ServiceCard = ({ item, index }: { item: ServiceItemType, index: number }) => {
+   const mouseX = useMotionValue(0);
+   const mouseY = useMotionValue(0);
+ 
+diff --git a/src/components/home/hero/GlitchTitle.tsx b/src/components/home/hero/GlitchTitle.tsx
+index a9d7058..dae2ee3 100644
+--- a/src/components/home/hero/GlitchTitle.tsx
++++ b/src/components/home/hero/GlitchTitle.tsx
+@@ -1,8 +1,6 @@
+ import { memo, useMemo } from 'react';
+-import { useTranslation } from 'react-i18next';
+ 
+ export const GlitchTitle = memo(() => {
+-  const { t } = useTranslation('home');
+   const brandName = "O2MATION";
+ 
+   // Sequential delays for a left-to-right wave effect
+diff --git a/src/pages/Solutions.tsx b/src/pages/Solutions.tsx
+index 7316acc..09259c3 100644
+--- a/src/pages/Solutions.tsx
++++ b/src/pages/Solutions.tsx
+@@ -192,7 +192,7 @@ const DemoSandbox = () => {
+       }
+       
+       const step = currentDemo.steps[stepIndex];
+-      const timestamp = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit', fractionalSecondDigits: 3 } as any);
++      const timestamp = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit', fractionalSecondDigits: 3 } as Intl.DateTimeFormatOptions);
+       setLogs(prev => [...prev, `[${timestamp}] ${step}`]);
+       stepIndex++;
+     }, 800);

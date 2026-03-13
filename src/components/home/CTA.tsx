@@ -7,7 +7,7 @@ export const CTA = () => {
   const { t } = useTranslation('home');
 
   return (
-    <section className="py-32 bg-white dark:bg-charcoal relative overflow-hidden flex items-center justify-center">
+    <section className="py-32 bg-charcoal relative overflow-hidden flex items-center justify-center text-white">
       {/* Background Pulse */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-[500px] h-[500px] bg-neon-green/5 rounded-full blur-[100px] animate-pulse" />
@@ -34,7 +34,7 @@ export const CTA = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-xl text-gray-700 dark:text-gray-300 mb-12 max-w-2xl mx-auto whitespace-pre-line"
+          className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto whitespace-pre-line"
         >
           {t('cta.text')}
         </motion.p>
@@ -53,7 +53,7 @@ export const CTA = () => {
           </motion.div>
         </Link>
         
-        <div className="mt-8 flex justify-center gap-8 text-sm font-mono text-gray-600">
+        <div className="mt-8 flex justify-center gap-8 text-sm font-mono text-gray-500">
           <span>{t('cta.secure')}</span>
           <span>{t('cta.monitoring')}</span>
         </div>

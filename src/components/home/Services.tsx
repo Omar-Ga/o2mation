@@ -194,7 +194,7 @@ export const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           onMouseMove={handleMouseMove}
-          className="mt-20 relative overflow-hidden rounded-2xl group border border-black/10 dark:border-white/10 bg-gray-50 dark:bg-charcoal-light/50 backdrop-blur-sm"
+          className="mt-20 relative overflow-hidden rounded-2xl group border border-white/10 bg-charcoal-light/90 backdrop-blur-sm text-white"
         >
           {/* Spotlight Effect */}
           <motion.div
@@ -224,7 +224,7 @@ export const Services = () => {
                 <span className="text-neon-green font-mono text-xs tracking-widest uppercase">{t('services.cta.customArch')}</span>
               </div>
               
-              <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-4 leading-tight">
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
                 <Trans
                   i18nKey="services.cta.title"
                   t={t}
@@ -234,7 +234,7 @@ export const Services = () => {
                   }}
                 />
               </h3>
-              <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+              <p className="text-gray-300 text-lg leading-relaxed">
                 {t('services.cta.desc')}
               </p>
             </div>
