@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { BackgroundEffects } from './hero/BackgroundEffects';
 
 export const Hero = () => {
   const { t, i18n } = useTranslation('home');
@@ -21,21 +22,12 @@ export const Hero = () => {
       ref={ref} 
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-charcoal text-white"
     >
-      {/* Subtle gradient orb */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-brand/8 via-transparent to-emerald-900/10 blur-3xl pointer-events-none" />
-      
-      {/* Fine grid pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }}
-      />
+      {/* Restored dynamic background effects */}
+      <BackgroundEffects />
 
       <motion.div 
         style={{ y, opacity }}
-        className="relative z-10 text-center px-4 max-w-5xl mx-auto w-full"
+        className="relative z-10 text-center px-4 max-w-4xl mx-auto w-full pt-16 md:pt-24"
       >
         {/* Eyebrow */}
         <motion.div
@@ -50,17 +42,16 @@ export const Hero = () => {
           </span>
         </motion.div>
 
-        {/* Main headline */}
+        {/* Main headline - Single unified text block */}
         <motion.h1 
-          className="text-display-xl font-display font-extrabold mb-8 text-white"
+          className="text-display-xl font-display font-extrabold mb-8 text-white leading-[1.05] tracking-tight"
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
         >
           {t('hero.headline.line1')}{' '}
-          <br className="hidden md:block" />
-          <span className="text-brand">{t('hero.headline.highlight')}</span>
-          {' '}{t('hero.headline.line2')}
+          <span className="text-brand inline-block">{t('hero.headline.highlight')}</span>{' '}
+          {t('hero.headline.line2')}
         </motion.h1>
 
         {/* Subheadline */}

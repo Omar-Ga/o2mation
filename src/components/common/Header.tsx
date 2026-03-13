@@ -61,11 +61,8 @@ export const Header = () => {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           
           {/* Logo */}
-          <Link to="/" className="group flex items-center gap-2.5 z-50">
-            <div className="w-8 h-8 bg-brand rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
-              <span className="text-charcoal font-display font-extrabold text-sm">O2</span>
-            </div>
-            <span className="font-display font-bold text-lg tracking-tight text-ink dark:text-white">
+          <Link to="/" className="group flex items-center gap-2 z-50">
+            <span className="font-display font-black text-xl tracking-tight text-ink dark:text-white group-hover:opacity-90 transition-opacity">
               {t('brand.name')}<span className="text-brand">{t('brand.dot')}</span>
             </span>
           </Link>
